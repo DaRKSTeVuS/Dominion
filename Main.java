@@ -25,6 +25,5 @@ class Main {
 		// Instancie et exécute une partie
 		Game g = new Game(playerNames, kingdomStacks);
 		g.run();
-		g.run();
 	}
 }
