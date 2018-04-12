@@ -16,7 +16,6 @@ public class Copper extends TreasureCard {
 
 	@Override
 	public void play(Player p) {
-		// TODO Auto-generated method stub
-		
+		p.incrementMoney(1);
 	}
 }
