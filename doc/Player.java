@@ -10,47 +10,47 @@ public class Player {
 	 * Nom du joueur
 	 */
 	private String name;
-
+	
 	/**
 	 * Nombre d'actions disponibles
 	 */
 	private int actions;
-
+	
 	/**
 	 * Nombre de pièces disponibles pour acheter des cartes
 	 */
 	private int money;
-
+	
 	/**
 	 * Nombre d'achats disponibles
 	 */
 	private int buys;
-
+	
 	/**
 	 * Référence vers la partie en cours
 	 */
 	private Game game;
-
+	
 	/**
 	 * Liste des cartes dans la main du joueur
 	 */
 	private CardList hand;
-
+	
 	/**
 	 * Liste des cartes dans la défausse du joueur
 	 */
 	private CardList discard;
-
+	
 	/**
 	 * Liste des cartes dans la pioche du joueur
 	 */
 	private CardList draw;
-
+	
 	/**
 	 * Listes des cartes qui ont été jouées pendant le tour courant
 	 */
 	private CardList inPlay;
-
+	
 	/**
 	 * Constructeur
 	 * 
@@ -71,37 +71,26 @@ public class Player {
 		this.name = name;
 		// Affectation de la {@code game}
 		this.game = game;
-		// this.discard.add();
-		 
-		// - Les compteurs d'actions, argent et achats du joueur sont remis à 0
-		// - Les cartes en main et en jeu sont défaussées
-		// - Le joueur pioche 5 cartes en main
-		this.endTurn();
 	}
 
 	/**
 	 * Getters et setters
 	 */
 	public String getName() {
-		return this.name;
 	}
-
+	
 	public int getActions() {
-		return this.actions;
 	}
-
+	
 	public int getMoney() {
-		return this.money;
 	}
-
+	
 	public int getBuys() {
-		return this.buys;
 	}
-
+	
 	public Game getGame() {
-		return this.game;
 	}
-
+	
 	/**
 	 * Incrémente le nombre d'actions du joueur
 	 * 
@@ -110,7 +99,7 @@ public class Player {
 	 */
 	public void incrementActions(int n) {
 	}
-
+	
 	/**
 	 * Incrémente le nombre de pièces du joueur
 	 * 
@@ -119,7 +108,7 @@ public class Player {
 	 */
 	public void incrementMoney(int n) {
 	}
-
+	
 	/**
 	 * Incrémente le nombre d'achats disponibles du joueur
 	 * 
@@ -136,7 +125,7 @@ public class Player {
 	 */
 	public CardList cardsInHand() {
 	}
-
+	
 	/**
 	 * Renvoie une liste de toutes les cartes possédées par le joueur
 	 * (le deck complet c'est-à-dire toutes les cartes dans la main, la
@@ -144,7 +133,7 @@ public class Player {
 	 */
 	public CardList totalCards() {
 	}
-
+	
 	/**
 	 * Renvoie le nombre total de points de victoire du joueur
 	 * 
@@ -154,7 +143,7 @@ public class Player {
 	 */
 	public int victoryPoints() {
 	}
-
+	
 	/**
 	 * Renvoie une liste des autres joueurs de la partie.
 	 * 
@@ -168,7 +157,7 @@ public class Player {
 	 */
 	public List<Player> otherPlayers() {
 	}
-
+	
 	/**
 	 * Pioche une carte dans la pioche du joueur.
 	 * 
@@ -181,7 +170,7 @@ public class Player {
 	 */
 	public Card drawCard() {
 	}
-
+	
 	/**
 	 * Renvoie une représentation de l'état du joueur sous forme d'une chaîne
 	 * de caractères.
@@ -200,61 +189,61 @@ public class Player {
 		r += String.format("Hand: %s\n", this.hand.toString());
 		return r;
 	}
-
+	
 	/**
 	 * Renvoie la liste de toutes les cartes Trésor dans la main du joueur
 	 */
 	public CardList getTreasureCards() {
 		// Initialisation de la liste de carte à retourner
-		CardList res = new CardList();
-		// Parcours de la totatlité de la main
-		for (Card c : this.hand) {
-			// Si la carte courante est de type TreasureCard
-			if (c instanceof TreasureCard) {
-				// On l'ajoute à la liste de retour
-				res.add(c);
+			CardList res = new CardList();
+			// Parcours de la totatlité de la main
+			for (Card c : this.hand) {
+				// Si la carte courante est de type TreasureCard
+				if (c instanceof TreasureCard) {
+					// On l'ajoute à la liste de retour
+					res.add(c);
+				}
 			}
-		}
-		// On renvoie la liste
-		return res;
+			// On renvoie la liste
+			return res;
 	}
-
+	
 	/**
 	 * Renvoie la liste de toutes les cartes Action dans la main du joueur
 	 */
 	public CardList getActionCards() {
 		// Initialisation de la liste de carte à retourner
-		CardList res = new CardList();
-		// Parcours de la totatlité de la main
-		for (Card c : this.hand) {
-			// Si la carte courante est de type ActionCards
-			if (c instanceof ActionCards) {
-				// On l'ajoute à la liste de retour
-				res.add(c);
+			CardList res = new CardList();
+			// Parcours de la totatlité de la main
+			for (Card c : this.hand) {
+				// Si la carte courante est de type ActionCards
+				if (c instanceof ActionCards) {
+					// On l'ajoute à la liste de retour
+					res.add(c);
+				}
 			}
-		}
-		// On renvoie la liste
-		return res;
+			// On renvoie la liste
+			return res;
 	}
-
+	
 	/**
 	 * Renvoie la liste de toutes les cartes Victoire dans la main du joueur
 	 */
 	public CardList getVictoryCards() {
 		// Initialisation de la liste de carte à retourner
-		CardList res = new CardList();
-		// Parcours de la totatlité de la main
-		for (Card c : this.hand) {
-			// Si la carte courante est de type VictoryCards
-			if (c instanceof VictoryCards) {
-				// On l'ajoute à la liste de retour
-				res.add(c);
+			CardList res = new CardList();
+			// Parcours de la totatlité de la main
+			for (Card c : this.hand) {
+				// Si la carte courante est de type VictoryCards
+				if (c instanceof VictoryCards) {
+					// On l'ajoute à la liste de retour
+					res.add(c);
+				}
 			}
-		}
-		// On renvoie la liste
-		return res;
+			// On renvoie la liste
+			return res;
 	}
-
+	
 	/**
 	 * Joue une carte de la main du joueur.
 	 * 
@@ -267,7 +256,7 @@ public class Player {
 	 */
 	public void playCard(Card c) {
 	}
-
+	
 	/**
 	 * Joue une carte de la main du joueur.
 	 * 
@@ -280,7 +269,7 @@ public class Player {
 	 */
 	public void playCard(String cardName) {
 	}
-
+	
 	/**
 	 * Le joueur gagne une carte.
 	 * 
@@ -292,7 +281,7 @@ public class Player {
 	 */
 	public void gain(Card c) {
 	}
-
+	
 	/**
 	 * Le joueur gagne une carte de la réserve
 	 * 
@@ -304,7 +293,7 @@ public class Player {
 	 */
 	public Card gain(String cardName) {
 	}
-
+	
 	/**
 	 * Le joueur achète une carte de la réserve
 	 * 
@@ -321,7 +310,7 @@ public class Player {
 	 */
 	public Card buyCard(String cardName) {
 	}
-
+	
 	/**
 	 * Attend une entrée de la part du joueur (au clavier) et renvoie le choix
 	 *  du joueur.
@@ -394,7 +383,7 @@ public class Player {
 			}
 		}
 	}
-
+	
 	/**
 	 * Attend une entrée de la part du joueur et renvoie le choix du joueur.
 	 * Dans cette méthode, la liste des choix est donnée sous la forme d'une 
@@ -437,7 +426,7 @@ public class Player {
 		// appel de la méthode précédente en passant l'ensemble de noms
 		return this.choose(instruction, stringChoices, canPass);
 	}
-
+	
 	/**
 	 * Démarre le tour du joueur
 	 * 
@@ -445,7 +434,7 @@ public class Player {
 	 */
 	public void startTurn() {
 	}
-
+	
 	/**
 	 * Termine le tour du joueur
 	 * 
@@ -455,7 +444,7 @@ public class Player {
 	 */
 	public void endTurn() {
 	}
-
+	
 	/**
 	 * Exécute le tour d'un joueur
 	 * 
