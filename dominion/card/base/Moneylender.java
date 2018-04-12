@@ -1,5 +1,6 @@
 package dominion.card.base;
 import java.util.*;
+
 import dominion.*;
 import dominion.card.*;
 
@@ -10,4 +11,14 @@ import dominion.card.*;
  * Dans ce cas, +3 Pièces.
  */
 public class Moneylender extends ActionCard {
+
+	public Moneylender(String name, int cost) {
+		super(name, cost);
+	}
+
+	@Override
+	public void play(Player p) {
+		// TODO Auto-generated method stub
+		
+	}
 }
