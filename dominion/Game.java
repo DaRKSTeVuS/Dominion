@@ -46,6 +46,16 @@ public class Game {
 	 * - 8 (si 2 joueurs) ou 12 (si 3 ou 4 joueurs) Estate, Duchy et Province 	 * - 10 * (n-1) Curse où n est le nombre de joueurs dans la partie
 	 */
 	public Game(String[] playerNames, List<CardList> kingdomStacks) {
+		// Initialisation de {@code players}
+		this.players = new Player[playerNames.length];
+		// Pour chaque nom de joueurs dans {@code playerNames}
+		for (int i = 0; i < this.players.length; i++) {
+			// On prend le nom, et on creer un nouveau joueur à l'affectant à this
+			this.players[i] = new Player(playerNames[i], this);
+		}
+		// On initialise la Liste des piles dans la réserve du jeu
+		this.supplyStacks = new ArrayList<CardList>();
+		// ADDall
 	}
 	
 	/**
