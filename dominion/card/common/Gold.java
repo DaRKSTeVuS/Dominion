@@ -16,6 +16,6 @@ public class Gold extends TreasureCard {
 	
 	@Override
 	public void play(Player p) {
-		p.incrementMoney(3);		
+		p.incrementMoney(3);	// on ajoute la valeur d'une pièce d'or à la monney du Player p		
 	}
 }
