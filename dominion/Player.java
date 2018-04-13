@@ -466,6 +466,10 @@ public class Player {
 	 * Les compteurs d'actions et achats sont mis à 1
 	 */
 	public void startTurn() {
+		// Compteur d'action initialisé à 1
+		this.actions = 1;
+		// Compteur d'achats initialisé à 1
+		this.buys = 1;
 	}
 
 	/**
@@ -476,6 +480,28 @@ public class Player {
 	 * - Le joueur pioche 5 cartes en main
 	 */
 	public void endTurn() {
+		// Compteur d'action remis à 0
+		this.actions = 0;
+		// Compteur d'achats remis à 0
+		this.buys = 0;
+		// Défausse des cartes en main (hand)
+		for(Card c : this.hand) {
+			// Ajout dans la défausse
+			this.discard.add(c);
+			// Retrait de la main du joueur
+			this.hand.remove(c);
+		}
+		// Défausse des cartes en jeu (inPlay)
+		for(Card c : this.inPlay) {
+			// Ajout dans la défausse
+			this.discard.add(c);
+			// Retrait des cartes en jeu
+			this.inPlay.remove(c);
+		}
+		// Le joueur pioche 5 cartes
+		for(int i=0; i<5; i++) {
+			this.drawCard();
+		}
 	}
 
 	/**
