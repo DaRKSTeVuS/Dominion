@@ -22,6 +22,6 @@ public class Gardens extends VictoryCard {
 
 	@Override
 	public void play(Player p) {
-		// ne fait rien		
+		// ne fait rien
 	}
 }

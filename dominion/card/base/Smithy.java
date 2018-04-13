@@ -17,7 +17,11 @@ public class Smithy extends ActionCard {
 
 	@Override
 	public void play(Player p) {
-		// TODO Auto-generated method stub
+		// +3 Carte => pioche 3 carte
+		for(int i=0; i<3; i++) {
+			p.drawCard();			
+		}
 		
+		p.incrementActions(-1);	// -1 Action pour l'utilisation de la carte
 	}
 }

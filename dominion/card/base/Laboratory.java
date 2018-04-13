@@ -21,5 +21,7 @@ public class Laboratory extends ActionCard {
 		p.incrementMoney(1);	// +1 Pièce
 		p.drawCard();			// +1 Carte = pioche 1 carte
 		p.drawCard();			// +1 Carte = pioche 1 carte
+		
+		p.incrementActions(-1);	// -1 Action pour l'utilisation de la carte
 	}
 }

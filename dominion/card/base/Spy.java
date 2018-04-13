@@ -21,7 +21,13 @@ public class Spy extends AttackCard {
 
 	@Override
 	public void play(Player p) {
-		// TODO Auto-generated method stub
+		p.incrementActions(1); 	// +1 Actions
+		p.drawCard();			// +1 Carte => pioche 1 carte
 		
+		// TO DO : tous les joueurs (vous aussi) dévoilent la première carte 
+		// de leur deck. Vous décidez ensuite si chaque carte dévoilée 
+		// est défaussée ou replacée sur son deck.
+			
+		p.incrementActions(-1);	// -1 Action pour l'utilisation de la carte
 	}
 }
