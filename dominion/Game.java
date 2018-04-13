@@ -138,12 +138,16 @@ public class Game {
 	 * @param index indice dans le tableau des joueurs du joueur à renvoyer
 	 */
 	public Player getPlayer(int index) {
+		// On retourne le joueur correspondant à l'addresse passée en argument
+		return this.players[index];
 	}
 
 	/**
 	 * Renvoie le nombre de joueurs participant à la partie
 	 */
 	public int numberOfPlayers() {
+		// On retourne le nombre de joueurs dans la partie (idéalement 2,3 ou 4)
+		return this.players.length;
 	}
 
 	/**
@@ -151,6 +155,16 @@ public class Game {
 	 * joueurs, ou -1 si le joueur n'est pas dans le tableau.
 	 */
 	private int indexOfPlayer(Player p) {
+		// On parcourt le tableau de joueurs
+		for(int i=0; i<this.numberOfPlayers(); i++) {
+			// Si on trouve le joueur
+			if(this.getPlayer(i) == p) {
+				// On renvoie l'index
+				return i ;
+			}
+		}
+		// Si on a pas trouvé le joueur, on renvoie -1
+		return -1;
 	}
 
 	/**
