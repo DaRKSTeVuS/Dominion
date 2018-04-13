@@ -7,6 +7,11 @@ import java.util.*;
 public class CardList extends ArrayList<Card> {
 	
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2842949227326837941L;
+
+	/**
 	 * Constructeur vide
 	 */
 	public CardList() {

@@ -1,5 +1,6 @@
 package dominion.card.base;
 import java.util.*;
+
 import dominion.*;
 import dominion.card.*;
 
@@ -10,4 +11,14 @@ import dominion.card.*;
  * Jouez-la deux fois.
  */
 public class ThroneRoom extends ActionCard {
+
+	public ThroneRoom(String name, int cost) {
+		super(name, cost);
+	}
+
+	@Override
+	public void play(Player p) {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -1,5 +1,6 @@
 package dominion.card.base;
 import java.util.*;
+
 import dominion.*;
 import dominion.card.*;
 
@@ -11,4 +12,14 @@ import dominion.card.*;
  * +2 Pièces.
  */
 public class Festival extends ActionCard {
+
+	public Festival(String name, int cost) {
+		super(name, cost);
+	}
+
+	@Override
+	public void play(Player p) {
+		// TODO Auto-generated method stub
+		
+	}
 }

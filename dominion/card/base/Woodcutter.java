@@ -1,5 +1,6 @@
 package dominion.card.base;
 import java.util.*;
+
 import dominion.*;
 import dominion.card.*;
 
@@ -10,4 +11,14 @@ import dominion.card.*;
  * +2 Pièces.
  */
 public class Woodcutter extends ActionCard {
+
+	public Woodcutter(String name, int cost) {
+		super(name, cost);
+	}
+
+	@Override
+	public void play(Player p) {
+		// TODO Auto-generated method stub
+		
+	}
 }
