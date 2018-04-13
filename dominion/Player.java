@@ -72,7 +72,7 @@ public class Player {
 		// Affectation de la {@code game}
 		this.game = game;
 		// this.discard.add();
-		 
+
 		// - Les compteurs d'actions, argent et achats du joueur sont remis à 0
 		// - Les cartes en main et en jeu sont défaussées
 		// - Le joueur pioche 5 cartes en main
@@ -266,6 +266,10 @@ public class Player {
 	 * {@code inPlay} et exécute la méthode {@code play(Player p)} de la carte.
 	 */
 	public void playCard(Card c) {
+		// On place la carte dans "inPlay" 
+		this.inPlay.add(c);
+		// On retire cette carte de la main du joueur
+		this.hand.remove(c);
 	}
 
 	/**
@@ -279,6 +283,12 @@ public class Player {
 	 * fait rien.
 	 */
 	public void playCard(String cardName) {
+		// On vérifie que la carte est dans la main du joueur
+		if (this.cardsInHand().getCard(cardName) != null) {
+			// On appelle la méthode {@code playCard(Card c)} 
+			this.playCard(this.cardsInHand().getCard(cardName));
+		}
+		// Sinon, on ne fait rien
 	}
 
 	/**
@@ -291,6 +301,12 @@ public class Player {
 	 * emplacement précédent au préalable.
 	 */
 	public void gain(Card c) {
+		// On vérifie que la carte n'est pas nulle
+		if(c != null) {
+			// alors on la place dans la défausse du joueur "this"
+			this.discard.add(c) ;
+		}
+		// Sinon, on ne fait rien
 	}
 
 	/**
@@ -303,6 +319,12 @@ public class Player {
 	 * null} si aucune carte n'a été prise dans la réserve.
 	 */
 	public Card gain(String cardName) {
+		// On appelle la méthode {@code gain(Card c)} pour la défausser
+		// Si la carte se trouve dans "supplyStacks", rien ne se passera
+		this.gain(this.getGame().getFromSupply(cardName));
+		// On retire la carte de la réserve
+		// Si elle ne s'y trouve pas, @return sera {@code null} 
+		return this.getGame().removeFromSupply(cardName) ;
 	}
 
 	/**
