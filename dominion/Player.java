@@ -158,6 +158,26 @@ public class Player {
 	 * défausse, la pioche et en jeu)
 	 */
 	public CardList totalCards() {
+		// On cré une nouvelle liste de carte qui sera retournée à la fin
+		CardList all = new CardList();
+		// On y ajoute les cartes de la main
+		for(Card c : this.cardsInHand()) {
+			all.add(c);
+		}
+		// On y ajoute les cartes de la défausse
+		for(Card c : this.discard) {
+			all.add(c);
+		}
+		// On y ajoute les cartes de la pioche
+		for(Card c : this.draw) {
+			all.add(c);
+		}
+		// On y ajoute les cartes en jeu
+		for(Card c : this.inPlay){
+			all.add(c);
+		}
+		// On retourne la liste
+		return all;
 	}
 
 	/**
@@ -381,6 +401,25 @@ public class Player {
 	 * lieu
 	 */
 	public Card buyCard(String cardName) {
+		// On trouve la carte dans la réserve
+		if (this.getGame().getFromSupply(cardName) != null) {
+			// On stock le coût dans une variable (pour éviter la surcharge de calcul)
+			int ccost =  this.getGame().getFromSupply(cardName).getCost();
+			// On vérifie que le joueur a assez de Pièces pour réaliser l'achat
+			if(this.getMoney() >= ccost) {
+				// On vérifie qu'il a assez de Points d'Achat
+				if(this.getBuys() > 0) {
+					// Si tout est bon, on soustrait le coût de la carte à l'argent du joueur
+					this.incrementMoney(- ccost);
+					// On décrémente les Points d'Achat de 1
+					this.incrementBuys(-1);
+					// Le joueur gagne la carte {@code gain(String cardName)} et on la retourne
+					return this.gain(cardName);
+				}
+			}
+		}
+		// Sinon, On retourne null
+		return null ;
 	}
 
 	/**
@@ -571,5 +610,21 @@ public class Player {
 	 * du joueur
 	 */
 	public void playTurn() {
+		// (1) Préparation
+		// On appelle {@code startTurn()}
+		this.startTurn();
+		// (2) Action
+		
+		
+		// (3) Trésor
+		// Joue automatiquement toute les cartes trésor de la main du joueur
+		for(Card c : this.getTreasureCards()) {
+			c.play(this);
+		}		
+		// (4) Achat
+		
+		// (5) Fin du tour
+		// On appelle {@code endTurn()}
+		this.endTurn();
 	}
 }
