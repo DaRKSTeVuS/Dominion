@@ -16,7 +16,7 @@ public class Curse extends CurseCard {
 
 	@Override
 	public void play(Player p) {
-		// les cartes malédictions ne se jouent pas. par conséquent, 
+		// les cartes malédictions ne se jouent pas. Par conséquent, 
 		// cette méthode ne fait rien
 	}
 	

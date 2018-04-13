@@ -18,7 +18,15 @@ public class Witch extends AttackCard {
 
 	@Override
 	public void play(Player p) {
-		// TODO Auto-generated method stub
+		// On pioche 1 carte 2x
+		p.drawCard() ;
+		p.drawCard() ;
+		// Les adversaires reçoivent une carte Malédiction
+		for(Player o : p.getGame().otherPlayers(p)) {
+			o.gain(p.getGame().getFromSupply("Malédiction"));
+			p.getGame().removeFromSupply("Malédicton");
+		}
+		
 		p.incrementActions(-1);	// -1 Action pour l'utilisation de la carte
 	}
 }
