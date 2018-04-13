@@ -566,10 +566,7 @@ public class Player {
 		this.buys = 0;
 		// Défausse des cartes en main (hand)
 		for(Card c : this.hand) {
-			// Ajout dans la défausse
-			this.discard.add(c);
-			// Retrait de la main du joueur
-			this.hand.remove(c);
+			this.defausse(c);
 		}
 		// Défausse des cartes en jeu (inPlay)
 		for(Card c : this.inPlay) {
@@ -617,12 +614,12 @@ public class Player {
 		this.startTurn();
 		// (2) Action
 		// Tant qu'on a des actions en main
-			// On demande au joueur s'il souhaite jouer une carte
-			// Si le joueur veut jouer une carte
-				// On lui propose les cartes disponibles à l'utilisation
-				// et le joueur choisit une carte qu'il souhaite utiliser
-				// On utilise la carte
-				// -1 Action pour l'utilisation de la carte
+		// On demande au joueur s'il souhaite jouer une carte
+		// Si le joueur veut jouer une carte
+		// On lui propose les cartes disponibles à l'utilisation
+		// et le joueur choisit une carte qu'il souhaite utiliser
+		// On utilise la carte
+		// -1 Action pour l'utilisation de la carte
 
 		// (3) Trésor
 		// Joue automatiquement toute les cartes trésor de la main du joueur
@@ -646,5 +643,26 @@ public class Player {
 		// (5) Fin du tour
 		// On appelle {@code endTurn()}
 		this.endTurn();
+	}
+
+	// Place la carte de la main passée en paramètre dans la défausse
+	// On admet qu'elle existe dans la main du joueur (vérifié au préalable)
+	public void defausse(Card c) {
+		// Ajout dans la défausse
+		this.discard.add(c);
+		// Retrait de la main du joueur
+		this.hand.remove(c);
+	}
+
+	public boolean defausse(String cardName) {
+		// On vérifie que la carte est dans la main du joueur
+		if (this.cardsInHand().getCard(cardName) != null) {
+			// Si oui, on utilise la méthode {@code defausse(String cardName)}
+			this.defausse(this.cardsInHand().getCard(cardName));
+			// et on renvoie vrai
+			return true;
+		}
+		// Sinon, on renvoie faux
+		return false;	
 	}
 }

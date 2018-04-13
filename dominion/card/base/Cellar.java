@@ -21,9 +21,9 @@ public class Cellar extends ActionCard {
 	public void play(Player p) {
 		p.incrementActions(1);	// +1 Action
 		// On va pouvoir défausser autant de carte qu'on voudra, dans la limite de la main
+		// On va garder ce chiffre dans une variable
+		int nbcdef = 0;
 		while(p.getActionCards() != null ) {
-			// On va garder ce chiffre dans une variable
-			int nbcdef = 0;
 			// On propose au joueur de défausser une carte jusqu'à ce qu'il n'ait plus 
 			// de carte à défausser ou passe. il peut passer à tout momment
 			// En revanche, il ne peut répondre que par oui ou par non
@@ -40,14 +40,22 @@ public class Cellar extends ActionCard {
 				// Le joueur peut toujours passer s'il le souhaite
 				String inputc = p.chooseCard("Choisissez une carte à défausser.", cchoices, true);
 				// On défausse la carte @param inputc
-				// TODO : défausser inputc
-				// On incrémente le nombre de cartes défaussées
-				nbcdef += 1;
+				boolean test = p.defausse(inputc);
+				// Si le test est vrai, alors la carte à été défaussée correctement
+				if (test) {
+					// Alors on incrémente le nombre de cartes défaussées
+					nbcdef += 1;
+				}
+				// Sinon, la carte n'était pas dans la main du joueur, on ne fait rien
 			}
-			// On pioche une carte pour chaque carte défaussée
-			for(int i=0; i<nbcdef; i++) {
-				p.drawCard();
+			// Si la réponse est non, on sort de la boucle
+			else {
+				break;
 			}
+		}
+		// On pioche une carte pour chaque carte défaussée
+		for(int i=0; i<nbcdef; i++) {
+			p.drawCard();
 		}
 		// Sinon, l'action est finie
 		p.incrementActions(-1);	// -1 Action pour l'utilisation de la carte
