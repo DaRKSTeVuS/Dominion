@@ -20,7 +20,9 @@ public class Market extends ActionCard {
 
 	@Override
 	public void play(Player p) {
-		// TODO Auto-generated method stub
-		
+		p.incrementActions(1);	// +1 Action
+		p.incrementBuys(1);		// +1 Achat
+		p.incrementMoney(1);	// +1 Pièce
+		p.drawCard();			// +1 Carte = pioche 1 carte
 	}
 }

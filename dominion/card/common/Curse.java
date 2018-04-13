@@ -16,7 +16,8 @@ public class Curse extends CurseCard {
 
 	@Override
 	public void play(Player p) {
-		// TODO Auto-generated method stub
-		
+		// les cartes malédictions ne se jouent pas. par conséquent, 
+		// cette méthode ne fait rien
 	}
+	
 }
