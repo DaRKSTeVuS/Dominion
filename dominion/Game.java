@@ -180,6 +180,26 @@ public class Game {
 	 * premier).
 	 */
 	public List<Player> otherPlayers(Player p) {
+		// On met le nombre de joueurs dans une variable, pour éviter de la recalculer à chaque fois
+		int nbPlayers = this.numberOfPlayers() ;
+		// On cré une ArrayList qui contiendra les autres joueurs
+		ArrayList<Player> otherp = new ArrayList<Player>() ;
+		// On place stock l'index du joueur courant dans une variable
+		// Elle nous servira à parcourir le tableau
+		int i = this.currentPlayerIndex;
+		// On commence à parcourir le tableau des joueurs, tant que la taille de la 
+		// liste des autres joueurs est strictement inférieure au tableau des joueurs
+		// normalement, la taille de la liste = taille du tableau -1
+		while (otherp.size() < nbPlayers) {
+			// Si on est déja à la fin du tableau, on repart au début
+			if (i == nbPlayers) i = 0;
+			// Sinon, on commence à partit du suivant
+			else i += 1;
+			// On ajoute le joueur à la liste
+			otherp.add(this.getPlayer(i));
+		}
+		// On retourne la liste des autres joueurs
+		return otherp;
 	}
 
 	/**
