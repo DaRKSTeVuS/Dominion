@@ -109,6 +109,8 @@ public class Player {
 	 * souhaite diminuer le nombre d'actions)
 	 */
 	public void incrementActions(int n) {
+		// On incrémente les actions de n
+		this.actions =+ n;
 	}
 
 	/**
@@ -118,6 +120,8 @@ public class Player {
 	 * souhaite diminuer le nombre de pièces)
 	 */
 	public void incrementMoney(int n) {
+		// On incrémente les pièces de n
+		this.money =+ n;
 	}
 
 	/**
@@ -127,6 +131,8 @@ public class Player {
 	 * souhaite diminuer le nombre d'achats)
 	 */
 	public void incrementBuys(int n) {
+		// On incrémente les achats de n
+		this.buys =+ n;
 	}
 
 	/**
@@ -135,6 +141,15 @@ public class Player {
 	 * éléments sont les mêmes que ceux de {@code this.hand}.
 	 */
 	public CardList cardsInHand() {
+		// On cré une nouvelle liste résultat
+		CardList hand = new CardList() ;
+		// On parcourt la main
+		for(Card c : this.hand) {
+			// et on la copie dans le résultat
+			hand.add(c);
+		}
+		// On retourne le résultat
+		return hand;
 	}
 
 	/**
@@ -153,6 +168,15 @@ public class Player {
 	 * {@code victoryValue()}) des cartes
 	 */
 	public int victoryPoints() {
+		// On initialise les Points de Victoire à 0
+		int VP = 0 ;
+		// On parcourt la totalité des cartes possédées par le joueur, où qu'elles soient
+		for(Card c : this.totalCards()) {
+			// On fait la somme de tous les Points de Victoire
+			VP += c.victoryValue(this);
+		}
+		// On retourne cette somme
+		return VP ;
 	}
 
 	/**
@@ -167,6 +191,8 @@ public class Player {
 	 * de la classe {@code Game}.
 	 */
 	public List<Player> otherPlayers() {
+		// on appelle la méthode {@code otherPlayers(Player p)} avec p = this
+		return this.getGame().otherPlayers(this);
 	}
 
 	/**
@@ -180,6 +206,19 @@ public class Player {
 	 * @return la carte piochée, {@code null} si aucune carte disponible
 	 */
 	public Card drawCard() {
+		// On vérifie que la pioche n'est pas vide (= null)
+		if(this.draw != null) {
+			// Si c'est le cas, on mélange la défausse 
+			this.discard.shuffle();
+			// Puis on transfère tout dans la pioche
+			for(Card c : this.discard) {
+				this.draw.add(c);
+			}
+		}
+		// Ensuite, on ajoute la 1ere carte de la pioche dans la main du joueur
+		// Ou pas
+		// Puis on la retire de la pioche (et on la retourne)
+		return this.draw.remove(0);
 	}
 
 	/**
@@ -227,8 +266,8 @@ public class Player {
 		CardList res = new CardList();
 		// Parcours de la totatlité de la main
 		for (Card c : this.hand) {
-			// Si la carte courante est de type ActionCards
-			if (c instanceof ActionCards) {
+			// Si la carte courante est de type ActionCard
+			if (c instanceof ActionCard) {
 				// On l'ajoute à la liste de retour
 				res.add(c);
 			}
@@ -245,8 +284,8 @@ public class Player {
 		CardList res = new CardList();
 		// Parcours de la totatlité de la main
 		for (Card c : this.hand) {
-			// Si la carte courante est de type VictoryCards
-			if (c instanceof VictoryCards) {
+			// Si la carte courante est de type VictoryCard
+			if (c instanceof VictoryCard) {
 				// On l'ajoute à la liste de retour
 				res.add(c);
 			}

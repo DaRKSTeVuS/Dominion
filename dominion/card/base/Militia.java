@@ -18,7 +18,13 @@ public class Militia extends AttackCard {
 
 	@Override
 	public void play(Player p) {
-		// TODO Auto-generated method stub
+		p.incrementMoney(2); 	// +2 Pièces
+		// Les adversaires défaussent 2 cartes
+				for(Player o : p.otherPlayers()) {
+					// On défausse 1 carte
+					// On défausse une 2eme carte
+				}
+		
 		p.incrementActions(-1);	// -1 Action pour l'utilisation de la carte
 	}
 }

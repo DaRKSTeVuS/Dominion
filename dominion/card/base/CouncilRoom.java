@@ -25,7 +25,7 @@ public class CouncilRoom extends ActionCard {
 		}
 		p.incrementBuys(1); 	// +1 Achat
 		// Les adversaires piochent une carte
-		for(Player o : p.getGame().otherPlayers(p)) {
+		for(Player o : p.otherPlayers()) {
 			o.drawCard() ;
 		}
 

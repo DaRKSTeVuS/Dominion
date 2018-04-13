@@ -22,7 +22,7 @@ public class Witch extends AttackCard {
 		p.drawCard() ;
 		p.drawCard() ;
 		// Les adversaires reçoivent une carte Malédiction
-		for(Player o : p.getGame().otherPlayers(p)) {
+		for(Player o : p.otherPlayers()) {
 			o.gain(p.getGame().getFromSupply("Malédiction"));
 			p.getGame().removeFromSupply("Malédicton");
 		}
