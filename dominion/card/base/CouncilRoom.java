@@ -19,7 +19,16 @@ public class CouncilRoom extends ActionCard {
 
 	@Override
 	public void play(Player p) {
-		// TODO Auto-generated method stub
+		// On pioche 4x 1 carte
+		for(int i=0; i<4; i++) {
+			p.drawCard();
+		}
+		p.incrementBuys(1); 	// +1 Achat
+		// Les adversaires piochent une carte
+		for(Player o : p.getGame().otherPlayers(p)) {
+			o.drawCard() ;
+		}
+
 		p.incrementActions(-1);	// -1 Action pour l'utilisation de la carte
 	}
 }
