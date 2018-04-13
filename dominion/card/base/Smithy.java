@@ -22,6 +22,5 @@ public class Smithy extends ActionCard {
 			p.drawCard();			
 		}
 		
-		p.incrementActions(-1);	// -1 Action pour l'utilisation de la carte
 	}
 }

@@ -29,6 +29,5 @@ public class CouncilRoom extends ActionCard {
 			o.drawCard() ;
 		}
 
-		p.incrementActions(-1);	// -1 Action pour l'utilisation de la carte
 	}
 }

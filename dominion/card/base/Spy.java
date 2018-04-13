@@ -28,6 +28,5 @@ public class Spy extends AttackCard {
 		// de leur deck. Vous décidez ensuite si chaque carte dévoilée 
 		// est défaussée ou replacée sur son deck.
 			
-		p.incrementActions(-1);	// -1 Action pour l'utilisation de la carte
 	}
 }

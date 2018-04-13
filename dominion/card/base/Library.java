@@ -21,6 +21,5 @@ public class Library extends ActionCard {
 	@Override
 	public void play(Player p) {
 		// TODO Auto-generated method stub
-		p.incrementActions(-1);	// -1 Action pour l'utilisation de la carte
 	}
 }

@@ -16,8 +16,9 @@ public class Gardens extends VictoryCard {
 	}
 	
 	public int victoryValue(Player p) {
-		// TO DO
-		return 0;
+		// On retourne ne nombre total des cartes du deck /10 (toutes les 
+		// cartes du joueur sont dans le deck à la fin de la partie)
+		return p.totalCards().size()/10;
 	}
 
 	@Override

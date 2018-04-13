@@ -21,6 +21,5 @@ public class Woodcutter extends ActionCard {
 		p.incrementBuys(1); 	// +1 Achat
 		p.incrementMoney(2);	// +2 Pièces	
 		
-		p.incrementActions(-1);	// -1 Action pour l'utilisation de la carte
 	}
 }

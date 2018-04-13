@@ -27,6 +27,5 @@ public class Witch extends AttackCard {
 			p.getGame().removeFromSupply("Malédicton");
 		}
 		
-		p.incrementActions(-1);	// -1 Action pour l'utilisation de la carte
 	}
 }

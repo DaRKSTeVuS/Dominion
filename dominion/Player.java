@@ -285,7 +285,7 @@ public class Player {
 		// Initialisation de la liste de carte à retourner
 		CardList res = new CardList();
 		// Parcours de la totatlité de la main
-		for (Card c : this.hand) {
+		for (Card c : this.cardsInHand()) {
 			// Si la carte courante est de type ActionCard
 			if (c instanceof ActionCard) {
 				// On l'ajoute à la liste de retour
@@ -325,6 +325,8 @@ public class Player {
 	 * {@code inPlay} et exécute la méthode {@code play(Player p)} de la carte.
 	 */
 	public void playCard(Card c) {
+		// On active l'effet de la carte
+		c.play(this);
 		// On place la carte dans "inPlay" 
 		this.inPlay.add(c);
 		// On retire cette carte de la main du joueur
@@ -614,15 +616,33 @@ public class Player {
 		// On appelle {@code startTurn()}
 		this.startTurn();
 		// (2) Action
-		
-		
+		// Tant qu'on a des actions en main
+			// On demande au joueur s'il souhaite jouer une carte
+			// Si le joueur veut jouer une carte
+				// On lui propose les cartes disponibles à l'utilisation
+				// et le joueur choisit une carte qu'il souhaite utiliser
+				// On utilise la carte
+				// -1 Action pour l'utilisation de la carte
+
 		// (3) Trésor
 		// Joue automatiquement toute les cartes trésor de la main du joueur
 		for(Card c : this.getTreasureCards()) {
 			c.play(this);
 		}		
 		// (4) Achat
-		
+		// tant qu'il est possible de faire des achats
+		while(this.getBuys() > 0 && this.getMoney() > 0){
+			// On demande au joueur s'il souhaite acheter une carte
+			List<String> choices = Arrays.asList("oui", "non");
+			String input = this.choose("Voulez-vous acheter une carte (y/n)", choices, false);
+			// Si le joueur désire faire un achat
+			if(input == "oui") {
+				// On lui propose les cartes disponibles à l'achat
+				// et le joueur choisit une carte qu'il souhaite acheter  
+				// on utilise la méthode {@code buyCard(Card c)}
+			}
+		}
+
 		// (5) Fin du tour
 		// On appelle {@code endTurn()}
 		this.endTurn();

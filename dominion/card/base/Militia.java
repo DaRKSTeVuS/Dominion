@@ -25,6 +25,5 @@ public class Militia extends AttackCard {
 					// On défausse une 2eme carte
 				}
 		
-		p.incrementActions(-1);	// -1 Action pour l'utilisation de la carte
 	}
 }
