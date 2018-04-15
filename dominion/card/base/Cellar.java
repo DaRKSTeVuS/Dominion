@@ -58,6 +58,5 @@ public class Cellar extends ActionCard {
 			p.drawCard();
 		}
 		// Sinon, l'action est finie
-		p.incrementActions(-1);	// -1 Action pour l'utilisation de la carte
 	}
 }

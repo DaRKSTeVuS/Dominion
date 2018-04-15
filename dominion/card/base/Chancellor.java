@@ -18,6 +18,15 @@ public class Chancellor extends ActionCard {
 
 	@Override
 	public void play(Player p) {
-		// TODO Auto-generated method stub
+		p.incrementMoney(2);	// +2 Pièces
+		// Propose au joueur de défausser immédiatement son deck
+		List<String> choices = Arrays.asList("oui", "non");
+		String input = p.choose("Voulez-vous défausser une carte (y/n)", choices, false);
+		// Si oui, défausse le deck {@code draw}
+		if (input == "oui") {
+			p.discardDraw();
+		}
+		// Si non, ne fait rien de plus
+		
 	}
 }
