@@ -75,7 +75,7 @@ public class Game {
 		for (int i = 0; i < 40; i++) {
 			silver.add(new Silver());
 		}
-		// On ajoute copper au {@code supplyStacks}
+		// On ajoute silver au {@code supplyStacks}
 		this.supplyStacks.add(silver);
 		// Création de la liste de carte gold
 		CardList gold = new CardList();
@@ -310,7 +310,28 @@ public class Game {
 	 * c'est que la partie est terminée)
 	 */
 	public boolean isFinished() {
-		
+		// On initialise la variable de retour
+		boolean end = true;
+		// On initialise un compteur de pile de cartes vide
+		int nbPileVide = 0;
+		// On parcours la réserve de carte {@code supplyStacks}
+		for (CardList cl : this.supplyStacks) {
+			// Si on tombe sur une liste vite
+			if (cl.get(0) == null) {
+				// On augmente le compteur {@code nbPileVide}
+				nbPileVide++;
+				// On regarde si ce tas contient une carte province s'il n'est pas vide
+			} else if (cl.get(0) instanceof Province) {
+				// s'il contient une carte province on met {@code end} a false
+				end = false;
+			}
+		}
+		// Si plus de trois tas sont vide
+		if (nbPileVide >= 3) {
+			// On signale la fin du jeu
+			end = true;
+		}
+		return end;
 	}
 
 	/**
@@ -337,11 +358,11 @@ public class Game {
 			System.out.println(String.format("%s: %d Points.\n%s\n", p.getName(), p.victoryPoints(), p.totalCards().toString()));
 		}
 	}
-	
+
 	// Ajoute la carte passée en paramètre au Rebut {@code trashedCards}
 	public void trash(Card c) {
 		// Ajout au {@code trashedCards}
 		this.trashedCards.add(c);
 	}
-	
+
 }
