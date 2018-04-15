@@ -210,6 +210,17 @@ public class Game {
 	 * non-vide de la réserve (cartes royaume et cartes communes)
 	 */
 	public CardList availableSupplyCards() {
+		// Initialisation de la CardList retournée
+		CardList res = new CardList();
+		// On parcours {@code this.supplyStacks}
+		for (CardList c : this.supplyStacks) {
+			// On controle que la CardList courante n'est pas null
+			if (c.get(0) != null) {
+				// On l'ajoute au résultat
+				res.add(c.get(0));
+			}
+		}
+		return res;
 	}
 
 	/**
@@ -247,6 +258,19 @@ public class Game {
 	 * ne correspond
 	 */
 	public Card getFromSupply(String cardName) {
+		// On parcours {@code this.supplyStacks}
+		for (CardList cl : this.supplyStacks) {
+			// On parcours la CardList courante
+			for (Card c : cl) {
+				// Si le nom de la Card correspond à @param cardName 
+				if (c.getName().equals(cardName)) {
+					// On retourne cette carte
+					return c;
+				}
+			}
+		}
+		// Si rien n'est trouvé on retourne {@code null}
+		return null;
 	}
 
 	/**
@@ -257,6 +281,19 @@ public class Game {
 	 * ne correspond au nom passé en argument
 	 */
 	public Card removeFromSupply(String cardName) {
+		// Initialisation et affectation de la carte de retour
+		// avec la méthode {@code getFromSupply}
+		Card resCard = this.getFromSupply(cardName);
+		// Si la carte est dans la reserve
+		if (resCard != null) {
+			// On parcours la réserve
+			for (CardList cl : this.supplyStacks) {
+				// Pour la retirer
+				cl.remove(resCard);
+			}
+		}
+		// On retourne la carte si elle est trouvée, sinon on retourne {@code null}
+		return resCard;
 	}
 
 	/**
@@ -271,6 +308,7 @@ public class Game {
 	 * c'est que la partie est terminée)
 	 */
 	public boolean isFinished() {
+		
 	}
 
 	/**
