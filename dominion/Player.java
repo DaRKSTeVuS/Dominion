@@ -211,7 +211,7 @@ public class Player {
 	 * de la classe {@code Game}.
 	 */
 	public List<Player> otherPlayers() {
-		// on appelle la méthode {@code otherPlayers(Player p)} avec p = this
+		// On appelle la méthode {@code otherPlayers(Player p)} avec p = this
 		return this.getGame().otherPlayers(this);
 	}
 
@@ -266,7 +266,7 @@ public class Player {
 	public CardList getTreasureCards() {
 		// Initialisation de la liste de carte à retourner
 		CardList res = new CardList();
-		// Parcours de la totatlité de la main
+		// Parcour de la totatlité de la main
 		for (Card c : this.hand) {
 			// Si la carte courante est de type TreasureCard
 			if (c instanceof TreasureCard) {
@@ -284,7 +284,7 @@ public class Player {
 	public CardList getActionCards() {
 		// Initialisation de la liste de carte à retourner
 		CardList res = new CardList();
-		// Parcours de la totatlité de la main
+		// Parcour de la totatlité de la main
 		for (Card c : this.cardsInHand()) {
 			// Si la carte courante est de type ActionCard
 			if (c instanceof ActionCard) {
@@ -302,7 +302,7 @@ public class Player {
 	public CardList getVictoryCards() {
 		// Initialisation de la liste de carte à retourner
 		CardList res = new CardList();
-		// Parcours de la totatlité de la main
+		// Parcour de la totatlité de la main
 		for (Card c : this.hand) {
 			// Si la carte courante est de type VictoryCard
 			if (c instanceof VictoryCard) {
@@ -364,7 +364,7 @@ public class Player {
 	public void gain(Card c) {
 		// On vérifie que la carte n'est pas nulle
 		if(c != null) {
-			// alors on la place dans la défausse du joueur "this"
+			// Alors on la place dans la défausse du joueur "this"
 			this.discard.add(c) ;
 		}
 		// Sinon, on ne fait rien
@@ -420,7 +420,7 @@ public class Player {
 				}
 			}
 		}
-		// Sinon, On retourne null
+		// Sinon, on retourne null
 		return null ;
 	}
 
@@ -478,19 +478,19 @@ public class Player {
 			// Lit l'entrée de l'utilisateur jusqu'à obtenir un choix valide
 			while (true) {
 				System.out.print("\n\n");
-				// affiche l'état du jeu
+				// Affiche l'état du jeu
 				System.out.print(this.game);
 				System.out.print("\n");
-				// affiche l'état du joueur
+				// Affiche l'état du joueur
 				System.out.print(this);
 				System.out.print("\n");
-				// affiche l'instruction
+				// Affiche l'instruction
 				System.out.println(">>> " + instruction);
 				System.out.print("> ");
-				// lit l'entrée de l'utilisateur au clavier
+				// Lit l'entrée de l'utilisateur au clavier
 				input = sc.nextLine();
 				if (choiceSet.contains(input) || (canPass && input.equals(""))){
-					// si une réponse valide est obtenue, elle est renvoyée
+					// Si une réponse valide est obtenue, elle est renvoyée
 					return input;
 				}
 			}
@@ -530,13 +530,13 @@ public class Player {
 	 * </pre>
 	 */
 	public String chooseCard(String instruction, CardList choices, boolean canPass) {
-		// liste de noms de cartes
+		// Liste de noms de cartes
 		List<String> stringChoices = new ArrayList<String>();
 		for (Card c: choices) {
-			// tous les noms sont ajoutés à l'ensemble
+			// Tous les noms sont ajoutés à l'ensemble
 			stringChoices.add(c.getName());
 		}
-		// appel de la méthode précédente en passant l'ensemble de noms
+		// Appel de la méthode précédente en passant l'ensemble de noms
 		return this.choose(instruction, stringChoices, canPass);
 	}
 
@@ -636,7 +636,7 @@ public class Player {
 			if(input == "oui") {
 				// On lui propose les cartes disponibles à l'achat
 				// et le joueur choisit une carte qu'il souhaite acheter  
-				// on utilise la méthode {@code buyCard(Card c)}
+				// On utilise la méthode {@code buyCard(Card c)}
 			}
 		}
 
@@ -657,7 +657,7 @@ public class Player {
 	public boolean defausse(String cardName) {
 		// On vérifie que la carte est dans la main du joueur
 		if (this.cardsInHand().getCard(cardName) != null) {
-			// Si oui, on utilise la méthode {@code defausse(String cardName)}
+			// Si oui, on utilise la méthode {@code defausse(Card c)}
 			this.defausse(this.cardsInHand().getCard(cardName));
 			// et on renvoie vrai
 			return true;
@@ -665,4 +665,25 @@ public class Player {
 		// Sinon, on renvoie faux
 		return false;	
 	}
+	
+	// Met au rebut {@code trashedCards} la carte passée en paramètre
+	// On admet qu'elle existe dans la main du joueur (vérifié au préalable)
+		public void ecarter(Card c) {
+			// Ajout au Rebut
+			this.getGame().trash(c);
+			// Retrait de la main du joueur
+			this.hand.remove(c);
+		}
+
+		public boolean ecarter(String cardName) {
+			// On vérifie que la carte est dans la main du joueur
+			if (this.cardsInHand().getCard(cardName) != null) {
+				// Si oui, on utilise la méthode {@code ecarter(Card c)}
+				this.ecarter(this.hand.getCard(cardName));
+				// et on renvoie vrai
+				return true;
+			}
+			// Sinon, on renvoie faux
+			return false;	
+		}
 }

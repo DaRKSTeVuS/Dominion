@@ -56,7 +56,7 @@ public class Game {
 		}
 		// On initialise la Liste des piles dans la réserve du jeu
 		this.supplyStacks = new ArrayList<CardList>();
-		// On parcours {@code kindomStacks}
+		// On parcourt {@code kindomStacks}
 		for (CardList c : kingdomStacks) {
 			// On ajoute par copie les CardList contenue dans {@code kingdomStacks}
 			this.supplyStacks.add(new CardList(c));
@@ -89,11 +89,11 @@ public class Game {
 		int nbCards = 0;
 		// Si le nombre de joueurs est égal à 2
 		if (this.players.length == 2) {
-			// on prévois d'ajouter 8 cartes
+			// On prévoit d'ajouter 8 cartes
 			nbCards = 8;
 			// Si le nombre de joueurs est 3 ou 4	
 		} else if ((this.players.length == 3) && (this.players.length == 4)) {
-			// on prévois d'ajouter 12 cartes
+			// On prévoit d'ajouter 12 cartes
 			nbCards = 12;
 		}
 		// Création de la liste de carte Estate
@@ -119,7 +119,7 @@ public class Game {
 		this.supplyStacks.add(province);
 		// Creation de la liste de carte Curse
 		CardList curse = new CardList();
-		// On calcul le nombre de cartes à ajouter (10 * (n-1) cartes Curse où n est le nombre de joueurs dans la partie)
+		// On calcule le nombre de cartes à ajouter (10 * (n-1) cartes Curse où n est le nombre de joueurs dans la partie)
 		nbCards = 10 * (this.players.length - 1);
 		// On ajoute {@code nbCards} cartes Curse à la CardList {@code : curse}
 		for (int i = 0; i < nbCards; i++) {
@@ -127,6 +127,8 @@ public class Game {
 		}
 		// On ajoute curse au {@code supplyStacks}
 		this.supplyStacks.add(curse);
+		// On initialise le rebut {@code trashedCards}
+		this.trashedCards = new CardList();
 
 	}
 
@@ -180,7 +182,7 @@ public class Game {
 	 * premier).
 	 */
 	public List<Player> otherPlayers(Player p) {
-		// On met le nombre de joueurs dans une variable, pour éviter de la recalculer à chaque fois
+		// On met le nombre de joueurs dans une variable, pour éviter de la re-calculer à chaque fois
 		int nbPlayers = this.numberOfPlayers() ;
 		// On cré une ArrayList qui contiendra les autres joueurs
 		ArrayList<Player> otherp = new ArrayList<Player>() ;
@@ -212,7 +214,7 @@ public class Game {
 	public CardList availableSupplyCards() {
 		// Initialisation de la CardList retournée
 		CardList res = new CardList();
-		// On parcours {@code this.supplyStacks}
+		// On parcourt {@code this.supplyStacks}
 		for (CardList c : this.supplyStacks) {
 			// On controle que la CardList courante n'est pas null
 			if (c.get(0) != null) {
@@ -258,9 +260,9 @@ public class Game {
 	 * ne correspond
 	 */
 	public Card getFromSupply(String cardName) {
-		// On parcours {@code this.supplyStacks}
+		// On parcourt {@code this.supplyStacks}
 		for (CardList cl : this.supplyStacks) {
-			// On parcours la CardList courante
+			// On parcourt la CardList courante
 			for (Card c : cl) {
 				// Si le nom de la Card correspond à @param cardName 
 				if (c.getName().equals(cardName)) {
@@ -286,7 +288,7 @@ public class Game {
 		Card resCard = this.getFromSupply(cardName);
 		// Si la carte est dans la reserve
 		if (resCard != null) {
-			// On parcours la réserve
+			// On parcourt la réserve
 			for (CardList cl : this.supplyStacks) {
 				// Pour la retirer
 				cl.remove(resCard);
@@ -335,4 +337,11 @@ public class Game {
 			System.out.println(String.format("%s: %d Points.\n%s\n", p.getName(), p.victoryPoints(), p.totalCards().toString()));
 		}
 	}
+	
+	// Ajoute la carte passée en paramètre au Rebut {@code trashedCards}
+	public void trash(Card c) {
+		// Ajout au {@code trashedCards}
+		this.trashedCards.add(c);
+	}
+	
 }
