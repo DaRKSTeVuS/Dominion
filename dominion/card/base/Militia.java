@@ -21,8 +21,18 @@ public class Militia extends AttackCard {
 		p.incrementMoney(2); 	// +2 Pièces
 		// Les adversaires défaussent 2 cartes
 				for(Player o : p.otherPlayers()) {
-					// On défausse 1 carte
+					// On défausse 1 carte parmis celle de la main du joueur
+					CardList cchoices = new CardList();
+					for (Card c: o.cardsInHand()) {
+						cchoices.add(c);
+					}
+					String inputc = o.chooseCard("Choisissez une carte à défausser.", cchoices, true);
+					// On défausse la carte @param inputc
+					o.defausse(inputc);
 					// On défausse une 2eme carte
+					String inputc2 = o.chooseCard("Choisissez une carte à défausser.", cchoices, true);
+					// On défausse la carte @param inputc
+					o.defausse(inputc2);
 				}
 		
 	}

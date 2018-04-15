@@ -18,6 +18,19 @@ public class Feast extends ActionCard {
 
 	@Override
 	public void play(Player p) {
-		// TODO Auto-generated method stub
+		// La carte est écartée
+		p.ecarter(this);
+		// On reçoit une carte coûtant jusqu'a 5 Pièces
+		// On cré la liste des cartes disponibles
+		CardList available = new CardList();
+		for (Card c: p.getGame().availableSupplyCards()) {
+			if (c.getCost() <= 5) {
+				available.add(c);
+			}
+		}
+		// On demande au joueur d'en choisir une
+		String inputc = p.chooseCard("Quelle carte souhaitez-vous recevoir?", available, true);
+		// On reçoit cette carte
+		p.gain(inputc);
 	}
 }

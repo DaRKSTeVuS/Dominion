@@ -20,27 +20,34 @@ public class Cellar extends ActionCard {
 	@Override
 	public void play(Player p) {
 		p.incrementActions(1);	// +1 Action
+		
 		// On va pouvoir défausser autant de carte qu'on voudra, dans la limite de la main
 		// On va garder ce chiffre dans une variable
 		int nbcdef = 0;
+
+		// Création de la liste de choix oui/non
+		List<String> choices = Arrays.asList("oui", "non");
+		
+		// On cré la liste des cartes en main du joueur
+		CardList cchoices = new CardList();
+		for (Card c: p.cardsInHand()) {
+			cchoices.add(c);
+		}
+		
 		while(p.getActionCards() != null ) {
 			// On propose au joueur de défausser une carte jusqu'à ce qu'il n'ait plus 
-			// de carte à défausser ou passe. il peut passer à tout momment
+			// de carte à défausser ou passe. Il peut passer à tout momment
 			// En revanche, il ne peut répondre que par oui ou par non
-			List<String> choices = Arrays.asList("oui", "non");
 			String input = p.choose("Voulez-vous défausser une carte (y/n)", choices, false);
 			// Si on décide de défausser une carte
 			if (input == "oui") {
-				// On propose la liste des cartes à défausser, et le joueur en choisit une
-				CardList cchoices = new CardList();
-				for (Card c: p.getActionCards()) {
-					cchoices.add(c);
-				}
 				// On propose au joueur la liste des cartes disponibles
-				// Le joueur peut toujours passer s'il le souhaite
+				// Le joueur peut toujours passer s'il change d'avis
 				String inputc = p.chooseCard("Choisissez une carte à défausser.", cchoices, true);
 				// On défausse la carte @param inputc
 				boolean test = p.defausse(inputc);
+				// on retire ca carte de la liste des choix
+				cchoices.remove(inputc);
 				// Si le test est vrai, alors la carte à été défaussée correctement
 				if (test) {
 					// Alors on incrémente le nombre de cartes défaussées

@@ -20,6 +20,13 @@ public class Library extends ActionCard {
 
 	@Override
 	public void play(Player p) {
-		// TODO Auto-generated method stub
+		// On cré une liste pour les cartes mises de côté
+		// Tant qu'on a moins de 7 cartes en main
+			// On pioche une carte
+			// Si la carte est une action
+				// On propose au joueur de la mettre de côté
+				// Si oui
+					// On l'ajoute à la liste
+		// On défausse las cartes actions piochées et mises de côté
 	}
 }
