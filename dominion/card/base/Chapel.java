@@ -17,6 +17,29 @@ public class Chapel extends ActionCard {
 
 	@Override
 	public void play(Player p) {
-		// TODO Auto-generated method stub
+		int i = 0; // Compteur des cartes défaussées
+		// Tant qu'il nous reste des cartes a défausser (on en a pas encore défaussé 4) et
+		// qu'il nous reste des cartes en main
+		while (p.cardsInHand().size()>0 && i<4) {
+			// On propose au joueur de défausser une carte
+			List<String> choices = Arrays.asList("oui", "non");
+			String input = p.choose("Voulez-vous écarter une carte (y/n)", choices, false);
+			// Si oui, on lui demande laquelle (parmis ses cartes en main)
+			if (input == "oui") {
+				CardList cchoice = new CardList();
+				for (Card c: p.getActionCards()) {
+					cchoice.add(c);
+				}
+				String inputc = p.chooseCard("Choisissez une carte à défausser.", cchoice, true);
+				// On écarte la carte
+				p.ecarter(inputc);
+				// On incrémente le compteur de cartes
+				i++;
+			}
+			// Si non, on sort de la boucle
+			else {
+				break;
+			}
+		}
 	}
 }
