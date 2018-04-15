@@ -21,7 +21,7 @@ public class Chapel extends ActionCard {
 		// Tant qu'il nous reste des cartes a défausser (on en a pas encore défaussé 4) et
 		// qu'il nous reste des cartes en main
 		while (p.cardsInHand().size()>0 && i<4) {
-			// On propose au joueur de défausser une carte
+			// On propose au joueur d'écarter une carte
 			List<String> choices = Arrays.asList("oui", "non");
 			String input = p.choose("Voulez-vous écarter une carte (y/n)", choices, false);
 			// Si oui, on lui demande laquelle (parmis ses cartes en main)
@@ -30,7 +30,7 @@ public class Chapel extends ActionCard {
 				for (Card c: p.getActionCards()) {
 					cchoice.add(c);
 				}
-				String inputc = p.chooseCard("Choisissez une carte à défausser.", cchoice, true);
+				String inputc = p.chooseCard("Choisissez une carte à écarter.", cchoice, true);
 				// On écarte la carte
 				p.ecarter(inputc);
 				// On incrémente le compteur de cartes

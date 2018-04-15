@@ -3,6 +3,7 @@ import java.util.*;
 
 import dominion.*;
 import dominion.card.*;
+import dominion.card.common.Copper;
 
 /**
  * Carte Prêteur sur gages (Moneylender)
@@ -18,6 +19,14 @@ public class Moneylender extends ActionCard {
 
 	@Override
 	public void play(Player p) {
-		// TODO Auto-generated method stub
+		// Si le joueur à une carte Cuivre en main, l'écarte et gagne +3 Pièces
+		for(Card c : p.getTreasureCards()) {
+			if(c instanceof Copper) {
+				p.ecarter(c);
+				p.incrementMoney(3);
+				break;
+			}
+		}
+		// Sinon, ne fait rien
 	}
 }

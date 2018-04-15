@@ -686,4 +686,12 @@ public class Player {
 			// Sinon, on renvoie faux
 			return false;	
 		}
+		
+		// On met tout le deck dans la défausse
+		public void discardDraw() {
+			for(Card c : this.draw) {
+				this.discard.add(c);
+				this.draw.remove(c);
+			}
+		}
 }
