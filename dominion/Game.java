@@ -188,7 +188,8 @@ public class Game {
 		ArrayList<Player> otherp = new ArrayList<Player>() ;
 		// On place stock l'index du joueur courant dans une variable
 		// Elle nous servira à parcourir le tableau
-		int i = this.currentPlayerIndex;
+		// int i = this.currentPlayerIndex;
+		int i = this.indexOfPlayer(p);
 		// On commence à parcourir le tableau des joueurs, tant que la taille de la 
 		// liste des autres joueurs est strictement inférieure au tableau des joueurs
 		// normalement, la taille de la liste = taille du tableau -1
@@ -196,7 +197,7 @@ public class Game {
 			// Si on est déja à la fin du tableau, on repart au début
 			if (i == nbPlayers) i = 0;
 			// Sinon, on commence à partit du suivant
-			else i += 1;
+			else i++;
 			// On ajoute le joueur à la liste
 			otherp.add(this.getPlayer(i));
 		}
