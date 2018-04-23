@@ -20,6 +20,12 @@ public class Moat extends ReactionCard {
 
 	@Override
 	public void play(Player p) {
-		// TODO Auto-generated method stub
+		// Si c'est le tour du joueur p
+		if(true) {
+			p.drawCard();			// +1 Carte = pioche 1 carte
+			p.drawCard();			// +1 Carte = pioche 1 carte
+		}
+		// Si c'est le tour d'un autre joueur
+			// Anuler l'efet sur soi
 	}
 }

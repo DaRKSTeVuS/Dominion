@@ -20,7 +20,7 @@ public class Feast extends ActionCard {
 	public void play(Player p) {
 		// La carte est écartée
 		p.ecarter(this);
-		// On reçoit une carte coûtant jusqu'a 5 Pièces
+		// On reçoit une carte coûtant jusqu'a 5 Pièces :
 		// On cré la liste des cartes disponibles
 		CardList available = new CardList();
 		for (Card c: p.getGame().availableSupplyCards()) {

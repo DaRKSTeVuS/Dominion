@@ -18,6 +18,10 @@ public class Remodel extends ActionCard {
 
 	@Override
 	public void play(Player p) {
-		// TODO Auto-generated method stub
+		// Le joueur choisit une carte de sa main qu'il souhaite écarter
+		// On écarte cette carte et on récupère sa valeur
+		
+		// Le joueur choisit une carte parmis les suplyStack coutant jusqu'à 2 Pièces de plus
+		// On l'ajouta à sa main
 	}
 }

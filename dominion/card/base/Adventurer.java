@@ -20,6 +20,10 @@ public class Adventurer extends ActionCard {
 
 	@Override
 	public void play(Player p) {
-		// TODO Auto-generated method stub
+		// On init un compteuir de trésor
+		// Tant que le compteur est <= 2
+			// On dévoile des cartes du deck 
+			// Si c'est une carte Trésor, on l'ajouta a la main & on incrémente le compteur
+			// Sinon, on la défausse
 	}
 }

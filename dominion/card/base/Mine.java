@@ -19,6 +19,13 @@ public class Mine extends ActionCard {
 
 	@Override
 	public void play(Player p) {
-		// TODO Auto-generated method stub
+		// Si le joueur à des cartes Trésor en main
+			// On demande au joueur quelle carte Trésor de sa main il souhaite écarter
+			// On écarte cette carte
+			// On propose au joueur la liste des cartes trésor disponible (coutant
+			// jusqu'a 3 pièce de plus que this.getCost()
+			// Le joueur en choisit une 
+			// On l'ajoute à la main
+		// Sinon, on ne fait rien
 	}
 }

@@ -618,7 +618,9 @@ public class Player {
 		// Si le joueur veut jouer une carte
 		// On lui propose les cartes disponibles à l'utilisation
 		// et le joueur choisit une carte qu'il souhaite utiliser
-		// On utilise la carte
+		// On place la carte dans inPlay
+		// On retire la carte de la main
+		// On utilise la carte {@code play(Player p)
 		// -1 Action pour l'utilisation de la carte
 
 		// (3) Trésor
