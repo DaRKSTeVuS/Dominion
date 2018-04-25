@@ -1,5 +1,4 @@
 package dominion.card.base;
-import java.util.*;
 
 import dominion.*;
 import dominion.card.*;
@@ -12,8 +11,8 @@ import dominion.card.*;
  */
 public class Village extends ActionCard {
 
-	public Village(String name, int cost) {
-		super(name, cost);
+	public Village() {
+		super("Village", 3);
 	}
 
 	@Override

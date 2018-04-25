@@ -1,5 +1,4 @@
 package dominion.card.base;
-import java.util.*;
 
 import dominion.*;
 import dominion.card.*;
@@ -13,8 +12,8 @@ import dominion.card.common.Copper;
  */
 public class Moneylender extends ActionCard {
 
-	public Moneylender(String name, int cost) {
-		super(name, cost);
+	public Moneylender() {
+		super("MoenyLender", 4);
 	}
 
 	@Override

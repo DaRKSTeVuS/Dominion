@@ -1,5 +1,4 @@
 package dominion.card.base;
-import java.util.*;
 
 import dominion.*;
 import dominion.card.*;
@@ -15,8 +14,8 @@ import dominion.card.*;
  */
 public class Spy extends AttackCard {
 
-	public Spy(String name, int cost) {
-		super(name, cost);
+	public Spy() {
+		super("Spy", 4);
 	}
 
 	@Override

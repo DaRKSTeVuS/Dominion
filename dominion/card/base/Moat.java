@@ -1,5 +1,4 @@
 package dominion.card.base;
-import java.util.*;
 
 import dominion.*;
 import dominion.card.*;
@@ -14,8 +13,8 @@ import dominion.card.*;
  */
 public class Moat extends ReactionCard {
 
-	public Moat(String name, int cost) {
-		super(name, cost);
+	public Moat() {
+		super("Moat", 2);
 	}
 
 	@Override

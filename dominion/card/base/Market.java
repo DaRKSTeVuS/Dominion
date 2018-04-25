@@ -1,5 +1,4 @@
 package dominion.card.base;
-import java.util.*;
 
 import dominion.*;
 import dominion.card.*;
@@ -14,8 +13,8 @@ import dominion.card.*;
  */
 public class Market extends ActionCard {
 
-	public Market(String name, int cost) {
-		super(name, cost);
+	public Market() {
+		super("Market", 5);
 	}
 
 	@Override

@@ -1,5 +1,4 @@
 package dominion.card.base;
-import java.util.*;
 
 import dominion.*;
 import dominion.card.*;
@@ -11,8 +10,8 @@ import dominion.card.*;
  */
 public class Gardens extends VictoryCard {
 
-	public Gardens(String name, int cost) {
-		super(name, cost);
+	public Gardens() {
+		super("Gardens", 4);
 	}
 	
 	public int victoryValue(Player p) {

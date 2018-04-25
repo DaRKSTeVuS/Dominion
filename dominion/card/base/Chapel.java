@@ -11,8 +11,8 @@ import dominion.card.*;
  */
 public class Chapel extends ActionCard {
 
-	public Chapel(String name, int cost) {
-		super(name, cost);
+	public Chapel() {
+		super("Chapel", 2);
 	}
 
 	@Override

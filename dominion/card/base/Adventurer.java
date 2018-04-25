@@ -13,8 +13,8 @@ import dominion.card.*;
  */
 public class Adventurer extends ActionCard {
 
-	public Adventurer(String name, int cost) {
-		super(name, cost);
+	public Adventurer() {
+		super("Adventurer", 6);
 	}
 
 	@Override

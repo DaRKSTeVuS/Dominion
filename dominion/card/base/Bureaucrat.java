@@ -1,5 +1,4 @@
 package dominion.card.base;
-import java.util.*;
 
 import dominion.*;
 import dominion.card.*;
@@ -15,8 +14,8 @@ import dominion.card.*;
  */
 public class Bureaucrat extends AttackCard {
 
-	public Bureaucrat(String name, int cost) {
-		super(name, cost);
+	public Bureaucrat() {
+		super("Bureaucrat", 4);
 	}
 
 	@Override
