@@ -24,8 +24,20 @@ public class Bureaucrat extends AttackCard {
 	public void play(Player p) {
 		// Recevez une carte Silver
 		p.gain("Silver");
-		
-		
-		// TODO Auto-generated method stub
+		// On parcours la liste des adversaire
+		for (Player op : p.otherPlayers()) {
+			// On recupere les cartes victoire du joueurs
+			CardList vicCard = op.getVictoryCards();
+			// Si le joueur {code op} n'as pas de carte victoire en main
+			if (vicCard.isEmpty()) {
+				// On montre sa main
+				System.out.println(op.cardsInHand().toString());
+			} else {
+				// Sinon on demande au joueur {code op} quelle carte il veut defausser
+				String input = op.chooseCard("Quelle carte victoire voulez vous mettre sur votre pioche ?", vicCard, false);
+				// On dévoile la carte et on la met au dessus de la pioche
+				System.out.println("Carte mise en haut de la pioche : " + op.putOnTopDraw(input).toString());
+			}
+		}
 	}
 }

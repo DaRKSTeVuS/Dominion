@@ -29,7 +29,7 @@ public class Adventurer extends ActionCard {
 		while (cptT <= 2) {
 			// On dévoile des cartes du deck 
 			tmpC = p.drawCard();
-			System.out.println(tmpC.toString());
+			System.out.println("Carte piochée :" + tmpC.toString());
 			// Si c'est une carte Trésor, on l'ajouta a la main & on incrémente le compteur
 			if (tmpC instanceof TreasureCard) {
 				cptT++;
@@ -38,6 +38,5 @@ public class Adventurer extends ActionCard {
 				p.defausse(tmpC);
 			}
 		}
-			
 	}
 }

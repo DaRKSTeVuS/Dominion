@@ -668,7 +668,7 @@ public class Player {
 		// Retrait de la main du joueur
 		this.hand.remove(c);
 	}
-	
+
 	/**
 	 * Defausse une carte dont le nom est donné
 	 * 
@@ -722,9 +722,43 @@ public class Player {
 	 *  On met tout le deck dans la défausse
 	 */
 	public void discardDraw() {
+		// On parcours la pioche
 		for(Card c : this.draw) {
+			// On ajoute la carte courante a la defausse
 			this.discard.add(c);
+			// On retire la carte de la pioche
 			this.draw.remove(c);
+		}
+	}
+
+	/**
+	 * Met une carte en haut de la pioche du joueur
+	 * 
+	 * @param carte à mettre en haut du deck
+	 */
+	public void putOnTopDraw (Card c) {
+		// On retire la carte de la main
+		this.hand.remove(c);
+		// On prend la carte et on l'ajoute en premier de {@code this.draw}
+		this.draw.add(0, c);
+	}
+
+	/**
+	 * Met une carte en haut de la pioche du joueur
+	 * 
+	 * @param nom de la carte à mettre en haut du deck
+	 * @return carte mise en haut du deck, null si la carte est pas retiré
+	 */
+	public Card putOnTopDraw (String cardName) {
+		// On vérifie que la carte est dans la main du joueur
+		if (this.hand.getCard(cardName) != null) {
+			// On initialise la carte à retirer
+			Card tmpC = this.hand.getCard(cardName);
+			// on utilise la méthode {@code putOnTopDraw(Card c)}
+			this.putOnTopDraw(tmpC);
+			return tmpC;
+		} else {
+			return null;
 		}
 	}
 }
