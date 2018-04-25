@@ -71,6 +71,14 @@ public class Player {
 		this.name = name;
 		// Affectation de la {@code game}
 		this.game = game;
+		// On initialise la defausse du joueur
+	    this.discard = new CardList();
+	    // On initialise les carte en jeu du joueur
+	    this.inPlay = new CardList();
+	    // On initialise la main du joueur
+	    this.hand = new CardList();
+	    // On initialiser la pioche du joueur
+	    this.draw = new CardList();
 		// On place 3 cartes Estate
 		for (int i = 0; i < 3; i++) {
 			this.gain("Estate");
@@ -79,7 +87,6 @@ public class Player {
 		for (int i = 0; i < 7; i++) {
 			this.gain("Copper");
 		}
-		// this.discard.add();
 		// - Les compteurs d'actions, argent et achats du joueur sont remis à 0
 		// - Les cartes en main et en jeu sont défaussées
 		// - Le joueur pioche 5 cartes en main
@@ -372,7 +379,7 @@ public class Player {
 		// On vérifie que la carte n'est pas nulle
 		if(c != null) {
 			// Alors on la place dans la défausse du joueur "this"
-			this.discard.add(c) ;
+			this.discard.add(c);
 		}
 		// Sinon, on ne fait rien
 	}
@@ -618,6 +625,7 @@ public class Player {
 	 * du joueur
 	 */
 	public void playTurn() {
+		System.out.println("Debut du tour j");
 		// (1) Préparation
 		// On appelle {@code startTurn()}
 		this.startTurn();

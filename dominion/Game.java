@@ -49,11 +49,6 @@ public class Game {
 	public Game(String[] playerNames, List<CardList> kingdomStacks) {
 		// Initialisation de {@code players}
 		this.players = new Player[playerNames.length];
-		// Pour chaque nom de joueurs dans {@code playerNames}
-		for (int i = 0; i < this.players.length; i++) {
-			// On prend le nom, et on creer un nouveau joueur à l'affectant à this
-			this.players[i] = new Player(playerNames[i], this);
-		}
 		// On initialise la Liste des piles dans la réserve du jeu
 		this.supplyStacks = new ArrayList<CardList>();
 		// On parcourt {@code kindomStacks}
@@ -129,6 +124,11 @@ public class Game {
 		this.supplyStacks.add(curse);
 		// On initialise le rebut {@code trashedCards}
 		this.trashedCards = new CardList();
+		// Pour chaque nom de joueurs dans {@code playerNames}
+		for (int i = 0; i < this.players.length; i++) {
+			// On prend le nom, et on creer un nouveau joueur à l'affectant à this
+			this.players[i] = new Player(playerNames[i], this);
+		}
 
 	}
 
