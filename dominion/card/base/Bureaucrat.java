@@ -5,6 +5,7 @@ import dominion.card.*;
 
 /**
  * Carte Bureaucrate (Bureaucrat)
+ * Coût : 4
  * 
  * Recevez une carte Argent; placez-la sur votre deck.
  * Tous vos adversaires dévoilent une carte Victoire et 
@@ -15,11 +16,16 @@ import dominion.card.*;
 public class Bureaucrat extends AttackCard {
 
 	public Bureaucrat() {
+		// Construction de la carte avec ses caractérisques
 		super("Bureaucrat", 4);
 	}
 
 	@Override
 	public void play(Player p) {
+		// Recevez une carte Silver
+		p.gain("Silver");
+		
+		
 		// TODO Auto-generated method stub
 	}
 }

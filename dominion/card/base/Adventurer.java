@@ -5,6 +5,7 @@ import dominion.card.*;
 
 /**
  * Carte Aventurier (Adventurer)
+ * Coût : 6
  * 
  * Dévoilez des cartes de votre deck jusqu'à ce que 2 
  * cartes Trésor soient dévoilées. Ajoutez ces cartes
@@ -14,6 +15,7 @@ import dominion.card.*;
 public class Adventurer extends ActionCard {
 
 	public Adventurer() {
+		// Construction de la carte avec ses caractérisques
 		super("Adventurer", 6);
 	}
 
