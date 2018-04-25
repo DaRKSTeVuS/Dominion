@@ -153,6 +153,16 @@ public class Game {
 	}
 
 	/**
+	 * Ajoute la carte {@param c} au Rebut {@code trashedCards}
+	 * 
+	 * @param c carte à passer au rebut
+	 */
+	public void trash(Card c) {
+		// Ajout au {@code trashedCards}
+		this.trashedCards.add(c);
+	}
+
+	/**
 	 * Renvoie l'indice du joueur passé en argument dans le tableau des 
 	 * joueurs, ou -1 si le joueur n'est pas dans le tableau.
 	 */
@@ -359,11 +369,4 @@ public class Game {
 			System.out.println(String.format("%s: %d Points.\n%s\n", p.getName(), p.victoryPoints(), p.totalCards().toString()));
 		}
 	}
-
-	// Ajoute la carte passée en paramètre au Rebut {@code trashedCards}
-	public void trash(Card c) {
-		// Ajout au {@code trashedCards}
-		this.trashedCards.add(c);
-	}
-
 }

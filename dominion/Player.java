@@ -71,8 +71,15 @@ public class Player {
 		this.name = name;
 		// Affectation de la {@code game}
 		this.game = game;
+		// On place 3 cartes Estate
+		for (int i = 0; i < 3; i++) {
+			this.gain("Estate");
+		}
+		// Et 7 Cartes copper
+		for (int i = 0; i < 7; i++) {
+			this.gain("Copper");
+		}
 		// this.discard.add();
-
 		// - Les compteurs d'actions, argent et achats du joueur sont remis à 0
 		// - Les cartes en main et en jeu sont défaussées
 		// - Le joueur pioche 5 cartes en main
@@ -212,7 +219,7 @@ public class Player {
 	 */
 	public List<Player> otherPlayers() {
 		// On appelle la méthode {@code otherPlayers(Player p)} avec p = this
-		return this.getGame().otherPlayers(this);
+		return this.game.otherPlayers(this);
 	}
 
 	/**
@@ -345,9 +352,9 @@ public class Player {
 	 */
 	public void playCard(String cardName) {
 		// On vérifie que la carte est dans la main du joueur
-		if (this.cardsInHand().getCard(cardName) != null) {
+		if (this.hand.getCard(cardName) != null) {
 			// On appelle la méthode {@code playCard(Card c)} 
-			this.playCard(this.cardsInHand().getCard(cardName));
+			this.playCard(this.hand.getCard(cardName));
 		}
 		// Sinon, on ne fait rien
 	}
@@ -382,10 +389,10 @@ public class Player {
 	public Card gain(String cardName) {
 		// On appelle la méthode {@code gain(Card c)} pour la défausser
 		// Si la carte se trouve dans "supplyStacks", rien ne se passera
-		this.gain(this.getGame().getFromSupply(cardName));
+		this.gain(this.game.getFromSupply(cardName));
 		// On retire la carte de la réserve
 		// Si elle ne s'y trouve pas, @return sera {@code null} 
-		return this.getGame().removeFromSupply(cardName) ;
+		return this.game.removeFromSupply(cardName) ;
 	}
 
 	/**
@@ -404,9 +411,9 @@ public class Player {
 	 */
 	public Card buyCard(String cardName) {
 		// On trouve la carte dans la réserve
-		if (this.getGame().getFromSupply(cardName) != null) {
+		if (this.game.getFromSupply(cardName) != null) {
 			// On stock le coût dans une variable (pour éviter la surcharge de calcul)
-			int ccost =  this.getGame().getFromSupply(cardName).getCost();
+			int ccost =  this.game.getFromSupply(cardName).getCost();
 			// On vérifie que le joueur a assez de Pièces pour réaliser l'achat
 			if(this.getMoney() >= ccost) {
 				// On vérifie qu'il a assez de Points d'Achat
@@ -490,6 +497,8 @@ public class Player {
 				// Lit l'entrée de l'utilisateur au clavier
 				input = sc.nextLine();
 				if (choiceSet.contains(input) || (canPass && input.equals(""))){
+					// On ferme le scanner
+					sc.close();
 					// Si une réponse valide est obtenue, elle est renvoyée
 					return input;
 				}
@@ -647,53 +656,75 @@ public class Player {
 		this.endTurn();
 	}
 
-	// Place la carte de la main passée en paramètre dans la défausse
-	// On admet qu'elle existe dans la main du joueur (vérifié au préalable)
+	/**
+	 * Place la carte de la main passée en paramètre dans la défausse
+	 * On admet qu'elle existe dans la main du joueur (vérifié au préalable)
+	 * 
+	 * @param c carte à defausser
+	 */
 	public void defausse(Card c) {
 		// Ajout dans la défausse
 		this.discard.add(c);
 		// Retrait de la main du joueur
 		this.hand.remove(c);
 	}
-
+	
+	/**
+	 * Defausse une carte dont le nom est donné
+	 * 
+	 * @param cardName nom de carte à defausser
+	 * @return true si la carte est bien defaussé, false si elle n'est pas dans la main
+	 */
 	public boolean defausse(String cardName) {
 		// On vérifie que la carte est dans la main du joueur
-		if (this.cardsInHand().getCard(cardName) != null) {
+		if (this.hand.getCard(cardName) != null) {
 			// Si oui, on utilise la méthode {@code defausse(Card c)}
-			this.defausse(this.cardsInHand().getCard(cardName));
+			this.defausse(this.hand.getCard(cardName));
 			// et on renvoie vrai
 			return true;
 		}
 		// Sinon, on renvoie faux
 		return false;	
 	}
-	
-	// Met au rebut {@code trashedCards} la carte passée en paramètre
-	// On admet qu'elle existe dans la main du joueur (vérifié au préalable)
-		public void ecarter(Card c) {
-			// Ajout au Rebut
-			this.getGame().trash(c);
-			// Retrait de la main du joueur
-			this.hand.remove(c);
-		}
 
-		public boolean ecarter(String cardName) {
-			// On vérifie que la carte est dans la main du joueur
-			if (this.cardsInHand().getCard(cardName) != null) {
-				// Si oui, on utilise la méthode {@code ecarter(Card c)}
-				this.ecarter(this.hand.getCard(cardName));
-				// et on renvoie vrai
-				return true;
-			}
-			// Sinon, on renvoie faux
-			return false;	
+	/**
+	 * Met au rebut {@code trashedCards} la carte passée en paramètre
+	 * On admet qu'elle existe dans la main du joueur (vérifié au préalable)
+	 *  
+	 * @param c carte à mettre au rebut
+	 */
+	public void ecarter(Card c) {
+		// Ajout au Rebut
+		this.game.trash(c);
+		// Retrait de la main du joueur
+		this.hand.remove(c);
+	}
+
+	/**
+	 * Met au rebut une carte
+	 * 
+	 * @param cardName nom de la carte à mettre au rebut
+	 * @return true si la carte à été mise au rebut, false si elle n'est pas dans la main
+	 */
+	public boolean ecarter(String cardName) {
+		// On vérifie que la carte est dans la main du joueur
+		if (this.hand.getCard(cardName) != null) {
+			// Si oui, on utilise la méthode {@code ecarter(Card c)}
+			this.ecarter(this.hand.getCard(cardName));
+			// et on renvoie vrai
+			return true;
 		}
-		
-		// On met tout le deck dans la défausse
-		public void discardDraw() {
-			for(Card c : this.draw) {
-				this.discard.add(c);
-				this.draw.remove(c);
-			}
+		// Sinon, on renvoie faux
+		return false;	
+	}
+
+	/**
+	 *  On met tout le deck dans la défausse
+	 */
+	public void discardDraw() {
+		for(Card c : this.draw) {
+			this.discard.add(c);
+			this.draw.remove(c);
 		}
+	}
 }

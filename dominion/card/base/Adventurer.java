@@ -1,5 +1,4 @@
 package dominion.card.base;
-import java.util.*;
 
 import dominion.*;
 import dominion.card.*;
@@ -20,10 +19,23 @@ public class Adventurer extends ActionCard {
 
 	@Override
 	public void play(Player p) {
+		// On init une carte
+		Card tmpC;
 		// On init un compteuir de trésor
+		int cptT = 0;
 		// Tant que le compteur est <= 2
+		while (cptT <= 2) {
 			// On dévoile des cartes du deck 
+			tmpC = p.drawCard();
+			System.out.println(tmpC.toString());
 			// Si c'est une carte Trésor, on l'ajouta a la main & on incrémente le compteur
-			// Sinon, on la défausse
+			if (tmpC instanceof TreasureCard) {
+				cptT++;
+			} else {
+				// Sinon, on la défausse
+				p.defausse(tmpC);
+			}
+		}
+			
 	}
 }
