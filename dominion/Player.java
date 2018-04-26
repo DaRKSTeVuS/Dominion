@@ -249,10 +249,12 @@ public class Player {
 				this.draw.add(c);
 			}
 		}
-		// Ensuite, on ajoute la 1ere carte de la pioche dans la main du joueur
-		// Ou pas
-		// Puis on la retire de la pioche (et on la retourne)
-		return this.draw.remove(0);
+		// On retire la premiere carte de la pioche
+		Card carte = this.draw.remove(0);
+		// On l'ajoute à la main du joueur
+		this.hand.add(carte);
+		// Puis on la retourne
+		return carte;
 	}
 
 	/**

@@ -18,9 +18,11 @@ public class Festival extends ActionCard {
 
 	@Override
 	public void play(Player p) {
-		p.incrementActions(2);	// +2 Action
-		p.incrementBuys(1);		// +1 Achat
-		p.incrementMoney(2);	// +2 Pièce
-		
+		// +2 Action
+		p.incrementActions(2);
+		// +1 Achat
+		p.incrementBuys(1);
+		// +2 Pièce
+		p.incrementMoney(2);
 	}
 }

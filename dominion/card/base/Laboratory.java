@@ -17,9 +17,11 @@ public class Laboratory extends ActionCard {
 
 	@Override
 	public void play(Player p) {
-		p.incrementMoney(1);	// +1 Pièce
-		p.drawCard();			// +1 Carte = pioche 1 carte
-		p.drawCard();			// +1 Carte = pioche 1 carte
-		
+		// +1 Pièce
+		p.incrementMoney(1);
+		// +1 Carte = pioche 1 carte
+		p.drawCard();
+		// +1 Carte = pioche 1 carte
+		p.drawCard();
 	}
 }
