@@ -1,6 +1,7 @@
 package dominion.card.base;
 
 import java.util.*;
+
 import dominion.*;
 import dominion.card.*;
 
@@ -26,11 +27,7 @@ public class Library extends ActionCard {
 		// On initialisate une variablie pour stocké la carte pioché
 		Card tmpC;
 		// On initialise la liste qui contiendra les réponses
-		ArrayList<String> choix = new ArrayList<String>();
-		// On ajoute la réponse oui
-		choix.add("oui");
-		// On ajoute la réponse non
-		choix.add("non");
+		List<String> choix = Arrays.asList("oui", "non");
 		// On crée la variable de réponse
 		String input;
 		// On pioche jusqu'as 7 cartes

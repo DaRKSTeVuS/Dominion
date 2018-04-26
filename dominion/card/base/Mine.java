@@ -1,5 +1,8 @@
 package dominion.card.base;
 
+import java.util.Arrays;
+import java.util.List;
+
 import dominion.*;
 import dominion.card.*;
 
@@ -19,13 +22,37 @@ public class Mine extends ActionCard {
 
 	@Override
 	public void play(Player p) {
+		// On recupère les cartes trésor en main
+		CardList handTre = p.getTreasureCards();
+		// On creer une variable pour stocké la carte choisi
+		Card tmpC;
 		// Si le joueur à des cartes Trésor en main
+		if (!handTre.isEmpty()) {
 			// On demande au joueur quelle carte Trésor de sa main il souhaite écarter
+			String input = p.chooseCard("Quelle carte trésor voulez-vous écarter ?", handTre, false);
 			// On écarte cette carte
-			// On propose au joueur la liste des cartes trésor disponible (coutant
-			// jusqu'a 3 pièce de plus que this.getCost()
-			// Le joueur en choisit une 
-			// On l'ajoute à la main
-		// Sinon, on ne fait rien
+			tmpC = p.ecarter(input);
+			// On regarde dans les cartes disponibles à l'achat
+			for (Card c : p.getGame().availableSupplyCards()) {
+				// S'il y a une TreasureCard
+				if (c instanceof TreasureCard) {
+					// Si la carte trouvé à un coup inferieur a la carté ecarté + 3
+					if (c.getCost() <= tmpC.getCost() + 3) {
+						// On crée une liste de choix
+						List<String> choices = Arrays.asList("oui", "non");
+						// On demande au joueur s'il veux acheter cette carte
+						String input2 = p.choose("Voulez vous acheter la carte " + c.toString() + " ?", choices, false);
+						// S'il répond oui
+						if (input2.equals("oui")) {
+							// On retire la carte de la réserve
+							p.getGame().removeFromSupply(c.getName());
+							// On l'ajoute à sa main
+							fautfautfaut
+							
+						}
+					}
+				}
+			}
+		}
 	}
 }

@@ -712,18 +712,20 @@ public class Player {
 	 * Met au rebut une carte
 	 * 
 	 * @param cardName nom de la carte à mettre au rebut
-	 * @return true si la carte à été mise au rebut, false si elle n'est pas dans la main
+	 * @return la carte écarté si la carte à été mise au rebut, null si elle n'est pas dans la main
 	 */
-	public boolean ecarter(String cardName) {
+	public Card ecarter(String cardName) {
 		// On vérifie que la carte est dans la main du joueur
 		if (this.hand.getCard(cardName) != null) {
+			// On stocke la carte à écarter dans une variable
+			Card tmpC = this.hand.getCard(cardName);
 			// Si oui, on utilise la méthode {@code ecarter(Card c)}
-			this.ecarter(this.hand.getCard(cardName));
+			this.ecarter(tmpC);
 			// et on renvoie vrai
-			return true;
+			return tmpC;
 		}
 		// Sinon, on renvoie faux
-		return false;	
+		return null;	
 	}
 
 	/**
@@ -740,9 +742,10 @@ public class Player {
 	}
 
 	/**
-	 * Met une carte en haut de la pioche du joueur
+	 * Met une carte de la main du joueur
+	 * en haut de sa pioche
 	 * 
-	 * @param carte à mettre en haut du deck
+	 * @param carte à mettre en haut de la pioche
 	 */
 	public void putOnTopDraw (Card c) {
 		// On retire la carte de la main
@@ -752,7 +755,8 @@ public class Player {
 	}
 
 	/**
-	 * Met une carte en haut de la pioche du joueur
+	 * Met une carte de la main du joueur
+	 * en haut de sa pioche
 	 * 
 	 * @param nom de la carte à mettre en haut du deck
 	 * @return carte mise en haut du deck, null si la carte est pas retiré

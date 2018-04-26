@@ -24,6 +24,7 @@ public class Bureaucrat extends AttackCard {
 	public void play(Player p) {
 		// Recevez une carte Silver
 		p.gain("Silver");
+		faut ajouter dans la main
 		// On parcours la liste des adversaire
 		for (Player op : p.otherPlayers()) {
 			// On recupere les cartes victoire du joueurs
