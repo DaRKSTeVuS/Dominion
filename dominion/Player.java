@@ -125,6 +125,11 @@ public class Player {
 	public void incrementActions(int n) {
 		// On incrémente les actions de n
 		this.actions =+ n;
+		// Si le nombre d'action deviens négatif
+		if (this.actions < 0) {
+			// On le remet à 0
+			this.actions = 0;
+		}
 	}
 
 	/**
@@ -136,6 +141,11 @@ public class Player {
 	public void incrementMoney(int n) {
 		// On incrémente les pièces de n
 		this.money =+ n;
+		// Si le nombre de pièces deviens négatif
+		if (this.money < 0) {
+			// On le remet à 0
+			this.money = 0;
+		}
 	}
 
 	/**
@@ -147,6 +157,11 @@ public class Player {
 	public void incrementBuys(int n) {
 		// On incrémente les achats de n
 		this.buys =+ n;
+		// Si le nombre d'achats deviens négatif
+		if (this.buys < 0) {
+			// On le remet à 0
+			this.buys = 0;
+		}
 	}
 
 	/**
@@ -744,6 +759,7 @@ public class Player {
 	/**
 	 * Met une carte de la main du joueur
 	 * en haut de sa pioche
+	 * On admet qu'elle est déja dans la main du joueur (verifié au préalable)
 	 * 
 	 * @param carte à mettre en haut de la pioche
 	 */
