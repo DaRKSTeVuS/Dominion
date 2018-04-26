@@ -11,6 +11,7 @@ import dominion.card.*;
 public class Smithy extends ActionCard {
 
 	public Smithy() {
+		// Construction de la carte avec ses caractérisques
 		super("Smithy", 4);
 	}
 
@@ -20,6 +21,5 @@ public class Smithy extends ActionCard {
 		for(int i=0; i<3; i++) {
 			p.drawCard();			
 		}
-		
 	}
 }

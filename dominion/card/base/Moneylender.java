@@ -13,6 +13,7 @@ import dominion.card.common.Copper;
 public class Moneylender extends ActionCard {
 
 	public Moneylender() {
+		// Construction de la carte avec ses caractérisques
 		super("MoenyLender", 4);
 	}
 

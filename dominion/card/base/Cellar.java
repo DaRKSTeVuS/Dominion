@@ -14,26 +14,24 @@ import dominion.card.*;
 public class Cellar extends ActionCard {
 
 	public Cellar() {
+		// Construction de la carte avec ses caractérisques
 		super("Cellar", 2);
 	}
 
 	@Override
 	public void play(Player p) {
-		p.incrementActions(1);	// +1 Action
-		
+		// +1 Action
+		p.incrementActions(1);		
 		// On va pouvoir défausser autant de carte qu'on voudra, dans la limite de la main
 		// On va garder ce chiffre dans une variable
 		int nbcdef = 0;
-
 		// Création de la liste de choix oui/non
 		List<String> choices = Arrays.asList("oui", "non");
-		
 		// On cré la liste des cartes en main du joueur
 		CardList cchoices = new CardList();
 		for (Card c: p.cardsInHand()) {
 			cchoices.add(c);
 		}
-		
 		while(p.getActionCards() != null ) {
 			// On propose au joueur de défausser une carte jusqu'à ce qu'il n'ait plus 
 			// de carte à défausser ou passe. Il peut passer à tout momment

@@ -12,6 +12,7 @@ import dominion.card.*;
 public class Laboratory extends ActionCard {
 
 	public Laboratory() {
+		// Construction de la carte avec ses caractérisques
 		super("Laboratory", 5);
 	}
 

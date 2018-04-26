@@ -11,6 +11,7 @@ import dominion.card.*;
 public class Gardens extends VictoryCard {
 
 	public Gardens() {
+		// Construction de la carte avec ses caractérisques
 		super("Gardens", 4);
 	}
 	

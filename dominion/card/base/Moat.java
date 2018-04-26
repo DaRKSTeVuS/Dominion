@@ -14,6 +14,7 @@ import dominion.card.*;
 public class Moat extends ReactionCard {
 
 	public Moat() {
+		// Construction de la carte avec ses caractérisques
 		super("Moat", 2);
 	}
 
@@ -21,8 +22,10 @@ public class Moat extends ReactionCard {
 	public void play(Player p) {
 		// Si c'est le tour du joueur p
 		if(true) {
-			p.drawCard();			// +1 Carte = pioche 1 carte
-			p.drawCard();			// +1 Carte = pioche 1 carte
+			// +1 Carte = pioche 1 carte
+			p.drawCard();
+			// +1 Carte = pioche 1 carte
+			p.drawCard();			
 		}
 		// Si c'est le tour d'un autre joueur
 			// Anuler l'efet sur soi

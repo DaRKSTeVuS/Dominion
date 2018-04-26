@@ -15,13 +15,16 @@ import dominion.card.*;
 public class Spy extends AttackCard {
 
 	public Spy() {
+		// Construction de la carte avec ses caractérisques
 		super("Spy", 4);
 	}
 
 	@Override
 	public void play(Player p) {
-		p.incrementActions(1); 	// +1 Actions
-		p.drawCard();			// +1 Carte => pioche 1 carte
+		// +1 Actions
+		p.incrementActions(1);
+		// +1 Carte => pioche 1 carte
+		p.drawCard();
 		
 		// TODO : tous les joueurs (vous aussi) dévoilent la première carte 
 		// de leur deck. Vous décidez ensuite si chaque carte dévoilée 

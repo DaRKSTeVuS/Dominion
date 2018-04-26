@@ -13,6 +13,7 @@ import dominion.card.*;
 public class Festival extends ActionCard {
 
 	public Festival() {
+		// Construction de la carte avec ses caractérisques
 		super("Festival", 5);
 	}
 

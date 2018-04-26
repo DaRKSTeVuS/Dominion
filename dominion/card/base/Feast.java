@@ -12,6 +12,7 @@ import dominion.card.*;
 public class Feast extends ActionCard {
 
 	public Feast() {
+		// Construction de la carte avec ses caractérisques
 		super("Feast", 4);
 	}
 

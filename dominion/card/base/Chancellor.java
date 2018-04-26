@@ -13,6 +13,7 @@ import dominion.card.*;
 public class Chancellor extends ActionCard {
 
 	public Chancellor() {
+		// Construction de la carte avec ses caractérisques
 		super("Chancellor", 3);
 	}
 
@@ -27,7 +28,6 @@ public class Chancellor extends ActionCard {
 		if (input == "oui") {
 			p.discardDraw();
 		}
-		// Si non, ne fait rien de plus
-		
+		// Si non, ne fait rien de plus	
 	}
 }

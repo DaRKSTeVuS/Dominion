@@ -12,6 +12,7 @@ import dominion.card.*;
 public class ThroneRoom extends ActionCard {
 
 	public ThroneRoom() {
+		// Construction de la carte avec ses caractérisques
 		super("Throne Room", 4);
 	}
 

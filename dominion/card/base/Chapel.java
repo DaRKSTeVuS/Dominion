@@ -12,6 +12,7 @@ import dominion.card.*;
 public class Chapel extends ActionCard {
 
 	public Chapel() {
+		// Construction de la carte avec ses caractérisques
 		super("Chapel", 2);
 	}
 

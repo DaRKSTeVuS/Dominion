@@ -15,7 +15,7 @@ import dominion.card.*;
 public class Library extends ActionCard {
 
 	public Library() {
-		// On crée la carte avec son nom et son coût
+		// Construction de la carte avec ses caractérisques
 		super("Library", 5);
 	}
 

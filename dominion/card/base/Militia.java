@@ -12,27 +12,28 @@ import dominion.card.*;
 public class Militia extends AttackCard {
 
 	public Militia() {
+		// Construction de la carte avec ses caractérisques
 		super("Militia", 4);
 	}
 
 	@Override
 	public void play(Player p) {
-		p.incrementMoney(2); 	// +2 Pièces
+		// +2 Pièces
+		p.incrementMoney(2);
 		// Les adversaires défaussent 2 cartes
-				for(Player o : p.otherPlayers()) {
-					// On défausse 1 carte parmis celle de la main du joueur
-					CardList cchoices = new CardList();
-					for (Card c: o.cardsInHand()) {
-						cchoices.add(c);
-					}
-					String inputc = o.chooseCard("Choisissez une carte à défausser.", cchoices, true);
-					// On défausse la carte @param inputc
-					o.defausse(inputc);
-					// On défausse une 2eme carte
-					String inputc2 = o.chooseCard("Choisissez une carte à défausser.", cchoices, true);
-					// On défausse la carte @param inputc
-					o.defausse(inputc2);
-				}
-		
+		for(Player o : p.otherPlayers()) {
+			// On défausse 1 carte parmis celle de la main du joueur
+			CardList cchoices = new CardList();
+			for (Card c: o.cardsInHand()) {
+				cchoices.add(c);
+			}
+			String inputc = o.chooseCard("Choisissez une carte à défausser.", cchoices, true);
+			// On défausse la carte @param inputc
+			o.defausse(inputc);
+			// On défausse une 2eme carte
+			String inputc2 = o.chooseCard("Choisissez une carte à défausser.", cchoices, true);
+			// On défausse la carte @param inputc
+			o.defausse(inputc2);
+		}
 	}
 }

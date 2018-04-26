@@ -13,6 +13,7 @@ import dominion.card.*;
 public class Mine extends ActionCard {
 
 	public Mine() {
+		// Construction de la carte avec ses caractérisques
 		super("Mine", 5);
 	}
 

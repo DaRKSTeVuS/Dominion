@@ -13,6 +13,7 @@ import dominion.card.*;
 public class CouncilRoom extends ActionCard {
 
 	public CouncilRoom() {
+		// Construction de la carte avec ses caractérisques
 		super("Council Room", 5);
 	}
 
@@ -22,11 +23,11 @@ public class CouncilRoom extends ActionCard {
 		for(int i=0; i<4; i++) {
 			p.drawCard();
 		}
-		p.incrementBuys(1); 	// +1 Achat
+		// +1 Achat
+		p.incrementBuys(1);
 		// Les adversaires piochent une carte
 		for(Player o : p.otherPlayers()) {
 			o.drawCard() ;
 		}
-
 	}
 }

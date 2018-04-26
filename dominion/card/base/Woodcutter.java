@@ -12,13 +12,15 @@ import dominion.card.*;
 public class Woodcutter extends ActionCard {
 
 	public Woodcutter() {
+		// Construction de la carte avec ses caractérisques
 		super("Woodcutter", 3);
 	}
 
 	@Override
 	public void play(Player p) {
-		p.incrementBuys(1); 	// +1 Achat
-		p.incrementMoney(2);	// +2 Pièces	
-		
+		// +1 Achat
+		p.incrementBuys(1);
+		// +2 Pièces
+		p.incrementMoney(2);
 	}
 }

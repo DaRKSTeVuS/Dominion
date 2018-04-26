@@ -12,6 +12,7 @@ import dominion.card.*;
 public class Remodel extends ActionCard {
 
 	public Remodel() {
+		// Construction de la carte avec ses caractérisques
 		super("Remodel", 4);
 	}
 

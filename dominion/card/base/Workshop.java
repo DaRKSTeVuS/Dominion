@@ -11,6 +11,7 @@ import dominion.card.*;
 public class Workshop extends ActionCard {
 
 	public Workshop() {
+		// Construction de la carte avec ses caractérisques
 		super("Workshop", 3);
 	}
 

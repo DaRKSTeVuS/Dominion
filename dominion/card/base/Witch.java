@@ -12,6 +12,7 @@ import dominion.card.*;
 public class Witch extends AttackCard {
 
 	public Witch() {
+		// Construction de la carte avec ses caractérisques
 		super("Witch", 5);
 	}
 
@@ -25,6 +26,5 @@ public class Witch extends AttackCard {
 			o.gain(p.getGame().getFromSupply("Malédiction"));
 			p.getGame().removeFromSupply("Malédicton");
 		}
-		
 	}
 }

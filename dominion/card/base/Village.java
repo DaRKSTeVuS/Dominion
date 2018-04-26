@@ -12,13 +12,15 @@ import dominion.card.*;
 public class Village extends ActionCard {
 
 	public Village() {
+		// Construction de la carte avec ses caractérisques
 		super("Village", 3);
 	}
 
 	@Override
 	public void play(Player p) {
-		p.incrementActions(2); 	// +2 Actions
-		p.drawCard();			// +1 Carte => pioche 1 carte
-		
+		// +2 Actions
+		p.incrementActions(2);
+		// +1 Carte => pioche 1 carte
+		p.drawCard();		
 	}
 }

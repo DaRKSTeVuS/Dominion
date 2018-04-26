@@ -14,6 +14,7 @@ import dominion.card.*;
 public class Thief extends AttackCard {
 
 	public Thief() {
+		// Construction de la carte avec ses caractérisques
 		super("Thief", 4);
 	}
 
