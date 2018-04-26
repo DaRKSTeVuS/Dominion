@@ -16,53 +16,63 @@ class Main {
 		List<CardList> kingdomStacks = new ArrayList<CardList>();
 		CardList stack;
 		// Ajouter un bloc pour chaque carte royaume à utiliser
-		stack = new CardList();
+		
 		// Ajout des cartes Atelier
+		stack = new CardList();
 		for (int i = 0; i < 10; i++) {
 			stack.add(new Workshop());
 		}
 		kingdomStacks.add(stack);
 		// Ajout des cartes Bûcheron
+		stack = new CardList();
 		for (int i = 0; i < 10; i++) {
 			stack.add(new Woodcutter());
 		}
 		kingdomStacks.add(stack);
 		// Ajout des cartes Cave
+		stack = new CardList();
 		for (int i = 0; i < 10; i++) {
 			stack.add(new Cellar());
 		}
 		kingdomStacks.add(stack);
 		// Ajout des cartes Douves
+		stack = new CardList();
 		for (int i = 0; i < 10; i++) {
 			stack.add(new Moat());
 		}
 		kingdomStacks.add(stack);
 		// Ajout des cartes Forgeron
+		stack = new CardList();
 		for (int i = 0; i < 10; i++) {
 			stack.add(new Smithy());
 		}
 		kingdomStacks.add(stack);
 		// Ajout des cartes Marché
+		stack = new CardList();
 		for (int i = 0; i < 10; i++) {
 			stack.add(new Market());
 		}
 		kingdomStacks.add(stack);
 		// Ajout des cartes Milice
+		stack = new CardList();
 		for (int i = 0; i < 10; i++) {
 			stack.add(new Militia());
 		}
 		kingdomStacks.add(stack);
 		// Ajout des cartes Mine
+		stack = new CardList();
 		for (int i = 0; i < 10; i++) {
 			stack.add(new Mine());
 		}
 		kingdomStacks.add(stack);
 		// Ajout des cartes Rénovation
+		stack = new CardList();
 		for (int i = 0; i < 10; i++) {
 			stack.add(new Remodel());
 		}
 		kingdomStacks.add(stack);
 		// Ajout des cartes Villages
+		stack = new CardList();
 		for (int i = 0; i < 10; i++) {
 			stack.add(new Village());
 		}

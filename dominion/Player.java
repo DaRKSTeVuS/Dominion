@@ -506,8 +506,6 @@ public class Player {
 				// Lit l'entrée de l'utilisateur au clavier
 				input = sc.nextLine();
 				if (choiceSet.contains(input) || (canPass && input.equals(""))){
-					// On ferme le scanner
-					sc.close();
 					// Si une réponse valide est obtenue, elle est renvoyée
 					return input;
 				}
