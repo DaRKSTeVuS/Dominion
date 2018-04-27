@@ -333,7 +333,7 @@ public class Game {
 				// On augmente le compteur {@code nbPileVide}
 				nbPileVide++;
 				// On regarde si ce tas contient une carte province s'il n'est pas vide
-			} else if (cl.get(0) instanceof Province) {
+			} else if (cl.get(0).getName().equals("Province")) {
 				// s'il contient une carte province on met {@code end} a false
 				end = false;
 			}

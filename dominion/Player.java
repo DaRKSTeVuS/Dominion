@@ -300,7 +300,7 @@ public class Player {
 		// Parcour de la totatlité de la main
 		for (Card c : this.hand) {
 			// Si la carte courante est de type TreasureCard
-			if (c instanceof TreasureCard) {
+			if (c.getTypes().contains(CardType.Treasure)) {
 				// On l'ajoute à la liste de retour
 				res.add(c);
 			}
@@ -318,7 +318,7 @@ public class Player {
 		// Parcour de la totatlité de la main
 		for (Card c : this.cardsInHand()) {
 			// Si la carte courante est de type ActionCard
-			if (c instanceof ActionCard) {
+			if (c.getTypes().contains(CardType.Action)) {
 				// On l'ajoute à la liste de retour
 				res.add(c);
 			}
@@ -336,7 +336,7 @@ public class Player {
 		// Parcour de la totatlité de la main
 		for (Card c : this.hand) {
 			// Si la carte courante est de type VictoryCard
-			if (c instanceof VictoryCard) {
+			if (c.getTypes().contains(CardType.Victory)) {
 				// On l'ajoute à la liste de retour
 				res.add(c);
 			}

@@ -1,5 +1,7 @@
 package dominion.card.base;
 
+import java.util.List;
+
 import dominion.*;
 import dominion.card.*;
 
@@ -28,6 +30,13 @@ public class Moat extends ReactionCard {
 			p.drawCard();			
 		}
 		// Si c'est le tour d'un autre joueur
-			// Anuler l'efet sur soi
+		// Anuler l'efet sur soi
+	}
+
+	public static void main(String[] args) {
+		Card test = new Moat();
+		if (test.getTypes().contains(CardType.Reaction)) {
+			System.out.println(test.getTypes().toString());
+		}
 	}
 }

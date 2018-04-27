@@ -8,16 +8,17 @@ import java.util.*;
 public abstract class ActionCard extends Card {
 
 	public ActionCard(String name, int cost) {
-		super(name, cost);		// utilisation du constructeur de Card
+		// utilisation du constructeur de Card
+		super(name, cost);
 	}
 	
 	@Override
 	public List<CardType> getTypes() {
-		List<CardType> types = super.getTypes(); // on récupère la liste des types(vide) de Card dans une nouvelle liste
-		types.add(CardType.Action);				// on ajoute le type Action à cette liste
-		return types;							//on retourne cette liste
+		// on récupère la liste des types(vide) de Card dans une nouvelle liste
+		List<CardType> types = super.getTypes();
+		// on ajoute le type Action à cette liste
+		types.add(CardType.Action);
+		//on retourne cette liste
+		return types;
 	}
-	
-	
-	
 }
