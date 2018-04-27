@@ -23,8 +23,9 @@ public class Bureaucrat extends AttackCard {
 	@Override
 	public void play(Player p) {
 		// Recevez une carte Silver
-		p.gain("Silver");
-		faut ajouter dans la main
+		if (p.supplyToHand("Silver") == null) {
+			System.err.println("Il n'y a pas de carte Silver en reserve");
+		}
 		// On parcours la liste des adversaire
 		for (Player op : p.otherPlayers()) {
 			// On recupere les cartes victoire du joueurs

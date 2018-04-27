@@ -72,13 +72,13 @@ public class Player {
 		// Affectation de la {@code game}
 		this.game = game;
 		// On initialise la defausse du joueur
-	    this.discard = new CardList();
-	    // On initialise les carte en jeu du joueur
-	    this.inPlay = new CardList();
-	    // On initialise la main du joueur
-	    this.hand = new CardList();
-	    // On initialiser la pioche du joueur
-	    this.draw = new CardList();
+		this.discard = new CardList();
+		// On initialise les carte en jeu du joueur
+		this.inPlay = new CardList();
+		// On initialise la main du joueur
+		this.hand = new CardList();
+		// On initialiser la pioche du joueur
+		this.draw = new CardList();
 		// On place 3 cartes Estate
 		for (int i = 0; i < 3; i++) {
 			this.gain("Estate");
@@ -787,6 +787,29 @@ public class Player {
 			return tmpC;
 		} else {
 			return null;
+		}
+	}
+
+	/**
+	 * Met une carte du supply dans la main du joueur
+	 * 
+	 * @param c carte à retirer du supply et a mettre dans la main
+	 * 
+	 * @return Carte mise dans la main si reussi, sinon null
+	 */
+	public Card supplyToHand (String cardName) {
+		// Si elle n'exsite pas dedant
+		if (this.game.getFromSupply(cardName) == null) {
+			// On retourne null
+			return null;
+			// Si elle est dans le supply
+		} else {
+			// On la retire de la reserve
+			Card tmpC = this.game.removeFromSupply(cardName);
+			// On la rajoute dans la main
+			this.hand.add(tmpC);
+			// On retourne la carte
+			return tmpC;
 		}
 	}
 }
