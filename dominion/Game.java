@@ -227,11 +227,11 @@ public class Game {
 		// Initialisation de la CardList retournée
 		CardList res = new CardList();
 		// On parcourt {@code this.supplyStacks}
-		for (CardList c : this.supplyStacks) {
-			// On controle que la CardList courante n'est pas null
-			if (c.get(0) != null) {
+		for (CardList cl : this.supplyStacks) {
+			// On controle que la CardList courante n'est pas vide
+			if (!cl.isEmpty()) {
 				// On l'ajoute au résultat
-				res.add(c.get(0));
+				res.add(cl.get(0));
 			}
 		}
 		return res;

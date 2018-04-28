@@ -22,8 +22,9 @@ public class Bureaucrat extends AttackCard {
 
 	@Override
 	public void play(Player p) {
-		// Recevez une carte Silver
+		// Recevez une carte Silver s'il y en a une
 		if (p.supplyToHand("Silver") == null) {
+			// Sinon on previens qu'il y en a plus de disponible
 			System.err.println("Il n'y a pas de carte Silver en reserve");
 		}
 		// On parcours la liste des adversaire

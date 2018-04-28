@@ -93,30 +93,64 @@ public class Player {
 		this.endTurn();
 	}
 
+	// Getters
 	/**
-	 * Getters et setters
+	 * Getter
+	 * 
+	 * @return le nom du joueur courant
 	 */
 	public String getName() {
 		return this.name;
 	}
 
+	/**
+	 * Getter
+	 * 
+	 * @return Le nombre d'action dont dispose le joueur
+	 */
 	public int getActions() {
 		return this.actions;
 	}
 
+	/**
+	 * Getter
+	 * 
+	 * @return L'argent dont le joueur dispose
+	 */
 	public int getMoney() {
 		return this.money;
 	}
 
+	/**
+	 * Getter
+	 * 
+	 * @return Le nombre d'achat disponible
+	 */
 	public int getBuys() {
 		return this.buys;
 	}
 
+	/**
+	 * Getter
+	 * 
+	 * @return La partie en cours
+	 */
 	public Game getGame() {
 		return this.game;
 	}
-
+	
 	/**
+	 * Getter
+	 * 
+	 * @return Le nombre de carte dans la defausse
+	 */
+	public int getNbCardDiscard () {
+		return this.discard.size();
+	}
+
+	// Setter
+	/**
+	 * Setter
 	 * Incrémente le nombre d'actions du joueur
 	 * 
 	 * @param n nombre d'actions à ajouter (ce nombre peut être négatif si l'on
@@ -124,7 +158,7 @@ public class Player {
 	 */
 	public void incrementActions(int n) {
 		// On incrémente les actions de n
-		this.actions =+ n;
+		this.actions += n;
 		// Si le nombre d'action deviens négatif
 		if (this.actions < 0) {
 			// On le remet à 0
@@ -133,6 +167,7 @@ public class Player {
 	}
 
 	/**
+	 * Setter
 	 * Incrémente le nombre de pièces du joueur
 	 * 
 	 * @param n nombre de pièces à ajouter (ce nombre peut être négatif si l'on
@@ -140,7 +175,7 @@ public class Player {
 	 */
 	public void incrementMoney(int n) {
 		// On incrémente les pièces de n
-		this.money =+ n;
+		this.money += n;
 		// Si le nombre de pièces deviens négatif
 		if (this.money < 0) {
 			// On le remet à 0
@@ -149,6 +184,7 @@ public class Player {
 	}
 
 	/**
+	 * Setter
 	 * Incrémente le nombre d'achats disponibles du joueur
 	 * 
 	 * @param n nombre d'achats à ajouter (ce nombre peut être négatif si l'on
@@ -156,7 +192,7 @@ public class Player {
 	 */
 	public void incrementBuys(int n) {
 		// On incrémente les achats de n
-		this.buys =+ n;
+		this.buys += n;
 		// Si le nombre d'achats deviens négatif
 		if (this.buys < 0) {
 			// On le remet à 0
@@ -255,14 +291,16 @@ public class Player {
 	 * @return la carte piochée, {@code null} si aucune carte disponible
 	 */
 	public Card drawCard() {
-		// On vérifie que la pioche n'est pas vide (= null)
-		if(this.draw != null) {
+		// On vérifie que la pioche est vide
+		if(this.draw.isEmpty()) {
 			// Si c'est le cas, on mélange la défausse 
 			this.discard.shuffle();
 			// Puis on transfère tout dans la pioche
 			for(Card c : this.discard) {
 				this.draw.add(c);
 			}
+			// On vide la défausse
+			this.discard = new CardList();
 		}
 		// On retire la premiere carte de la pioche
 		Card carte = this.draw.remove(0);
@@ -593,18 +631,21 @@ public class Player {
 	public void endTurn() {
 		// Compteur d'action remis à 0
 		this.actions = 0;
+		// Compteur d'argent remis à 0
+		this.money = 0;
 		// Compteur d'achats remis à 0
 		this.buys = 0;
-		// Défausse des cartes en main (hand)
-		for(Card c : this.hand) {
-			this.defausse(c);
+		// Tant qu'il reste des cartes dans @{code this.hand}
+		while(!this.hand.isEmpty()) {
+			// On les defausse
+			this.defausse(this.hand.get(0));
 		}
-		// Défausse des cartes en jeu (inPlay)
-		for(Card c : this.inPlay) {
+		// Tant qu'il reste des cartes dans @{code this.inPlay}
+		while(!this.inPlay.isEmpty()) {
 			// Ajout dans la défausse
-			this.discard.add(c);
+			this.discard.add(this.inPlay.get(0));
 			// Retrait des cartes en jeu
-			this.inPlay.remove(c);
+			this.inPlay.remove(0);
 		}
 		// Le joueur pioche 5 cartes
 		for(int i=0; i<5; i++) {
@@ -640,7 +681,6 @@ public class Player {
 	 * du joueur
 	 */
 	public void playTurn() {
-		System.out.println("Debut du tour j");
 		// (1) Préparation
 		// On appelle {@code startTurn()}
 		this.startTurn();
@@ -664,13 +704,19 @@ public class Player {
 		// tant qu'il est possible de faire des achats
 		while(this.getBuys() > 0 && this.getMoney() > 0){
 			// On demande au joueur s'il souhaite acheter une carte
-			List<String> choices = Arrays.asList("oui", "non");
+			List<String> choices = Arrays.asList("y", "n");
 			String input = this.choose("Voulez-vous acheter une carte (y/n)", choices, false);
 			// Si le joueur désire faire un achat
-			if(input == "oui") {
+			if(input.equals("y")) {
 				// On lui propose les cartes disponibles à l'achat
-				// et le joueur choisit une carte qu'il souhaite acheter  
+				CardList cardDispo = this.game.availableSupplyCards();
+				System.out.println(cardDispo.toString());
+				// et le joueur choisit une carte qu'il souhaite acheter
+				String inputc = this.chooseCard("Quelle carte souhaitez vous acheter ?", this.game.availableSupplyCards(), false);
 				// On utilise la méthode {@code buyCard(Card c)}
+				this.buyCard(inputc);
+			} else {
+				break;
 			}
 		}
 

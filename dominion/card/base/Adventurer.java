@@ -23,19 +23,35 @@ public class Adventurer extends ActionCard {
 	public void play(Player p) {
 		// On init une carte
 		Card tmpC;
-		// On init un compteuir de trésor
+		// On compte le nombre de carte qu'il y a dans la main et la defausse
+		int nbCardDpD = p.cardsInHand().size() + p.getNbCardDiscard();
+		// On init un compteur de trésor
 		int cptT = 0;
+		// On initialise un compteur de carte pioché
+		int cptP = 0;
 		// Tant que le compteur est <= 2
 		while (cptT <= 2) {
 			// On dévoile des cartes du deck 
 			tmpC = p.drawCard();
+			// On incrémente le nombre de carte pioché
+			cptT++;
+			// On dévoile la carte pioché
 			System.out.println("Carte piochée :" + tmpC.toString());
 			// Si c'est une carte Trésor, on l'ajouta a la main & on incrémente le compteur
-			if (tmpC instanceof TreasureCard) {
+			if (tmpC.getTypes().contains(CardType.Treasure)) {
 				cptT++;
 			} else {
 				// Sinon, on la défausse
 				p.defausse(tmpC);
+			}
+			// Si on pioche autant de carte que ce qu'il y a dans {@code nbCardDpD)
+			// C'est a dire dans le total main + defausse
+			// Ca veut dire qu'il n'y a pas assez de carte Treasure disponible
+			if (cptP == nbCardDpD) {
+				// On indique qu'il n'y a pas assez de carte trésor à piocher
+				System.err.println("Il n'y a pas assez de carte Treasure dans la pioche");
+				// Et on sort de la boucle
+				break;
 			}
 		}
 	}
