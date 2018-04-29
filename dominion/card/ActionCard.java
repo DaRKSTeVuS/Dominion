@@ -23,32 +23,4 @@ public abstract class ActionCard extends Card {
 		//on retourne cette liste
 		return types;
 	}
-
-	/**
-	 * Controle si le joueur à des cartes Action Reaction et s'il souhaite en jouer une
-	 * 
-	 * @param p Le joueur qui pocède ou non des cartes Action Réaction
-	 * @return true si le joueur a des cartes Action / Réaction, false s'il n'en a pas ou ne souhaite pas les jouer.
-	 */
-	public boolean otherPlayerGotReaction (Player p) {
-		// On parcours les carte du joueur {@code p}
-		// Pour trouver une carte Action Reaction
-		for (Card c : p.getActionCards()) {
-			// Si c'est le cas
-			if (c.getTypes().contains(CardType.Reaction)) {
-				// Et on demande au joueur s'il souhaite la jouer
-				List<String> choices = Arrays.asList("y", "n");
-				String input = p.choose("Voulez vous jouer la carte " + c.toString() + " ? (y/n)", choices, true);
-				if (input.equals("y")) {
-					p.playCard(c);
-					return true;
-				} else {
-					// On signale qu'il ne souhaite pas la jouer
-					return false;
-				}
-			}
-		}
-		// On retourne false s'il n'en pocede pas
-		return false;
-	}
 }
