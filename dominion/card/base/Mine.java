@@ -39,16 +39,15 @@ public class Mine extends ActionCard {
 					// Si la carte trouvé à un coup inferieur a la carté ecarté + 3
 					if (c.getCost() <= tmpC.getCost() + 3) {
 						// On crée une liste de choix
-						List<String> choices = Arrays.asList("oui", "non");
+						List<String> choices = Arrays.asList("y", "n");
 						// On demande au joueur s'il veux acheter cette carte
-						String input2 = p.choose("Voulez vous acheter la carte " + c.toString() + " ?", choices, false);
+						String input2 = p.choose("Voulez vous acheter la carte " + c.toString() + " ? (y/n)", choices, false);
 						// S'il répond oui
-						if (input2.equals("oui")) {
+						if (input2.equals("y")) {
 							// On retire la carte de la réserve
 							p.getGame().removeFromSupply(c.getName());
 							// On l'ajoute à sa main
-							fautfautfaut
-							
+							p.supplyToHand(c.toString());
 						}
 					}
 				}
