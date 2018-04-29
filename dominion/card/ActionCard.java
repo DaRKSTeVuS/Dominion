@@ -2,8 +2,6 @@ package dominion.card;
 
 import java.util.*;
 
-import dominion.Player;
-
 /**
  * Les cartes Action
  */
