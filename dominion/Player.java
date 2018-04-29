@@ -138,7 +138,7 @@ public class Player {
 	public Game getGame() {
 		return this.game;
 	}
-	
+
 	/**
 	 * Getter
 	 * 
@@ -682,30 +682,48 @@ public class Player {
 	 */
 	public void playTurn() {
 		// (1) Préparation
+		boolean play = true;
+		// On initialise la liste de choix pour les questions à venir
+		List<String> choicesYN = Arrays.asList("y", "n");
 		// On appelle {@code startTurn()}
 		this.startTurn();
 		// (2) Action
-		// Tant qu'on a des actions en main
-		// On demande au joueur s'il souhaite jouer une carte
-		// Si le joueur veut jouer une carte
-		// On lui propose les cartes disponibles à l'utilisation
-		// et le joueur choisit une carte qu'il souhaite utiliser
-		// On place la carte dans inPlay
-		// On retire la carte de la main
-		// On utilise la carte {@code play(Player p)
-		// -1 Action pour l'utilisation de la carte
-
+		// Si je joueur n'as pas de point d'action
+		if (this.actions == 0) {
+			// Il ne peut pas jouer
+			play = false;
+		}
+		// Tant qu'on a des actions en main ou que play est true
+		while (!this.getActionCards().isEmpty()&& play) {
+			// On demande au joueur s'il souhaite jouer une carte
+			String strPlay = this.choose("Voulez vous jouer une carte action ? (y/n)", choicesYN, false);
+			// Si le joueur veut jouer une carte
+			if (strPlay.equals("y")) {
+				// On lui propose les cartes disponibles à l'utilisation
+				// et le joueur choisit une carte qu'il souhaite utiliser
+				String strCard = this.chooseCard("Quelle carte action voulez vous jouer ?", this.getActionCards(), false);
+				if (!strCard.equals("")) {
+					// On joue la carte choisi
+					this.playCard(strCard);
+					// On décrémente le nombre d'action
+					this.actions--;
+				}
+			} else {
+				// Si le joueur ne veux pas jouer de carte action on sort
+				play = false;
+			}
+		}
 		// (3) Trésor
-		// Joue automatiquement toute les cartes trésor de la main du joueur
-		for(Card c : this.getTreasureCards()) {
-			c.play(this);
+		// Tant qu'il reste des cartes trésors
+		while (!this.getTreasureCards().isEmpty()) {
+			// On les joue
+			this.playCard(this.getTreasureCards().get(0));
 		}		
 		// (4) Achat
 		// tant qu'il est possible de faire des achats
 		while(this.getBuys() > 0 && this.getMoney() > 0){
 			// On demande au joueur s'il souhaite acheter une carte
-			List<String> choices = Arrays.asList("y", "n");
-			String input = this.choose("Voulez-vous acheter une carte (y/n)", choices, false);
+			String input = this.choose("Voulez-vous acheter une carte (y/n)", choicesYN, false);
 			// Si le joueur désire faire un achat
 			if(input.equals("y")) {
 				// On lui propose les cartes disponibles à l'achat
@@ -716,6 +734,7 @@ public class Player {
 				// On utilise la méthode {@code buyCard(Card c)}
 				this.buyCard(inputc);
 			} else {
+				// Sinon on sort de la boucle
 				break;
 			}
 		}
