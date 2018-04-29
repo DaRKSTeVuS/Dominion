@@ -732,7 +732,9 @@ public class Player {
 				// et le joueur choisit une carte qu'il souhaite acheter
 				String inputc = this.chooseCard("Quelle carte souhaitez vous acheter ?", this.game.availableSupplyCards(), false);
 				// On utilise la méthode {@code buyCard(Card c)}
-				this.buyCard(inputc);
+				if (this.buyCard(inputc) == null) {
+					System.err.println("La carte " + inputc + " n'as pu être achetée !");
+				};
 			} else {
 				// Sinon on sort de la boucle
 				break;
