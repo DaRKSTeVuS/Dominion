@@ -21,7 +21,7 @@ public class Moneylender extends ActionCard {
 	public void play(Player p) {
 		// Si le joueur à une carte Cuivre en main, l'écarte et gagne +3 Pièces
 		for(Card c : p.getTreasureCards()) {
-			if(c instanceof Copper) {
+			if(c.getName().equals("Copper") {
 				p.ecarter(c);
 				p.incrementMoney(3);
 				break;
