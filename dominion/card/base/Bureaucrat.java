@@ -1,5 +1,8 @@
 package dominion.card.base;
 
+import java.util.Arrays;
+import java.util.List;
+
 import dominion.*;
 import dominion.card.*;
 
@@ -22,6 +25,8 @@ public class Bureaucrat extends AttackCard {
 
 	@Override
 	public void play(Player p) {
+		// On initialise une variable pour savoir si un joueur à une carte Action / Reaction
+		boolean playARCard = false;
 		// Recevez une carte Silver s'il y en a une
 		if (p.supplyToHand("Silver") == null) {
 			// Sinon on previens qu'il y en a plus de disponible
@@ -29,17 +34,22 @@ public class Bureaucrat extends AttackCard {
 		}
 		// On parcours la liste des adversaire
 		for (Player op : p.otherPlayers()) {
-			// On recupere les cartes victoire du joueurs
-			CardList vicCard = op.getVictoryCards();
-			// Si le joueur {code op} n'as pas de carte victoire en main
-			if (vicCard.isEmpty()) {
-				// On montre sa main
-				System.out.println(op.cardsInHand().toString());
-			} else {
-				// Sinon on demande au joueur {code op} quelle carte il veut defausser
-				String input = op.chooseCard("Quelle carte victoire voulez vous mettre sur votre pioche ?", vicCard, false);
-				// On dévoile la carte et on la met au dessus de la pioche
-				System.out.println("Carte mise en haut de la pioche : " + op.putOnTopDraw(input).toString());
+			// On verifiqu'ils ne pocede pas de carte Action Reaction
+			// Et qu'il souhaite la jouer
+			// Si ce n'est pas le cas
+			if (!this.otherPlayerGotReaction(op)) {
+				// On recupere les cartes victoire du joueurs
+				CardList vicCard = op.getVictoryCards();
+				// Si le joueur {code op} n'as pas de carte victoire en main
+				if (vicCard.isEmpty()) {
+					// On montre sa main
+					System.out.println(op.cardsInHand().toString());
+				} else {
+					// Sinon on demande au joueur {code op} quelle carte il veut defausser
+					String input = op.chooseCard("Quelle carte victoire voulez vous mettre sur votre pioche ?", vicCard, false);
+					// On dévoile la carte et on la met au dessus de la pioche
+					System.out.println("Carte mise en haut de la pioche : " + op.putOnTopDraw(input).toString());
+				}
 			}
 		}
 	}
