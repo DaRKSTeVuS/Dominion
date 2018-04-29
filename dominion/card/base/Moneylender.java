@@ -19,11 +19,15 @@ public class Moneylender extends ActionCard {
 
 	@Override
 	public void play(Player p) {
-		// Si le joueur à une carte Cuivre en main, l'écarte et gagne +3 Pièces
+		// On parcour la liste des cartes Treasure en main de {@code p}
 		for(Card c : p.getTreasureCards()) {
-			if(c.getName().equals("Copper") {
+			// Si on trouvre une carte copper
+			if(c.getName().equals("Copper")) {
+				// On l'écarte
 				p.ecarter(c);
+				// On ajoute 3 d'argent
 				p.incrementMoney(3);
+				// On sort de la boucle
 				break;
 			}
 		}
