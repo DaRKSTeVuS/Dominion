@@ -2,7 +2,6 @@ package dominion.card.base;
 
 import dominion.*;
 import dominion.card.*;
-import dominion.card.common.Copper;
 
 /**
  * Carte Prêteur sur gages (Moneylender)

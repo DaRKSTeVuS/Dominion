@@ -1,8 +1,5 @@
 package dominion.card.base;
 
-import java.util.Arrays;
-import java.util.List;
-
 import dominion.*;
 import dominion.card.*;
 
@@ -25,8 +22,6 @@ public class Bureaucrat extends AttackCard {
 
 	@Override
 	public void play(Player p) {
-		// On initialise une variable pour savoir si un joueur à une carte Action / Reaction
-		boolean playARCard = false;
 		// Recevez une carte Silver s'il y en a une
 		if (p.supplyToHand("Silver") == null) {
 			// Sinon on previens qu'il y en a plus de disponible
