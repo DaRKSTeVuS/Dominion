@@ -35,7 +35,7 @@ public class Mine extends ActionCard {
 			// On regarde dans les cartes disponibles à l'achat
 			for (Card c : p.getGame().availableSupplyCards()) {
 				// S'il y a une TreasureCard
-				if (c instanceof TreasureCard) {
+				if (c.getTypes().contains(CardType.Treasure)) {
 					// Si la carte trouvé à un coup inferieur a la carté ecarté + 3
 					if (c.getCost() <= tmpC.getCost() + 3) {
 						// On crée une liste de choix
