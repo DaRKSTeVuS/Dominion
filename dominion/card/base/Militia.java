@@ -20,20 +20,18 @@ public class Militia extends AttackCard {
 	public void play(Player p) {
 		// +2 Pièces
 		p.incrementMoney(2);
-		// Les adversaires défaussent 2 cartes
-		for(Player o : p.otherPlayers()) {
-			// On défausse 1 carte parmis celle de la main du joueur
-			CardList cchoices = new CardList();
-			for (Card c: o.cardsInHand()) {
-				cchoices.add(c);
+		// On parcours les adversaire
+		for(Player op : p.otherPlayers()) {
+			// Si le joueur n'as pas de carte réaction
+			if (!this.otherPlayerGotReaction(op)) {
+				// Tant que le joueur a plus de trois carte en mais
+				while (p.cardsInHand().size() > 3) {
+					// On lui demande quelle carte defausser
+					String inputc = op.chooseCard("Choisissez une carte à défausser.", p.cardsInHand(), false);
+					// On defausse son choix
+					op.defausse(inputc);
+				}
 			}
-			String inputc = o.chooseCard("Choisissez une carte à défausser.", cchoices, true);
-			// On défausse la carte @param inputc
-			o.defausse(inputc);
-			// On défausse une 2eme carte
-			String inputc2 = o.chooseCard("Choisissez une carte à défausser.", cchoices, true);
-			// On défausse la carte @param inputc
-			o.defausse(inputc2);
 		}
 	}
 }
