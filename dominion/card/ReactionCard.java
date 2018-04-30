@@ -31,7 +31,7 @@ public abstract class ReactionCard extends ActionCard {
 		// Si oui
 		if (input.equals("y")) {
 			// On joue la carte
-			p.defausse(this);;
+			System.out.println("Carte " + this.getName() + " devoilée, la carte attack n'as pas d'effet");
 			// On retourve vrai
 			return true;
 		} else {
