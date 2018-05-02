@@ -17,6 +17,19 @@ public class Workshop extends ActionCard {
 
 	@Override
 	public void play(Player p) {
-		// TODO Auto-generated method stub
+		// On cré la liste des carte que l'on peut recevoir
+		CardList list = new CardList();
+		// On parcourt la liste des cartes disponibles {@code supplyStacks}
+		for(Card c : p.getGame().availableSupplyCards()) {
+			// Si la carte es de coût inférieur ou égal à 4 
+			if(c.getCost()<=4) {
+				// On l'ajoute a la liste
+				list.add(c);
+			}
+		}
+		// On propose au joueur d'en choisir une 
+		String inputc = p.chooseCard("Choisissez une carte à recevoir : ", list, true);
+		// il la reçoit {@code supplyToHand(String cardName)}
+		p.supplyToHand(inputc);
 	}
 }

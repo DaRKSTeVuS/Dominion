@@ -18,10 +18,28 @@ public class Remodel extends ActionCard {
 
 	@Override
 	public void play(Player p) {
+		// On récupère la liste des cartes de la main du joueur
+		CardList hand = p.cardsInHand();
 		// Le joueur choisit une carte de sa main qu'il souhaite écarter
-		// On écarte cette carte et on récupère sa valeur
-		
+		String inputc = p.chooseCard("Choisissez une carte à écarter", hand, true);
+		// On écarte cette carte 
+		Card card = p.ecarter(inputc, "hand");
+		// On récupère sa valeur
+		int val = card.getCost();
 		// Le joueur choisit une carte parmis les suplyStack coutant jusqu'à 2 Pièces de plus
-		// On l'ajouta à sa main
+		// On cré la liste des cartes a recevoir 
+		CardList list = new CardList();
+		// On parcourt la liste des cartes disponibles {@code supplyStacks}
+		for(Card c : p.getGame().availableSupplyCards()) {
+			// Si la carte es de coût inférieur ou égal au coût de la carte écartée +2
+			if(c.getCost()<=val+2) {
+				// On l'ajoute a la liste
+				list.add(c);
+			}
+		}
+		// On propose au joueur d'en choisir une 
+		String inputr = p.chooseCard("Choisissez une carte à recevoir : ", list, true);
+		// il la reçoit {@code supplyToHand(String cardName)}
+		p.supplyToHand(inputr);
 	}
 }
