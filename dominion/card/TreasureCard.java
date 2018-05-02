@@ -7,13 +7,17 @@ import java.util.*;
  */
 public abstract class TreasureCard extends Card {
 	public TreasureCard(String name, int cost) {
-		super(name, cost);		// utilisation du constructeur de Card
+		// Utilisation du constructeur de Card
+		super(name, cost);
 	}
 	
 	@Override
 	public List<CardType> getTypes() {
-		List<CardType> types = super.getTypes();// on récupère la liste des types(vide) de Card dans une nouvelle liste
-		types.add(CardType.Treasure);			// on ajoute le type Treasure à cette liste
-		return types;							//on retourne cette liste
+		// On récupère la liste des types(vide) de Card dans une nouvelle liste
+		List<CardType> types = super.getTypes();
+		// On ajoute le type Treasure à cette liste
+		types.add(CardType.Treasure);
+		// On retourne cette liste
+		return types;
 	}
 }

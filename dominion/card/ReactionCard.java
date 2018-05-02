@@ -9,13 +9,17 @@ import dominion.Player;
  */
 public abstract class ReactionCard extends ActionCard {
 	public ReactionCard(String name, int cost) {
-		super(name, cost);		// utilisation du constructeur de ActionCard
+		// Utilisation du constructeur de ActionCard
+		super(name, cost);
 	}
 
 	public List<CardType> getTypes() {
-		List<CardType> types = super.getTypes();// on récupère la liste des types(Action) de ActionCard dans une nouvelle liste
-		types.add(CardType.Reaction);			// on ajoute le type Réaction a cette liste
-		return types;							//on retourne cette liste
+		// On récupère la liste des types(Action) de ActionCard dans une nouvelle liste
+		List<CardType> types = super.getTypes();
+		// On ajoute le type Réaction a cette liste
+		types.add(CardType.Reaction);
+		// On retourne cette liste
+		return types;							
 	}
 
 	/**

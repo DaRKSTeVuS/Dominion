@@ -206,11 +206,14 @@ public class Game {
 		// normalement, la taille de la liste = taille du tableau -1
 		while (otherp.size() < nbPlayers) {
 			// Si on est déja à la fin du tableau, on repart au début
-			if (i == nbPlayers) i = 0;
+			if (i == (nbPlayers - 1)) i = 0;
 			// Sinon, on commence à partit du suivant
 			else i++;
-			// On ajoute le joueur à la liste
-			otherp.add(this.getPlayer(i));
+			// On verifie que le joueur courant n'est pas le joueur {@code p}
+			if (this.indexOfPlayer(p) != i) {
+				// On ajoute le joueur à la liste
+				otherp.add(this.getPlayer(i));
+			}
 		}
 		// On retourne la liste des autres joueurs
 		return otherp;

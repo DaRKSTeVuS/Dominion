@@ -15,9 +15,12 @@ public abstract class AttackCard extends ActionCard {
 	}
 	
 	public List<CardType> getTypes() {
-		List<CardType> types = super.getTypes();// on récupère la liste des types(Action) de ActionCard dans une nouvelle liste
-		types.add(CardType.Attack);				// on ajoute le type Attack a cette liste
-		return types;							//on retourne cette liste
+		// on récupère la liste des types(Action) de ActionCard dans une nouvelle liste
+		List<CardType> types = super.getTypes();
+		// on ajoute le type Attack a cette liste
+		types.add(CardType.Attack);
+		//on retourne cette liste
+		return types;							
 	}
 	
 	/**

@@ -8,7 +8,7 @@ import java.util.*;
 public abstract class ActionCard extends Card {
 
 	public ActionCard(String name, int cost) {
-		// utilisation du constructeur de Card
+		// Utilisation du constructeur de Card
 		super(name, cost);
 	}
 
