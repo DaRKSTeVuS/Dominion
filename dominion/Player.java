@@ -290,7 +290,7 @@ public class Player {
 	 * 
 	 * @return la carte piochée, {@code null} si aucune carte disponible
 	 */
-	public Card drawCard() {
+	public Card drawCardx() {
 		// On vérifie que la pioche est vide
 		if(this.draw.isEmpty()) {
 			// Si c'est le cas, on mélange la défausse 
