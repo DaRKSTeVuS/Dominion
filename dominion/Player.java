@@ -394,12 +394,12 @@ public class Player {
 	 * {@code inPlay} et exécute la méthode {@code play(Player p)} de la carte.
 	 */
 	public void playCard(Card c) {
-		// On active l'effet de la carte
-		c.play(this);
 		// On place la carte dans "inPlay" 
 		this.inPlay.add(c);
 		// On retire cette carte de la main du joueur
 		this.hand.remove(c);
+		// On active l'effet de la carte
+		c.play(this);
 	}
 
 	/**
@@ -783,27 +783,48 @@ public class Player {
 	 *  
 	 * @param c carte à mettre au rebut
 	 */
-	public void ecarter(Card c) {
-		// Ajout au Rebut
+	private void ecarterHand(Card c) {
+		// Ajout a {@code trashedCards}
 		this.game.trash(c);
-		// Retrait de la main du joueur
+		// Retrait de {@code this.hand} du joueur
 		this.hand.remove(c);
+	}
+	
+	/**
+	 * Met au rebut {@code trashedCards} la carte passée en paramètre
+	 * On admet qu'elle existe dans le inPlay du joueur (vérifié au préalable)
+	 *  
+	 * @param c carte à mettre au rebut
+	 */
+	private void ecarterInplay(Card c) {
+		// Ajout a {@code trashedCards}
+		this.game.trash(c);
+		// Retrait du {@code this.inPlay} du joueur
+		this.inPlay.remove(c);
 	}
 
 	/**
 	 * Met au rebut une carte
 	 * 
 	 * @param cardName nom de la carte à mettre au rebut
+	 * @param param endroit ou se situe la carte, hand {@code this.hand} ou inPlay {@code this.inPlay} 
 	 * @return la carte écarté si la carte à été mise au rebut, null si elle n'est pas dans la main
 	 */
-	public Card ecarter(String cardName) {
+	public Card ecarter(String cardName, String param) {
 		// On vérifie que la carte est dans la main du joueur
-		if (this.hand.getCard(cardName) != null) {
+		if (this.hand.getCard(cardName) != null && param.equals("hand")) {
 			// On stocke la carte à écarter dans une variable
 			Card tmpC = this.hand.getCard(cardName);
 			// Si oui, on utilise la méthode {@code ecarter(Card c)}
-			this.ecarter(tmpC);
-			// et on renvoie vrai
+			this.ecarterHand(tmpC);
+			// et on renvoie la carte
+			return tmpC;
+		} else if (this.inPlay.getCard(cardName) != null && param.equals("inPlay")) {
+			// On stocke la carte à écarter dans une variable
+			Card tmpC = this.inPlay.getCard(cardName);
+			// Si oui, on utilise la méthode {@code ecarter(Card c)}
+			this.ecarterInplay(tmpC);
+			// et on renvoie la carte
 			return tmpC;
 		}
 		// Sinon, on renvoie faux

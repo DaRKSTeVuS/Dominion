@@ -31,7 +31,7 @@ public class Mine extends ActionCard {
 			// On demande au joueur quelle carte Trésor de sa main il souhaite écarter
 			String input = p.chooseCard("Quelle carte trésor voulez-vous écarter ?", handTre, false);
 			// On écarte cette carte
-			tmpC = p.ecarter(input);
+			tmpC = p.ecarter(input, "hand");
 			// On regarde dans les cartes disponibles à l'achat
 			for (Card c : p.getGame().availableSupplyCards()) {
 				// S'il y a une TreasureCard

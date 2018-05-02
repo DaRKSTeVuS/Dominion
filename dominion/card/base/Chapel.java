@@ -33,7 +33,7 @@ public class Chapel extends ActionCard {
 				}
 				String inputc = p.chooseCard("Choisissez une carte à écarter.", cchoice, true);
 				// On écarte la carte
-				p.ecarter(inputc);
+				p.ecarter(inputc, "hand");
 				// On incrémente le compteur de cartes
 				i++;
 			}
