@@ -11,7 +11,8 @@ import dominion.Player;
 public abstract class AttackCard extends ActionCard {
 
 	public AttackCard(String name, int cost) {
-		super(name, cost);		// utilisation du constructeur de ActionCard
+		// Utilisation du constructeur de ActionCard
+		super(name, cost);
 	}
 	
 	public List<CardType> getTypes() {
