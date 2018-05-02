@@ -23,8 +23,13 @@ public class Witch extends AttackCard {
 		p.drawCard() ;
 		// Les adversaires reçoivent une carte Malédiction
 		for(Player o : p.otherPlayers()) {
-			o.gain(p.getGame().getFromSupply("Malédiction"));
-			p.getGame().removeFromSupply("Malédicton");
+			// On verifiqu'ils ne pocede pas de carte Action Reaction
+			// Et qu'il souhaite la jouer
+			// Si ce n'est pas le cas
+			if (!this.otherPlayerGotReaction(p)) {
+				o.gain(p.getGame().getFromSupply("Curse"));
+				p.getGame().removeFromSupply("Curse");
+			}
 		}
 	}
 }
