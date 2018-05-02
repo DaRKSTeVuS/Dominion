@@ -290,7 +290,7 @@ public class Player {
 	 * 
 	 * @return la carte piochée, {@code null} si aucune carte disponible
 	 */
-	public Card drawCardx() {
+	public Card drawCard () {
 		// On vérifie que la pioche est vide
 		if(this.draw.isEmpty()) {
 			// Si c'est le cas, on mélange la défausse 
@@ -649,17 +649,8 @@ public class Player {
 		}
 		// Le joueur pioche 5 cartes
 		for(int i=0; i<5; i++) {
-			// On stocke la carte pioché
-			Card tmpC = this.drawCard();
-			// S'il y a une erreur dans la pioche
-			if (tmpC == null) {
-				// On informe le joueur qu'il n'y a plus de carte à pioche
-				System.err.println("Il n'y a pas de carte à piocher");
-				// On quite la bouche
-				break;
-			};
-			// On ajoute à la main la carte
-			this.cardToHand(tmpC);
+			// On pioche
+			this.drawtoHand();
 		}
 	}
 
@@ -799,7 +790,7 @@ public class Player {
 		// Retrait de {@code this.hand} du joueur
 		this.hand.remove(c);
 	}
-	
+
 	/**
 	 * Met au rebut {@code trashedCards} la carte passée en paramètre
 	 * On admet qu'elle existe dans le inPlay du joueur (vérifié au préalable)
@@ -910,7 +901,7 @@ public class Player {
 			return tmpC;
 		}
 	}
-	
+
 	/**
 	 * Met une carte c quelconque dans la main du joueur
 	 * 
@@ -920,5 +911,21 @@ public class Player {
 		// On ajoute une carte dans la main du joueurs
 		this.hand.add(c);
 	}
-	
+
+	/**
+	 * Pioche une carte et la met dans la main du joueur, si aucune
+	 * carte est disponible ne fait rien
+	 */
+	public void drawtoHand () {
+		// On pioche une carte dans une variable
+		Card tmpC = this.drawCard();
+		// Si une carte est renvoyé
+		if (tmpC != null) {
+			// On ajoute à la main la carte
+			this.cardToHand(tmpC); 
+		} else {
+			// On informe le joueur qu'il n'y a plus de carte à pioche
+			System.err.println("Il n'y a pas de carte à piocher");
+		}
+	}
 }
