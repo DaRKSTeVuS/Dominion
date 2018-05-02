@@ -27,6 +27,6 @@ public class Market extends ActionCard {
 		// +1 Pièce
 		p.incrementMoney(1);
 		// +1 Carte = pioche 1 carte
-		p.drawCard();	
+		p.drawToHand();	
 	}
 }

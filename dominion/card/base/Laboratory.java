@@ -20,9 +20,9 @@ public class Laboratory extends ActionCard {
 	public void play(Player p) {
 		// +1 Pièce
 		p.incrementMoney(1);
-		// +1 Carte = pioche 1 carte
-		p.drawCard();
-		// +1 Carte = pioche 1 carte
-		p.drawCard();
+		// +2 Carte = pioche 2 carte
+		for (int i = 0; i < 2; i++) {
+			p.drawToHand();
+		}
 	}
 }

@@ -19,8 +19,9 @@ public class Witch extends AttackCard {
 	@Override
 	public void play(Player p) {
 		// On pioche 1 carte 2x
-		p.drawCard() ;
-		p.drawCard() ;
+		for (int i = 0; i < 2; i++) {
+			p.drawToHand();
+		}
 		// Les adversaires reçoivent une carte Malédiction
 		for(Player o : p.otherPlayers()) {
 			// On verifiqu'ils ne pocede pas de carte Action Reaction

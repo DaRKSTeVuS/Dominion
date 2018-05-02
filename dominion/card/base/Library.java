@@ -34,8 +34,17 @@ public class Library extends ActionCard {
 		for (int i = nbCardPlayer; i <= 7; i++) {
 			// On récupère la carte pioché
 			tmpC = p.drawCard();
+			// Si la carte est nulle alors il n'y a rien à piocher
+			if (tmpC == null) {
+				// On informe le joueur qu'il n'y a plus de carte à pioche
+				System.err.println("Il n'y a pas de carte à piocher");
+				// On quitte la boucle
+				break;
+			}
+			// On l'ajoute à la main
+			p.cardToHand(tmpC);
 			// Si c'est une carte action
-			if (tmpC instanceof ActionCard) {
+			if (tmpC.getTypes().contains(CardType.Action)) {
 				// On affiche la carte pioché
 				System.out.println("Vous avez piocher la carte : " + tmpC.toString());
 				// On demande au joueur s'il veux la conserver

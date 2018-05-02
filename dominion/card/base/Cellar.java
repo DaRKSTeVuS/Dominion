@@ -60,7 +60,7 @@ public class Cellar extends ActionCard {
 		}
 		// On pioche une carte pour chaque carte défaussée
 		for(int i=0; i<cptDef; i++) {
-			p.drawCard();
+			p.drawToHand();
 		}
 		// Sinon, l'action est finie
 	}

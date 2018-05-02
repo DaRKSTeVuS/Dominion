@@ -21,13 +21,13 @@ public class CouncilRoom extends ActionCard {
 	public void play(Player p) {
 		// On pioche 4x 1 carte
 		for(int i=0; i<4; i++) {
-			p.drawCard();
+			p.drawToHand();
 		}
 		// +1 Achat
 		p.incrementBuys(1);
 		// Les adversaires piochent une carte
 		for(Player o : p.otherPlayers()) {
-			o.drawCard() ;
+			o.drawToHand();
 		}
 	}
 }

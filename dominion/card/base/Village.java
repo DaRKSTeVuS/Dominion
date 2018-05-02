@@ -21,6 +21,6 @@ public class Village extends ActionCard {
 		// +2 Actions
 		p.incrementActions(2);
 		// +1 Carte => pioche 1 carte
-		p.drawCard();		
+		p.drawToHand();		
 	}
 }

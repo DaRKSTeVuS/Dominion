@@ -650,7 +650,7 @@ public class Player {
 		// Le joueur pioche 5 cartes
 		for(int i=0; i<5; i++) {
 			// On pioche
-			this.drawtoHand();
+			this.drawToHand();
 		}
 	}
 
@@ -916,13 +916,13 @@ public class Player {
 	 * Pioche une carte et la met dans la main du joueur, si aucune
 	 * carte est disponible ne fait rien
 	 */
-	public void drawtoHand () {
+	public void drawToHand () {
 		// On pioche une carte dans une variable
 		Card tmpC = this.drawCard();
 		// Si une carte est renvoyé
 		if (tmpC != null) {
 			// On ajoute à la main la carte
-			this.cardToHand(tmpC); 
+			this.cardToHand(tmpC);
 		} else {
 			// On informe le joueur qu'il n'y a plus de carte à pioche
 			System.err.println("Il n'y a pas de carte à piocher");

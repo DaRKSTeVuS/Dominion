@@ -28,7 +28,7 @@ public class Spy extends AttackCard {
 		// +1 Actions
 		p.incrementActions(1);
 		// +1 Carte => pioche 1 carte
-		p.drawCard();
+		p.drawToHand();
 		// Le joueur jouant la carte dévoile la premiere carte de son deck
 		Card pioche = p.drawCard();
 		// Si le joueur à bien piocher une carte
