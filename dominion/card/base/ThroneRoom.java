@@ -18,6 +18,12 @@ public class ThroneRoom extends ActionCard {
 
 	@Override
 	public void play(Player p) {
-		// TODO Auto-generated method stub
+		// On cré la liste des cartes Actions dans la main du joueur
+		CardList action = p.getActionCards();
+		// On lui demande d'en choisir une
+		String inputc = p.chooseCard("Choisissez une carte à jouer deux fois : ", action, true);
+		// On la joue 2x
+		p.playCard(inputc);
+		p.playCard(inputc);
 	}
 }
