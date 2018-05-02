@@ -649,7 +649,17 @@ public class Player {
 		}
 		// Le joueur pioche 5 cartes
 		for(int i=0; i<5; i++) {
-			this.drawCard();
+			// On stocke la carte pioché
+			Card tmpC = this.drawCard();
+			// S'il y a une erreur dans la pioche
+			if (tmpC == null) {
+				// On informe le joueur qu'il n'y a plus de carte à pioche
+				System.err.println("Il n'y a pas de carte à piocher");
+				// On quite la bouche
+				break;
+			};
+			// On ajoute à la main la carte
+			this.cardToHand(tmpC);
 		}
 	}
 
@@ -900,4 +910,15 @@ public class Player {
 			return tmpC;
 		}
 	}
+	
+	/**
+	 * Met une carte c quelconque dans la main du joueur
+	 * 
+	 * @param c la carte à rajouter dans la main du joueur
+	 */
+	public void cardToHand (Card c) {
+		// On ajoute une carte dans la main du joueurs
+		this.hand.add(c);
+	}
+	
 }
