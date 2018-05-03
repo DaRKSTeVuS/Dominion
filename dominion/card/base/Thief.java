@@ -1,6 +1,5 @@
 package dominion.card.base;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -25,36 +24,42 @@ public class Thief extends AttackCard {
 	@Override
 	public void play(Player p) {
 		// On initialise une liste de cartes à écarter
-		ArrayList<String> toTrash = new ArrayList<String>();
+		CardList toTrash = new CardList();
 		// On parcourt la liste des adversaires
 		for (Player op : p.otherPlayers()) {
 			// Si le joueur n'as pas de carte réaction
 			if (!this.otherPlayerGotReaction(op)) {
 				// On dévoile les 2 premières cartes de sa pioche
 				// On cré une liste de cartes contennant les 2 premières cartes de sa pioche
-				CardList pioche = new CardList();
+				CardList couple = new CardList();
 				// à laquelle on ajoute les cartes
-				pioche.add(op.drawCard());
-				pioche.add(op.drawCard());				
+				couple.add(op.drawCard());
+				couple.add(op.drawCard());				
 				// On l'affiche
-				pioche.toString();
-				
-				// On parcourt pioche
-				// On discard toute carte qui n'est pas Trésor
-				// pioche.get(i).getTypes().contains(CardType.Treasure) 
-				// Si pioche est non vide				
-					// On en choisit 1
-					String inputt = p.chooseCard("Choisissez une carte", pioche, false);
-					// On l'ajoute à la liste
-					toTrash.add(inputt);
-				}else {
-					// Sinon on affiche un message
-					System.out.println("Il n'y a pas de TreasureCard à voler !");
-				}
+				couple.toString();
 
+				// On parcourt couple
+				for(int i=0; i<2; i++){
+					// On discard toute carte qui n'est pas Trésor
+					if (! couple.get(i).getTypes().contains(CardType.Treasure)) {
+						op.gain(couple.get(i));
+					}
+				}
+				// Si couple est non vide	
+				if(! couple.isEmpty()) {
+					// On en choisit 1
+					String inputt = p.chooseCard("Choisissez une carte", couple, false);
+					// On l'ajoute à la liste
+					toTrash.add(couple.getCard(inputt));
+				}
+			}else {
+				// Sinon on affiche un message
+				System.out.println("Il n'y a pas de TreasureCard à voler !");
 			}
 
 		}
+
+
 		// Parmi la liste des cartes à écarter, on choisit celle qu'on veut recevoir
 		// On cré un booléen indiquant si le joueur souhaite continuer à recevoir des cartes
 		boolean choice = true;
@@ -67,13 +72,17 @@ public class Thief extends AttackCard {
 			if (input.equals("y")) {
 				String inputc = p.chooseCard("Choisissez une carte à recevoir", toTrash, true);
 				// Si le joueur n'a pas choisit une carte de la liste
-				if(inputc.equals(null)) {
+				if(inputc.equals("")) {
+					// On quite la boucle
 					choice = false;
 				}else {
 					// Sinon, la carte est reçue
-					./
+					p.gain(toTrash.getCard(inputc));
+					// Et retirée de la liste toTrash
+					toTrash.remove(inputc);
 				}
 			}else {
+				// Sinon on quite la boucle
 				choice = false;
 			}
 		}
