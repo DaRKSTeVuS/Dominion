@@ -17,7 +17,7 @@ public class Bureaucrat extends AttackCard {
 
 	public Bureaucrat() {
 		// Construction de la carte avec ses caractérisques
-		super("Bureaucrat", 4);
+		super("Bureaucrat", 0);
 	}
 
 	@Override
@@ -27,7 +27,7 @@ public class Bureaucrat extends AttackCard {
 			// Sinon on previens qu'il y en a plus de disponible
 			System.err.println("Il n'y a pas de carte Silver en reserve");
 		}
-		// On parcours la liste des adversaire
+		// On parcours la liste des adversaire;
 		for (Player op : p.otherPlayers()) {
 			// On verifiqu'ils ne pocede pas de carte Action Reaction
 			// Et qu'il souhaite la jouer

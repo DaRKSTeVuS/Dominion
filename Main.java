@@ -16,7 +16,7 @@ class Main {
 		List<CardList> kingdomStacks = new ArrayList<CardList>();
 		CardList stack;
 		// Ajouter un bloc pour chaque carte royaume à utiliser
-		
+
 		// Ajout des cartes Atelier
 		stack = new CardList();
 		for (int i = 0; i < 10; i++) {
@@ -75,6 +75,12 @@ class Main {
 		stack = new CardList();
 		for (int i = 0; i < 10; i++) {
 			stack.add(new Village());
+		}
+		kingdomStacks.add(stack);
+		// Ajout des cartes Bureaucrat
+		stack = new CardList();
+		for (int i = 0; i < 10; i++) {
+			stack.add(new Bureaucrat());
 		}
 		kingdomStacks.add(stack);
 		// Instancie et exécute une partie
