@@ -25,36 +25,18 @@ public class Cellar extends ActionCard {
 		// On va pouvoir défausser autant de carte qu'on voudra, dans la limite de la main
 		// On va garder ce chiffre dans une variable
 		int cptDef = 0;
-		// Création de la liste de choix oui/non
-		List<String> choices = Arrays.asList("y", "n");
-		// On cré la liste des cartes en main du joueur
-		CardList cchoices = new CardList();
-		for (Card c: p.cardsInHand()) {
-			cchoices.add(c);
-		}
-		while(!p.getActionCards().isEmpty()) {
-			// On propose au joueur de défausser une carte jusqu'à ce qu'il n'ait plus 
-			// de carte à défausser ou passe. Il peut passer à tout momment
-			// En revanche, il ne peut répondre que par oui ou par non
-			String input = p.choose("Voulez-vous défausser une carte ? (y/n)", choices, false);
-			// Si on décide de défausser une carte
-			if (input.equals("y")) {
-				// On propose au joueur la liste des cartes disponibles
-				// Le joueur peut toujours passer s'il change d'avis
-				String inputc = p.chooseCard("Choisissez une carte à défausser.", cchoices, true);
-				// On défausse la carte @param inputc
-				boolean test = p.defausse(inputc);
-				// on retire ca carte de la liste des choix
-				cchoices.remove(inputc);
-				// Si le test est vrai, alors la carte à été défaussée correctement
-				if (test) {
-					// Alors on incrémente le nombre de cartes défaussées
-					cptDef++;
-				}
-				// Sinon, la carte n'était pas dans la main du joueur, on ne fait rien
-			}
-			// Si la réponse est non, on sort de la boucle
-			else {
+		// Tant que le joueur à des cartes en main
+		while (!p.cardsInHand().isEmpty()) {
+			// On lui demande laquelle il veut defausser
+			String inputc = p.chooseCard("Choisissez une carte à défausser.", p.cardsInHand(), true);
+			// S'il ne passe pas la question
+			if (!inputc.equals("")) {
+				// On defausse la carte en question
+				p.defausse(inputc);
+				// On incrémente le compteur de carte defaussé
+				cptDef++;
+			} else { 
+				// On quitte la boucle si le joueur passe la question
 				break;
 			}
 		}
@@ -62,6 +44,5 @@ public class Cellar extends ActionCard {
 		for(int i=0; i<cptDef; i++) {
 			p.drawToHand();
 		}
-		// Sinon, l'action est finie
 	}
 }
