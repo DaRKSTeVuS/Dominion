@@ -1,6 +1,5 @@
 package dominion.card.base;
 
-import java.util.*;
 import dominion.*;
 import dominion.card.*;
 
