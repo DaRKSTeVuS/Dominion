@@ -831,11 +831,9 @@ public class Player {
 	 */
 	public void discardDraw() {
 		// On parcours la pioche
-		for(Card c : this.draw) {
-			// On ajoute la carte courante a la defausse
-			this.discard.add(c);
-			// On retire la carte de la pioche
-			this.draw.remove(c);
+		while (!this.draw.isEmpty()) {
+			// On ajoute la carte a {@code this.discard}, tout en la retirant de {@code this.draw}
+			this.discard.add(this.draw.remove(0));
 		}
 	}
 

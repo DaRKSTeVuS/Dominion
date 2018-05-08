@@ -22,10 +22,10 @@ public class Chancellor extends ActionCard {
 		// +2 Pièces
 		p.incrementMoney(2);
 		// Propose au joueur de défausser immédiatement son deck
-		List<String> choices = Arrays.asList("oui", "non");
+		List<String> choices = Arrays.asList("y", "n");
 		String input = p.choose("Voulez-vous défausser une carte (y/n)", choices, false);
 		// Si oui, défausse le deck {@code draw}
-		if (input == "oui") {
+		if (input.equals("y")) {
 			p.discardDraw();
 		}
 		// Si non, ne fait rien de plus	

@@ -29,7 +29,7 @@ public class Workshop extends ActionCard {
 		}
 		// On propose au joueur d'en choisir une 
 		String inputc = p.chooseCard("Choisissez une carte à recevoir : ", list, true);
-		// il la reçoit {@code supplyToHand(String cardName)}
-		p.supplyToHand(inputc);
+		// il la reçoit dans la defausse}
+		p.gain(inputc);
 	}
 }
