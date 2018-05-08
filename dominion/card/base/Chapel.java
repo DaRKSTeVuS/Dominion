@@ -1,5 +1,4 @@
 package dominion.card.base;
-import java.util.*;
 
 import dominion.*;
 import dominion.card.*;
@@ -18,27 +17,21 @@ public class Chapel extends ActionCard {
 
 	@Override
 	public void play(Player p) {
-		int i = 0; // Compteur des cartes défaussées
+		// Compteur des cartes défaussées
+		int cpt = 0;
 		// Tant qu'il nous reste des cartes a défausser (on en a pas encore défaussé 4) et
 		// qu'il nous reste des cartes en main
-		while (p.cardsInHand().size()>0 && i<4) {
-			// On propose au joueur d'écarter une carte
-			List<String> choices = Arrays.asList("oui", "non");
-			String input = p.choose("Voulez-vous écarter une carte (y/n)", choices, false);
-			// Si oui, on lui demande laquelle (parmis ses cartes en main)
-			if (input == "oui") {
-				CardList cchoice = new CardList();
-				for (Card c: p.getActionCards()) {
-					cchoice.add(c);
-				}
-				String inputc = p.chooseCard("Choisissez une carte à écarter.", cchoice, true);
+		while (!p.cardsInHand().isEmpty() && cpt < 4) {
+			// On demande au joueur quelles cartes en main il veut defausser
+			String inputc = p.chooseCard("Choisissez une carte à écarter.", p.cardsInHand(), true);
+			// Si je joueur ne passe pas
+			if (!inputc.equals("")) {
 				// On écarte la carte
 				p.ecarter(inputc, "hand");
 				// On incrémente le compteur de cartes
-				i++;
-			}
-			// Si non, on sort de la boucle
-			else {
+				cpt++;
+			} else {
+				// Si le joueur passe on quitte la boucle
 				break;
 			}
 		}
