@@ -304,8 +304,6 @@ public class Player {
 		}
 		// On retire la premiere carte de la pioche
 		Card carte = this.draw.remove(0);
-		// On l'ajoute à la main du joueur
-		this.hand.add(carte);
 		// Puis on la retourne
 		return carte;
 	}
@@ -485,7 +483,7 @@ public class Player {
 					// On décrémente les Points d'Achat de 1
 					this.incrementBuys(-1);
 					// Le joueur gagne la carte {@code gain(String cardName)} et on la retourne
-					return this.gain(cardName);
+					return this.gain(this.game.removeFromSupply(cardName).toString());
 				}
 			}
 		}
@@ -722,23 +720,20 @@ public class Player {
 		// (4) Achat
 		// tant qu'il est possible de faire des achats
 		while(this.getBuys() > 0 && this.getMoney() > 0){
-			// On demande au joueur s'il souhaite acheter une carte
-			String input = this.choose("Voulez-vous acheter une carte (y/n)", choicesYN, false);
-			// Si le joueur désire faire un achat
-			if(input.equals("y")) {
-				// On lui propose les cartes disponibles à l'achat
-				CardList cardDispo = this.game.availableSupplyCards();
-				System.out.println(cardDispo.toString());
-				// et le joueur choisit une carte qu'il souhaite acheter
-				String inputc = this.chooseCard("Quelle carte souhaitez vous acheter ?", this.game.availableSupplyCards(), false);
-				// On utilise la méthode {@code buyCard(Card c)}
-				if (this.buyCard(inputc) == null) {
-					System.err.println("La carte " + inputc + " n'as pu être achetée !");
-				};
-			} else {
-				// Sinon on sort de la boucle
+			// On lui propose les cartes disponibles à l'achat
+			CardList cardDispo = this.game.availableSupplyCards();
+			System.out.println(cardDispo.toString());
+			// et le joueur choisit une carte qu'il souhaite acheter
+			String inputc = this.chooseCard("Quelle carte souhaitez vous acheter ?", this.game.availableSupplyCards(), true);
+			// Si le joueur passe la question
+			if (inputc.equals("")) {
+				// On quitte la boucle
 				break;
 			}
+			// On utilise la méthode {@code buyCard(Card c)}
+			if (this.buyCard(inputc) == null) {
+				System.err.println("La carte " + inputc + " n'as pu être achetée !");
+			};
 		}
 
 		// (5) Fin du tour
