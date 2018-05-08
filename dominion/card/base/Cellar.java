@@ -32,7 +32,7 @@ public class Cellar extends ActionCard {
 		for (Card c: p.cardsInHand()) {
 			cchoices.add(c);
 		}
-		while(p.getActionCards() != null ) {
+		while(!p.getActionCards().isEmpty()) {
 			// On propose au joueur de défausser une carte jusqu'à ce qu'il n'ait plus 
 			// de carte à défausser ou passe. Il peut passer à tout momment
 			// En revanche, il ne peut répondre que par oui ou par non
