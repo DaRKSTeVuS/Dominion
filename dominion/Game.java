@@ -96,7 +96,7 @@ public class Game {
 			// On prévoit d'ajouter 8 cartes
 			nbCards = 8;
 			// Si le nombre de joueurs est 3 ou 4	
-		} else if ((this.players.length == 3) && (this.players.length == 4)) {
+		} else {
 			// On prévoit d'ajouter 12 cartes
 			nbCards = 12;
 		}
