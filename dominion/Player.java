@@ -546,19 +546,19 @@ public class Player {
 			// Lit l'entrée de l'utilisateur jusqu'à obtenir un choix valide
 			while (true) {
 				System.out.print("\n\n");
-				// Affiche l'état du jeu
+				// affiche l'état du jeu
 				System.out.print(this.game);
 				System.out.print("\n");
-				// Affiche l'état du joueur
+				// affiche l'état du joueur
 				System.out.print(this);
 				System.out.print("\n");
-				// Affiche l'instruction
+				// affiche l'instruction
 				System.out.println(">>> " + instruction);
 				System.out.print("> ");
-				// Lit l'entrée de l'utilisateur au clavier
+				// lit l'entrée de l'utilisateur au clavier
 				input = this.game.readLine();
 				if (choiceSet.contains(input) || (canPass && input.equals(""))){
-					// Si une réponse valide est obtenue, elle est renvoyée
+					// si une réponse valide est obtenue, elle est renvoyée
 					return input;
 				}
 			}

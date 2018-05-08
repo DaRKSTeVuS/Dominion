@@ -52,6 +52,8 @@ public class Game {
 	 * - 10 * (n-1) Curse où n est le nombre de joueurs dans la partie
 	 */
 	public Game(String[] playerNames, List<CardList> kingdomStacks) {
+		// Initialisation de {@code scanner}
+		this.scanner = new Scanner(System.in);
 		// Initialisation de {@code players}
 		this.players = new Player[playerNames.length];
 		// On initialise l'index du joueur courrant {@code currentPlayerIndex}
