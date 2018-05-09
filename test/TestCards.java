@@ -154,6 +154,7 @@ public class TestCards extends Test {
 		p1.addToHand(Copper.class, 1);
 		// avec Copper
 		p1.playCard("Moneylender");
+		System.err.println(p1.getMoney());
 		t.check(p1.getMoney() == 3);
 		// sans Copper
 		p1.playCard("Moneylender");

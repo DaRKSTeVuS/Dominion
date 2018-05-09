@@ -13,7 +13,7 @@ public class Moneylender extends ActionCard {
 
 	public Moneylender() {
 		// Construction de la carte avec ses caractérisques
-		super("MoenyLender", 4);
+		super("Moneylender", 4);
 	}
 
 	@Override
@@ -30,6 +30,5 @@ public class Moneylender extends ActionCard {
 				break;
 			}
 		}
-		// Sinon, ne fait rien
 	}
 }
