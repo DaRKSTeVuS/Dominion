@@ -292,18 +292,26 @@ public class Player {
 	 * @return la carte piochée, {@code null} si aucune carte disponible
 	 */
 	public Card drawCard () {
+		// On verifie que la pioche et la defausse sont vide
+		if (this.draw.isEmpty() && this.discard.isEmpty()){
+			// si c'est le cas on retourne {@code null}
+			return null;
+		}
 		// On vérifie que la pioche est vide
-		if(this.draw.isEmpty()) {
+		if (this.draw.isEmpty()) {
 			// Si c'est le cas, on mélange la défausse 
 			this.discard.shuffle();
 			// Puis on transfère tout dans la pioche
 			for(Card c : this.discard) {
 				this.draw.add(c);
 			}
-			// On vide la défausse
-			this.discard = new CardList();
+			// Tant que la defausse n'est pas vide
+			while (!this.discard.isEmpty()) {
+				// On retire la première carte
+				this.discard.remove(0);
+			}
 		}
-		// On retire la premiere carte de la pioche
+		// On retire la premiere cart de la pioche
 		Card carte = this.draw.remove(0);
 		// Puis on la retourne
 		return carte;
