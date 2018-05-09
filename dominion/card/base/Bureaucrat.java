@@ -17,7 +17,7 @@ public class Bureaucrat extends AttackCard {
 
 	public Bureaucrat() {
 		// Construction de la carte avec ses caractérisques
-		super("Bureaucrat", 0);
+		super("Bureaucrat", 4);
 	}
 
 	@Override
@@ -41,9 +41,9 @@ public class Bureaucrat extends AttackCard {
 					System.out.println(op.cardsInHand().toString());
 				} else {
 					// Sinon on demande au joueur {code op} quelle carte il veut defausser
-					String input = op.chooseCard("Quelle carte victoire voulez vous mettre sur votre pioche ?", vicCard, false);
+					// String input = op.chooseCard("Quelle carte victoire voulez vous mettre sur votre pioche ?", vicCard, false);
 					// On dévoile la carte et on la met au dessus de la pioche
-					System.out.println("Carte mise en haut de la pioche : " + op.putOnTopDraw(input).toString());
+					System.out.println("Carte mise en haut de la pioche : " + op.putOnTopDraw(vicCard.get(0).toString()));
 				}
 			}
 		}
