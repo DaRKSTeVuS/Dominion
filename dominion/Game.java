@@ -1,5 +1,6 @@
 package dominion;
 import java.util.*;
+
 import dominion.card.*;
 import dominion.card.common.*;
 
@@ -104,7 +105,15 @@ public class Game {
 		}
 		// Création de la liste de carte Estate
 		CardList estate = new CardList();
-		// On ajoute 8 cartes Duchy
+		/* Comme le stack de carte estate doit avoir 12 cartes
+		 * On ajoute les cartes qui vont être piochées par les joueurs
+		 * soit n * 3 cartes avec n le nombre de joueur
+		 * avec un maximun de 12
+		 */
+		for (int i = 0; i < this.players.length * 3 && i < 12 ; i++) {
+			estate.add(new Estate());
+		}
+		// Création de la liste de carte duchy
 		CardList duchy = new CardList();
 		// Création de la liste de carte Province
 		CardList province = new CardList();
