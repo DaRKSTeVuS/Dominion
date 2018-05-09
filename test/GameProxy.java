@@ -1,22 +1,28 @@
 package test;
 
-import java.lang.reflect.Field;
-import java.io.*;
-import java.util.*;
+import dominion.Game;
+import dominion.Player;
+import dominion.card.CardList;
 
-import dominion.*;
-import dominion.card.*;
+import java.lang.reflect.Field;
+import java.util.List;
 
 public class GameProxy {
-	public static GameProxy shared;
+	/**
+	 * Instance de Game associée
+	 */
 	public Game game;
+	/**
+	 * Accès direct aux piles de réserve du jeu
+	 */
 	public List<CardList> supplyStacks;
+	/**
+	 * Accès direct aux joueurs du jeu
+	 */
 	public Player[] players;
-	private Field scanner_f, currentPlayerIndex_f;
-	private PipedOutputStream pipeOut;
+	private Field currentPlayerIndex_f;
 
 	public GameProxy(Game g) {
-		GameProxy.shared = this;
 		this.game = g;
 		try {
 			Field supplyStacks_f = Game.class.getDeclaredField("supplyStacks");
@@ -25,8 +31,6 @@ public class GameProxy {
 			Field players_f = Game.class.getDeclaredField("players");
 			players_f.setAccessible(true);
 			this.players = (Player[]) players_f.get(this.game);
-			this.scanner_f = Game.class.getDeclaredField("scanner");
-			scanner_f.setAccessible(true);
 			this.currentPlayerIndex_f = Game.class.getDeclaredField("currentPlayerIndex");
 			currentPlayerIndex_f.setAccessible(true);
 		} catch (NoSuchFieldException | IllegalAccessException e) {
@@ -47,42 +51,36 @@ public class GameProxy {
 		return 0;
 	}
 
+	/**
+	 * Renvoie la pile correspondant au nom de carte passé en argument.
+	 * @param cardName: nom de la carte recherchée
+	 * @return: la pile de réserve correspondant au nom, ou null si aucune.
+	 */
+	public CardList getSupplyStack(String cardName) {
+		for (CardList stack: this.supplyStacks) {
+			if (!stack.isEmpty() && stack.get(0).getName().equals(cardName)) {
+				return stack;
+			}
+		}
+		return null;
+	}
+
 	public void run() {
-		PrintStream outs = System.out;
-		try {
-			System.setOut(Test.nullOut);
-			this.game.run();
-		} finally {
-			System.setOut(outs);
-		}
+		this.game.run();
 	}
 
-	public void setInput(String inputString) {
-		ByteArrayInputStream is = new ByteArrayInputStream(inputString.getBytes());
-		try {
-			this.scanner_f.set(this.game, new Scanner(is));
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public void setPipedInput() {
-		try {
-			PipedInputStream ins = new PipedInputStream();
-			PipedOutputStream outs = new PipedOutputStream(ins);
-			this.scanner_f.set(this.game, new Scanner(ins));
-			this.pipeOut = outs;
-		} catch (IllegalAccessException | IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public void writeToPipedInput(String inputString) {
-		try {
-			this.pipeOut.write(inputString.getBytes(), 0, inputString.length());
-			this.pipeOut.flush();
-		} catch (IOException e) {
-			e.printStackTrace();
+	/**
+	 * Fixe la liste d'instructions du jeu.
+	 * N'a d'effet que si le jeu est une instance de IOGame
+	 * @param args liste de chaînes de caractères. Chaque élément est une instruction (sans '\n' à la fin)
+	 */
+	public void setInput(String... args) {
+		if (this.game instanceof IOGame) {
+			IOGame g = (IOGame) this.game;
+			g.clearInstructions();
+			for(String s: args) {
+				g.addInstruction(s);
+			}
 		}
 	}
 }
