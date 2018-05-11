@@ -1,8 +1,5 @@
 package dominion.card.base;
 
-import java.util.Arrays;
-import java.util.List;
-
 import dominion.*;
 import dominion.card.*;
 
@@ -24,6 +21,8 @@ public class Mine extends ActionCard {
 	public void play(Player p) {
 		// On recupère les cartes trésor en main
 		CardList handTre = p.getTreasureCards();
+		// On creer une liste pour les cartes qui pourront être récupérée
+		CardList tmpTre = new CardList();
 		// On creer une variable pour stocké la carte choisi
 		Card tmpC;
 		// Si le joueur à des cartes Trésor en main
@@ -38,20 +37,17 @@ public class Mine extends ActionCard {
 				if (c.getTypes().contains(CardType.Treasure)) {
 					// Si la carte trouvé à un coup inferieur a la carté ecarté + 3
 					if (c.getCost() <= tmpC.getCost() + 3) {
-						// On crée une liste de choix
-						List<String> choices = Arrays.asList("y", "n");
-						// On demande au joueur s'il veux acheter cette carte
-						String input2 = p.choose("Voulez vous acheter la carte " + c.toString() + " ? (y/n)", choices, false);
-						// S'il répond oui
-						if (input2.equals("y")) {
-							// On retire la carte de la réserve
-							p.getGame().removeFromSupply(c.getName());
-							// On l'ajoute à sa main
-							p.supplyToHand(c.toString());
-						}
+						// On ajoute la carte si elle est achetable
+						tmpTre.add(c);
 					}
 				}
 			}
 		}
+		// O, demande au joueur quelle carte il veux récuperer
+		String input = p.chooseCard("Quelle carte voulez vous récuperer ?", tmpTre, false);
+		// On enlève cette carte de la réserve
+		p.getGame().removeFromSupply(input);
+		// On ajoute cette carte à la main de {@code p}
+		p.supplyToHand(input);
 	}
 }
