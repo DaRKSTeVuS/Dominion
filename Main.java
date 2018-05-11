@@ -18,10 +18,11 @@ class Main {
 		// Ajouter un bloc pour chaque carte royaume à utiliser
 
 		// Ajout des cartes Atelier
-		stack = new CardList();
+		stack = new CardList(Workshop.class, 10);
+		/* stack = new CardList();
 		for (int i = 0; i < 10; i++) {
 			stack.add(new Workshop());
-		}
+		}*/
 		kingdomStacks.add(stack);
 		// Ajout des cartes Bûcheron
 		stack = new CardList();

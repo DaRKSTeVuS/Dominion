@@ -68,30 +68,12 @@ public class Game {
 			// On ajoute par copie les CardList contenue dans {@code kingdomStacks}
 			this.supplyStacks.add(new CardList(cl));
 		}
-		// Création de la liste de carte copper
-		CardList copper = new CardList();
-		// On ajoute 60 cartes copper à la CardList {@code copper}
-		for (int i = 0; i < 60; i++) {
-			copper.add(new Copper());
-		}
-		// On ajoute copper au {@code supplyStacks}
-		this.supplyStacks.add(copper);
-		// Création de la liste de carte silver
-		CardList silver = new CardList();
-		// On ajoute 40 cartes silver à la CardList {@code silver}
-		for (int i = 0; i < 40; i++) {
-			silver.add(new Silver());
-		}
-		// On ajoute silver au {@code supplyStacks}
-		this.supplyStacks.add(silver);
-		// Création de la liste de carte gold
-		CardList gold = new CardList();
-		// On ajoute 30 cartes gold à la CardList {@code gold}
-		for (int i = 0; i < 30; i++) {
-			gold.add(new Gold());
-		}
-		// On ajoute gold au {@code supplyStacks}
-		this.supplyStacks.add(gold);
+		// On ajoute 30 copper au {@code supplyStacks}
+		this.supplyStacks.add(new CardList(Copper.class, 60));
+		// On ajoute 40 silver au {@code supplyStacks}
+		this.supplyStacks.add(new CardList(Silver.class, 40));
+		// On ajoute 30 gold au {@code supplyStacks}
+		this.supplyStacks.add(new CardList(Gold.class, 30));
 		// On initialise le nombre de cartes à distribuer
 		int nbCards = 0;
 		// Si le nombre de joueurs est égal à 2
@@ -103,45 +85,26 @@ public class Game {
 			// On prévoit d'ajouter 12 cartes
 			nbCards = 12;
 		}
-		// Création de la liste de carte Estate
-		CardList estate = new CardList();
 		/* Comme le stack de carte estate doit avoir 12 cartes
 		 * On ajoute les cartes qui vont être piochées par les joueurs
 		 * soit n * 3 cartes avec n le nombre de joueur
 		 * avec un maximun de 12
 		 */
-		for (int i = 0; i < this.players.length * 3 && i < 12 ; i++) {
-			estate.add(new Estate());
-		}
-		// Création de la liste de carte duchy
-		CardList duchy = new CardList();
-		// Création de la liste de carte Province
-		CardList province = new CardList();
-		// Ajoute {@code nbCards} fois des cartes :
-		for (int i = 0; i < nbCards; i++) {
-			// de type Estate
-			estate.add(new Estate());
-			// de type Duchy
-			duchy.add(new Duchy());
-			// de type Province
-			province.add(new Province());
-		}
-		// On ajoute {@code estate} au {@code supplyStacks}
-		this.supplyStacks.add(estate);
-		// On ajoute {@code duchy} au {@code supplyStacks}
-		this.supplyStacks.add(duchy);
-		// On ajoute {@code province} au {@code supplyStacks}
-		this.supplyStacks.add(province);
-		// Creation de la liste de carte Curse
-		CardList curse = new CardList();
+		this.supplyStacks.add(new CardList(Estate.class, (this.players.length * 3) + nbCards));
+		// On ajoute {@code nbCards} Duchy au {@code supplyStacks}
+		this.supplyStacks.add(new CardList(Duchy.class, nbCards));
+		// On ajoute {@code nbCards} Province au {@code supplyStacks}
+		this.supplyStacks.add(new CardList(Province.class, nbCards));
 		// On calcule le nombre de cartes à ajouter (10 * (n-1) cartes Curse où n est le nombre de joueurs dans la partie)
 		nbCards = 10 * (this.players.length - 1);
-		// On ajoute {@code nbCards} cartes Curse à la CardList {@code : curse}
-		for (int i = 0; i < nbCards; i++) {
-			curse.add(new Curse());
+		// Il y a un maximum de 30 cartes curse dans un jeu
+		// Si la variable est supérieur à 30
+		if (nbCards > 30) {
+			// On la remet à 30
+			nbCards = 30;
 		}
-		// On ajoute curse au {@code supplyStacks}
-		this.supplyStacks.add(curse);
+		// On ajoute 10 * (this.players.length - 1) Curse au {@code supplyStacks}
+		this.supplyStacks.add(new CardList(Curse.class, nbCards));
 		// Pour chaque nom de joueurs dans {@code playerNames}
 		for (int i = 0; i < this.players.length; i++) {
 			// On prend le nom, et on creer un nouveau joueur à l'affectant à this

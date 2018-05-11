@@ -27,6 +27,24 @@ public class CardList extends ArrayList<Card> {
 	}
 	
 	/**
+	 * Constructeur de CardList contenant `nb_copies` exemplaires de la carte 
+	 * passée en argument
+	 * 
+	 * @param c: classe de carte à instancier
+	 * @param nb_copies: nombre d'exemplaires à mettre dans la pile
+	 */
+	public CardList (Class<?> c, int nb_copies) {
+		super();
+		for (int i = 0; i < nb_copies; i++) {
+			try {
+				this.add((Card) c.getConstructor().newInstance());
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	/**
 	 * Mélange la liste
 	 */
 	public void shuffle() {
