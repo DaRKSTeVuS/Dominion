@@ -24,13 +24,13 @@ public class Adventurer extends ActionCard {
 		// On init une carte
 		Card tmpC;
 		// On compte le nombre de carte qu'il y a dans la main et la defausse
-		int nbCardDpD = p.cardsInHand().size() + p.getNbCardDiscard();
+		int nbCardDpD = p.getNbCardDraw() + p.getNbCardDiscard();
 		// On init un compteur de trésor
 		int cptT = 0;
 		// On initialise un compteur de carte pioché
 		int cptP = 0;
 		// Tant que le compteur est <= 2
-		while (cptT <= 2) {
+		while (cptT < 2) {
 			// On pioche
 			tmpC = p.drawCard();
 			// Si la carte est nulle alors il n'y a rien à piocher
@@ -41,9 +41,9 @@ public class Adventurer extends ActionCard {
 				break;
 			}
 			// On incrémente le nombre de carte pioché
-			cptT++;
+			cptP++;
 			// On dévoile la carte pioché
-			System.out.println("Carte piochée :" + tmpC.toString());
+			System.out.println("Carte piochée : " + tmpC.toString());
 			// Si c'est une carte Trésor, on l'ajouta a la main & on incrémente le compteur
 			if (tmpC.getTypes().contains(CardType.Treasure)) {
 				p.cardToHand(tmpC);

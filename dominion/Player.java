@@ -148,6 +148,15 @@ public class Player {
 	public int getNbCardDiscard () {
 		return this.discard.size();
 	}
+	
+	/**
+	 * Getter
+	 * 
+	 * @return Le nombre de carte dans la pioche
+	 */
+	public int getNbCardDraw () {
+		return this.draw.size();
+	}
 
 	// Setter
 	/**
