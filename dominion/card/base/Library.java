@@ -22,16 +22,14 @@ public class Library extends ActionCard {
 
 	@Override
 	public void play(Player p) {
-		// On calcule le nombre de carte dans la main du joueur
-		int nbCardPlayer = p.cardsInHand().size();
 		// On initialisate une variablie pour stocké la carte pioché
 		Card tmpC;
 		// On initialise la liste qui contiendra les réponses
-		List<String> choix = Arrays.asList("oui", "non");
+		List<String> choix = Arrays.asList("y", "n");
 		// On crée la variable de réponse
 		String input;
 		// On pioche jusqu'as 7 cartes
-		for (int i = nbCardPlayer; i <= 7; i++) {
+		while (p.cardsInHand().size() < 7) {
 			// On récupère la carte pioché
 			tmpC = p.drawCard();
 			// Si la carte est nulle alors il n'y a rien à piocher
@@ -50,9 +48,7 @@ public class Library extends ActionCard {
 				// On demande au joueur s'il veux la conserver
 				input = p.choose("Voulez vous conserver cette carte Action : " + tmpC.toString() + " ?", choix, false);
 				// Si non
-				if (input.equals("non")) {
-					// On décrémente le compteur pour piocher une autre carte
-					i--;
+				if (input.equals("n")) {
 					// On defausse la carte
 					p.defausse(tmpC);
 				}
