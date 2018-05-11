@@ -27,9 +27,11 @@ public class Witch extends AttackCard {
 			// On verifiqu'ils ne pocede pas de carte Action Reaction
 			// Et qu'il souhaite la jouer
 			// Si ce n'est pas le cas
-			if (!this.otherPlayerGotReaction(p)) {
-				o.gain(p.getGame().getFromSupply("Curse"));
-				p.getGame().removeFromSupply("Curse");
+			if (!this.otherPlayerGotReaction(o)) {
+				// {@code o} gagne une carte curse
+				o.gain(o.getGame().getFromSupply("Curse"));
+				// Que l'on retire de la réserve
+				o.getGame().removeFromSupply("Curse");
 			}
 		}
 	}
