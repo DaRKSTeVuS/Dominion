@@ -46,8 +46,8 @@ public class Spy extends AttackCard {
 		}
 		// On parcours ses adversaire
 		for (Player op : p.otherPlayers()) {
-			// Si le joueur n'as pas de carte Action Réaction
-			if(!this.otherPlayerGotReaction(op)) {
+			// Si le joueur n'as pas de carte Action Réaction Moat
+			if(!this.otherPlayerGotReactionMoat(op)) {
 				// On dévoile la premiere carte du deck de {@code op}
 				pioche = op.drawCard();
 				// Le joueur {@code p} choisi s'il cette carte est defaussé ou non

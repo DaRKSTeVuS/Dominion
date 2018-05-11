@@ -24,10 +24,10 @@ public class Witch extends AttackCard {
 		}
 		// Les adversaires reçoivent une carte Malédiction
 		for(Player o : p.otherPlayers()) {
-			// On verifiqu'ils ne pocede pas de carte Action Reaction
+			// On verifiqu'ils ne pocede pas de carte Action Reaction Moat
 			// Et qu'il souhaite la jouer
 			// Si ce n'est pas le cas
-			if (!this.otherPlayerGotReaction(o)) {
+			if (!this.otherPlayerGotReactionMoat(o)) {
 				// {@code o} gagne une carte curse
 				o.gain(o.getGame().getFromSupply("Curse"));
 				// Que l'on retire de la réserve

@@ -32,10 +32,10 @@ public class Bureaucrat extends AttackCard {
 		}
 		// On parcours la liste des adversaire;
 		for (Player op : p.otherPlayers()) {
-			// On verifiqu'ils ne pocede pas de carte Action Reaction
+			// On verifiqu'ils ne possède pas de carte Moat
 			// Et qu'il souhaite la jouer
 			// Si ce n'est pas le cas
-			if (!this.otherPlayerGotReaction(op)) {
+			if (!this.otherPlayerGotReactionMoat(op)) {
 				// On recupere les cartes victoire du joueurs
 				CardList vicCard = op.getVictoryCards();
 				// Si le joueur {code op} n'as pas de carte victoire en main

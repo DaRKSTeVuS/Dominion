@@ -28,19 +28,6 @@ public abstract class ReactionCard extends ActionCard {
 	 * @param p joueur qui pocede la carte
 	 * @return true s'il souhaite la jouer, sinon false
 	 */
-	public boolean reaction (Player p) {
-		// On demande au joueur s'il souhaite la jouer
-		List<String> choices = Arrays.asList("y", "n");
-		String input = p.choose("Voulez vous jouer la carte " + this.toString() + " ? (y/n)", choices, true);
-		// Si oui
-		if (input.equals("y")) {
-			// On joue la carte
-			System.out.println("Carte " + this.getName() + " devoilée, la carte attack n'as pas d'effet");
-			// On retourve vrai
-			return true;
-		} else {
-			// On signale qu'il ne souhaite pas la jouer
-			return false;
-		}
-	}
+	public abstract boolean reaction (Player p);
+	
 }

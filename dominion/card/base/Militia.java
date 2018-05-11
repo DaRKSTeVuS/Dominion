@@ -22,8 +22,8 @@ public class Militia extends AttackCard {
 		p.incrementMoney(2);
 		// On parcours les adversaire
 		for(Player op : p.otherPlayers()) {
-			// Si le joueur n'as pas de carte réaction
-			if (!this.otherPlayerGotReaction(op)) {
+			// Si le joueur n'as pas de carte Moat
+			if (!this.otherPlayerGotReactionMoat(op)) {
 				// Tant que le joueur a plus de trois carte en mais
 				while (op.cardsInHand().size() > 3) {
 					// On lui demande quelle carte defausser

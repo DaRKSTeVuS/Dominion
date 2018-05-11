@@ -30,7 +30,7 @@ public abstract class AttackCard extends ActionCard {
 	 * @param p Le joueur qui pocède ou non des cartes Action Réaction
 	 * @return true si le joueur a des cartes Action / Réaction, false s'il n'en a pas ou ne souhaite pas les jouer.
 	 */
-	public boolean otherPlayerGotReaction (Player p) {
+	public boolean otherPlayerGotReactionMoat (Player p) {
 		// On parcours les carte du joueur {@code p}
 		// Pour trouver une carte Action Reaction
 		for (Card c : p.getActionCards()) {

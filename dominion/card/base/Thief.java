@@ -27,8 +27,8 @@ public class Thief extends AttackCard {
 		CardList toTrash = new CardList();
 		// On parcourt la liste des adversaires
 		for (Player op : p.otherPlayers()) {
-			// Si le joueur n'as pas de carte réaction
-			if (!this.otherPlayerGotReaction(op)) {
+			// Si le joueur n'as pas de carte Moat
+			if (!this.otherPlayerGotReactionMoat(op)) {
 				// On dévoile les 2 premières cartes de sa pioche
 				// On cré une liste de cartes contennant les 2 premières cartes de sa pioche
 				CardList couple = new CardList();
