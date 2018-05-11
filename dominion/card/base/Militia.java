@@ -25,9 +25,9 @@ public class Militia extends AttackCard {
 			// Si le joueur n'as pas de carte réaction
 			if (!this.otherPlayerGotReaction(op)) {
 				// Tant que le joueur a plus de trois carte en mais
-				while (p.cardsInHand().size() > 3) {
+				while (op.cardsInHand().size() > 3) {
 					// On lui demande quelle carte defausser
-					String inputc = op.chooseCard("Choisissez une carte à défausser.", p.cardsInHand(), false);
+					String inputc = op.chooseCard("Choisissez une carte à défausser.", op.cardsInHand(), false);
 					// On defausse son choix
 					op.defausse(inputc);
 				}
