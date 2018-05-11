@@ -18,10 +18,8 @@ public class Remodel extends ActionCard {
 
 	@Override
 	public void play(Player p) {
-		// On récupère la liste des cartes de la main du joueur
-		CardList hand = p.cardsInHand();
 		// Le joueur choisit une carte de sa main qu'il souhaite écarter
-		String inputc = p.chooseCard("Choisissez une carte à écarter", hand, true);
+		String inputc = p.chooseCard("Choisissez une carte à écarter", p.cardsInHand(), false);
 		// On écarte cette carte 
 		Card card = p.ecarter(inputc, "hand");
 		// On récupère sa valeur
@@ -40,6 +38,6 @@ public class Remodel extends ActionCard {
 		// On propose au joueur d'en choisir une 
 		String inputr = p.chooseCard("Choisissez une carte à recevoir : ", list, true);
 		// il la reçoit {@code supplyToHand(String cardName)}
-		p.supplyToHand(inputr);
+		p.gain(inputr);
 	}
 }
