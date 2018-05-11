@@ -55,9 +55,7 @@ public class Thief extends AttackCard {
 					// Sinon on affiche un message
 					System.out.println("Il n'y a pas de TreasureCard à voler !");
 				}
-
 			}
-
 			// Parmi la liste des cartes à écarter, on choisit celle qu'on veut recevoir
 			// On cré un booléen indiquant si le joueur souhaite continuer à recevoir des cartes
 			boolean choice = true;
@@ -84,7 +82,6 @@ public class Thief extends AttackCard {
 					choice = false;
 				}
 			}
-
 			// On écarte le reste
 			while(! toTrash.isEmpty()) {
 				toTrash.remove(0);

@@ -22,8 +22,9 @@ public class ThroneRoom extends ActionCard {
 		CardList action = p.getActionCards();
 		// On lui demande d'en choisir une
 		String inputc = p.chooseCard("Choisissez une carte à jouer deux fois : ", action, true);
-		// On la joue 2x
-		p.playCard(inputc);
+		// On fait appel au play de la carte
+		action.getCard(inputc).play(p);
+		// On joue la carte normalement
 		p.playCard(inputc);
 	}
 }
