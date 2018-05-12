@@ -78,7 +78,7 @@ public class TestGame extends Test {
 		Game g = IOGame.minimal();
 		CardList availableSupplies = g.availableSupplyCards();
 		t.check(availableSupplies.size() == 7);
-		for (int i=0; i<12; i++) {
+		for (int i = 0; i < 12; i++) {
 			g.removeFromSupply("Estate");
 		}
 		t.check(g.availableSupplyCards().size() == 6);
@@ -87,15 +87,15 @@ public class TestGame extends Test {
 	private static void testEndGame3Stack(Test t) {
 		Game g = IOGame.minimal();
 		t.check(!g.isFinished());
-		for (int i=0; i<12; i++) {
+		for (int i = 0; i < 12; i++) {
 			g.removeFromSupply("Estate");
 		}
 		t.check(!g.isFinished());
-		for (int i=0; i<20; i++) {
+		for (int i = 0; i < 20; i++) {
 			g.removeFromSupply("Curse");
 		}
 		t.check(!g.isFinished());
-		for (int i=0; i<30; i++) {
+		for (int i = 0; i < 30; i++) {
 			g.removeFromSupply("Gold");
 		}
 		t.check(g.isFinished());
@@ -103,7 +103,7 @@ public class TestGame extends Test {
 
 	private static void testEndGameProvince(Test t) {
 		Game g = IOGame.minimal();
-		for (int i=0; i<12; i++) {
+		for (int i = 0; i < 12; i++) {
 			g.removeFromSupply("Province");
 		}
 		t.check(g.isFinished());
@@ -114,14 +114,22 @@ public class TestGame extends Test {
 		this.runTest("Accès aux joueurs", TestGame::testGetPlayer);
 		this.runTest("Autres joueurs (nombre)", TestGame::testOtherPlayersSize);
 		this.runTest("Autres joueurs (noms)", TestGame::testOtherPlayersNames);
-		this.runTest("Nombre de cartes dans les piles de réserve", TestGame::testNbCardsInSupplies);
-		this.runTest("Nombre de piles de réserve disponibles", TestGame::testNbAvailableSupplies);
-		this.runTest("Trouver une carte de la réserve", TestGame::testGetFromSupply);
-		this.runTest("Trouver une carte absente de la réserve", TestGame::testGetNotInSupply);
-		this.runTest("Retirer une carte de la réserve", TestGame::testRemoveFromSupply);
-		this.runTest("Retirer une carte absente de la réserve", TestGame::testRemoveNotInSupply);
-		this.runTest("Lister les piles de réserve non vides", TestGame::testNbAvailableSupplies);
-		this.runTest("Fin de partie (3 piles vides)", TestGame::testEndGame3Stack);
+		this.runTest("Nombre de cartes dans les piles de réserve",
+				TestGame::testNbCardsInSupplies);
+		this.runTest("Nombre de piles de réserve disponibles",
+				TestGame::testNbAvailableSupplies);
+		this.runTest("Trouver une carte de la réserve",
+				TestGame::testGetFromSupply);
+		this.runTest("Trouver une carte absente de la réserve",
+				TestGame::testGetNotInSupply);
+		this.runTest("Retirer une carte de la réserve",
+				TestGame::testRemoveFromSupply);
+		this.runTest("Retirer une carte absente de la réserve",
+				TestGame::testRemoveNotInSupply);
+		this.runTest("Lister les piles de réserve non vides",
+				TestGame::testNbAvailableSupplies);
+		this.runTest("Fin de partie (3 piles vides)",
+				TestGame::testEndGame3Stack);
 		this.runTest("Fin de partie (Provinces)", TestGame::testEndGameProvince);
 	}
 

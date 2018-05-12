@@ -6,8 +6,7 @@ import dominion.card.*;
 /**
  * Carte Sorcière (Witch)
  * 
- * +2 Cartes.
- * Tous vos adversaires recoivent une carte Curse.
+ * +2 Cartes. Tous vos adversaires recoivent une carte Curse.
  */
 public class Witch extends AttackCard {
 
@@ -23,7 +22,7 @@ public class Witch extends AttackCard {
 			p.drawToHand();
 		}
 		// Les adversaires reçoivent une carte Malédiction
-		for(Player o : p.otherPlayers()) {
+		for (Player o : p.otherPlayers()) {
 			// On verifiqu'ils ne pocede pas de carte Action Reaction Moat
 			// Et qu'il souhaite la jouer
 			// Si ce n'est pas le cas

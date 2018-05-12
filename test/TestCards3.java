@@ -33,7 +33,8 @@ public class TestCards3 extends Test {
 		p1.addToDraw(Silver.class, 1);
 		p2.clear();
 		p2.addToDiscard(Estate.class, 1);
-		g.setInput("n", "y", "n"); // p0 ne défausse pas, p1 défausse, p2 ne défausse pas
+		g.setInput("n", "y", "n"); // p0 ne défausse pas, p1 défausse, p2 ne
+									// défausse pas
 		p0.playCard("Spy");
 		t.check(hasCards(p0.hand, "Copper"));
 		t.check(hasCards(p0.draw, "Copper"));
@@ -91,7 +92,8 @@ public class TestCards3 extends Test {
 		p0.addToDraw(Silver.class, 1);
 		g.setInput("y", "n");
 		p0.playCard("Library");
-		t.check(hasCards(p0.hand, "Copper", "Copper", "Library", "Library", "Silver", "Village", "Gold"));
+		t.check(hasCards(p0.hand, "Copper", "Copper", "Library", "Library",
+				"Silver", "Village", "Gold"));
 		t.check(hasCards(p0.discard, "Village"));
 	}
 

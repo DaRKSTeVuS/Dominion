@@ -9,9 +9,9 @@ import dominion.card.base.*;
 class Main {
 	public static void main(String[] args) {
 		// Noms des joueurs de la partie
-		// (le nombre total de joueurs correspond au nombre de noms dans le 
+		// (le nombre total de joueurs correspond au nombre de noms dans le
 		// tableau)
-		String[] playerNames = new String[]{"Marco", "Polo"};
+		String[] playerNames = new String[] { "Marco", "Polo" };
 		// Prépare les piles "royaume" de la réserve (hors cartes communes)
 		List<CardList> kingdomStacks = new ArrayList<CardList>();
 		// Ajouter un bloc pour chaque carte royaume à utiliser

@@ -12,7 +12,7 @@ import java.util.function.Consumer;
 public abstract class Test {
 	/**
 	 * Nombre total de tests réussis
- 	 */
+	 */
 	private int nb_pass = 0;
 
 	/**
@@ -37,7 +37,9 @@ public abstract class Test {
 
 	/**
 	 * Vérifie une condition, et modifie éventuellement l'état de succès du test
-	 * @param test: condition à tester
+	 * 
+	 * @param test
+	 *            : condition à tester
 	 */
 	public void check(boolean test) {
 		this.testOk &= test;
@@ -52,9 +54,13 @@ public abstract class Test {
 
 	/**
 	 * Exécute un test
-	 * @param description: description du test à effectuer, qui sera affichée à l'écran
-	 * @param test_function: instructions du test (fonction statique qui prend en argument un objet de type Test dont
-	 *                     les attributs sont modifiés en fonction du succès des vérifications)
+	 * 
+	 * @param description
+	 *            : description du test à effectuer, qui sera affichée à l'écran
+	 * @param test_function
+	 *            : instructions du test (fonction statique qui prend en
+	 *            argument un objet de type Test dont les attributs sont
+	 *            modifiés en fonction du succès des vérifications)
 	 */
 	public void runTest(String description, Consumer<Test> test_function) {
 		this.results.append(description + " : ");
@@ -65,8 +71,7 @@ public abstract class Test {
 				// succès
 				this.results.append("[OK]\n");
 				this.nb_pass += 1;
-			}
-			else {
+			} else {
 				// échec
 				this.results.append("[ÉCHEC]\n");
 				this.nb_fail += 1;
@@ -98,19 +103,19 @@ public abstract class Test {
 	}
 
 	/* Méthodes statiques */
-	
+
 	/**
 	 * Convertit une CardList en liste de chaînes de caractères (les noms des
 	 * cartes)
 	 */
-	public static String[] cardsToString (CardList l) {
+	public static String[] cardsToString(CardList l) {
 		String[] result = new String[l.size()];
 		for (int i = 0; i < l.size(); i++) {
 			result[i] = l.get(i).getName();
 		}
 		return result;
 	}
-	
+
 	/**
 	 * Teste si une CardList contient exactement les cartes indiquées dans la
 	 * chaîne de caractères `namesString` (noms de cartes séparées par des
@@ -149,7 +154,8 @@ public abstract class Test {
 	}
 
 	/**
-	 * Teste si une CardList contient au moins le nom indiqué dans chaîne `namesString` (un nom de carte). 
+	 * Teste si une CardList contient au moins le nom indiqué dans chaîne
+	 * `namesString` (un nom de carte).
 	 */
 
 	public static boolean hasThisCard(CardList cards, String name) {
@@ -158,11 +164,13 @@ public abstract class Test {
 	}
 
 	/**
-	 * Renvoie une CardList contenant `nb_copies` exemplaires de la carte 
-	 * passée en argument
+	 * Renvoie une CardList contenant `nb_copies` exemplaires de la carte passée
+	 * en argument
 	 * 
-	 * @param c: classe de carte à instancier
-	 * @param nb_copies: nombre d'exemplaires à mettre dans la pile
+	 * @param c
+	 *            : classe de carte à instancier
+	 * @param nb_copies
+	 *            : nombre d'exemplaires à mettre dans la pile
 	 * @return une liste de cartes
 	 */
 	public static CardList makeStack(Class<?> c, int nb_copies) {
@@ -170,7 +178,7 @@ public abstract class Test {
 		for (int i = 0; i < nb_copies; i++) {
 			try {
 				stack.add((Card) c.getConstructor().newInstance());
-			} catch(Exception e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
@@ -180,12 +188,22 @@ public abstract class Test {
 	/**
 	 * Flux de sortie vide, permettant d'ignorer la sortie standard
 	 */
-	public final static PrintStream nullOut = new PrintStream(new OutputStream() {
-		public void close() {}
-		public void flush() {}
-		public void write(byte[] b) {}
-		public void write(byte[] b, int off, int len) {}
-		public void write(int b) {}
-	});
+	public final static PrintStream nullOut = new PrintStream(
+			new OutputStream() {
+				public void close() {
+				}
+
+				public void flush() {
+				}
+
+				public void write(byte[] b) {
+				}
+
+				public void write(byte[] b, int off, int len) {
+				}
+
+				public void write(int b) {
+				}
+			});
 
 }

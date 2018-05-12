@@ -60,7 +60,7 @@ public class PlayerProxy {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public int getActions() {
 		return this.player.getActions();
 	}
@@ -72,8 +72,9 @@ public class PlayerProxy {
 	public int getMoney() {
 		return this.player.getMoney();
 	}
-	
-	public void addTo(CardList list, Class<? extends Card> cardClass, int nbCopies) {
+
+	public void addTo(CardList list, Class<? extends Card> cardClass,
+			int nbCopies) {
 		try {
 			for (int i = 0; i < nbCopies; i++) {
 				list.add((Card) cardClass.getConstructor().newInstance());
@@ -82,11 +83,11 @@ public class PlayerProxy {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void addToHand(Class<? extends Card> cardClass, int nbCopies) {
 		this.addTo(this.hand, cardClass, nbCopies);
 	}
-	
+
 	public void addToDiscard(Class<? extends Card> cardClass, int nbCopies) {
 		this.addTo(this.discard, cardClass, nbCopies);
 	}
@@ -98,7 +99,7 @@ public class PlayerProxy {
 	public void addToInPlay(Class<? extends Card> cardClass, int nbCopies) {
 		this.addTo(this.inPlay, cardClass, nbCopies);
 	}
-	
+
 	public void playCard(String cardName) {
 		this.player.playCard(cardName);
 	}

@@ -4,14 +4,11 @@ import dominion.*;
 import dominion.card.*;
 
 /**
- * Carte Bureaucrate (Bureaucrat)
- * Coût : 4
+ * Carte Bureaucrate (Bureaucrat) Coût : 4
  * 
- * Recevez une carte Argent; placez-la sur votre deck.
- * Tous vos adversaires dévoilent une carte Victoire et 
- * la placent sur leur deck (sinon ils dévoilent leur 
- * main afin que vous puissiez voir qu'ils n'ont pas de 
- * cartes Victoire).
+ * Recevez une carte Argent; placez-la sur votre deck. Tous vos adversaires
+ * dévoilent une carte Victoire et la placent sur leur deck (sinon ils dévoilent
+ * leur main afin que vous puissiez voir qu'ils n'ont pas de cartes Victoire).
  */
 public class Bureaucrat extends AttackCard {
 
@@ -43,10 +40,15 @@ public class Bureaucrat extends AttackCard {
 					// On montre sa main
 					System.out.println(op.cardsInHand().toString());
 				} else {
-					// Sinon on demande au joueur {code op} quelle carte il veut defausser
-					String input = op.chooseCard("Quelle carte victoire voulez vous mettre sur votre pioche ?", vicCard, false);
+					// Sinon on demande au joueur {code op} quelle carte il veut
+					// defausser
+					String input = op
+							.chooseCard(
+									"Quelle carte victoire voulez vous mettre sur votre pioche ?",
+									vicCard, false);
 					// On dévoile la carte et on la met au dessus de la pioche
-					System.out.println("Carte mise en haut de la pioche : " + op.putOnTopDraw(input));
+					System.out.println("Carte mise en haut de la pioche : "
+							+ op.putOnTopDraw(input));
 				}
 			}
 		}

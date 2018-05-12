@@ -42,20 +42,21 @@ public class TestPlayer extends Test {
 		Player p = g.getPlayer(0);
 		PlayerProxy p_p = new PlayerProxy(p);
 
-		//test que le drawCard enlève bien une carte de draw
+		// test que le drawCard enlève bien une carte de draw
 		p_p.clear();
 		p_p.addToDraw(Copper.class, 2);
 		t.check(p.drawCard().getName().equals("Copper"));
 		t.check(p_p.draw.size() == 1);
 
-		//test que le drawCard, lorsque la pioche est vide, transfère le discard vers le draw, puis pioche
+		// test que le drawCard, lorsque la pioche est vide, transfère le
+		// discard vers le draw, puis pioche
 		p_p.clear();
 		p_p.addToDiscard(Copper.class, 3);
 		t.check(p.drawCard().getName().equals("Copper"));
 		t.check(p_p.discard.size() == 0);
 		t.check(p_p.draw.size() == 2);
 
-		//test quand aucune carte, ni dans draw ni dans discard
+		// test quand aucune carte, ni dans draw ni dans discard
 		p_p.clear();
 		t.check(p.drawCard() == null);
 	}
@@ -64,12 +65,12 @@ public class TestPlayer extends Test {
 		GameProxy g = new GameProxy(IOGame.minimal());
 		Player p = g.getPlayer(0);
 		PlayerProxy p_p = new PlayerProxy(p);
-		//test que le cardsInHand renvoie bien une liste indépendante
+		// test que le cardsInHand renvoie bien une liste indépendante
 		p_p.clear();
 		p_p.addToHand(Copper.class, 2);
 		CardList l = p.cardsInHand();
-		t.check(p_p.hand.equals(l));  // les listes sont logiquement égales
-		t.check(p_p.hand != l);  // les listes sont physiquement différentes
+		t.check(p_p.hand.equals(l)); // les listes sont logiquement égales
+		t.check(p_p.hand != l); // les listes sont physiquement différentes
 	}
 
 	private static void testTotalCards(Test t) {
@@ -160,7 +161,7 @@ public class TestPlayer extends Test {
 		p_p.clear();
 		p.gain("Silver");
 		t.check(p_p.discard.size() == 1);
-		t.check(g.getSupplyStack("Silver").size()==39);
+		t.check(g.getSupplyStack("Silver").size() == 39);
 	}
 
 	private static void testBuyCard(Test t) {
@@ -201,24 +202,27 @@ public class TestPlayer extends Test {
 		p_p.setMoney(8);
 		p_p.setBuys(0);
 		Card c = p.buyCard("Province");
-		t.check(p_p.getBuys()==0);
-		t.check(p_p.getMoney()==8);
-		t.check(c==null);
+		t.check(p_p.getBuys() == 0);
+		t.check(p_p.getMoney() == 8);
+		t.check(c == null);
 	}
 
 	public void run() {
-	    this.runTest("Constructeur de Player", TestPlayer::testPlayerConstructor);
-	    this.runTest("Incrémentation des compteurs", TestPlayer::testIncrements);
-	    this.runTest("Piocher une carte", TestPlayer::testDrawCard);
-	    this.runTest("Liste des cartes en main", TestPlayer::testCardsInHand);
-	    this.runTest("Liste de toutes les cartes", TestPlayer::testTotalCards);
-	    this.runTest("Points de victoire", TestPlayer::testVictoryPoints);
-	    this.runTest("Cartes Trésor en main", TestPlayer::testGetTreasureCards);
-	    this.runTest("Jouer une carte", TestPlayer::testPlayCard);
-	    this.runTest("Gagner une carte", TestPlayer::testGain);
+		this.runTest("Constructeur de Player",
+				TestPlayer::testPlayerConstructor);
+		this.runTest("Incrémentation des compteurs", TestPlayer::testIncrements);
+		this.runTest("Piocher une carte", TestPlayer::testDrawCard);
+		this.runTest("Liste des cartes en main", TestPlayer::testCardsInHand);
+		this.runTest("Liste de toutes les cartes", TestPlayer::testTotalCards);
+		this.runTest("Points de victoire", TestPlayer::testVictoryPoints);
+		this.runTest("Cartes Trésor en main", TestPlayer::testGetTreasureCards);
+		this.runTest("Jouer une carte", TestPlayer::testPlayCard);
+		this.runTest("Gagner une carte", TestPlayer::testGain);
 		this.runTest("Acheter une carte", TestPlayer::testBuyCard);
-		this.runTest("Acheter une carte trop chère", TestPlayer::testBuyCardTooExpensive);
-		this.runTest("Acheter une carte sans buy", TestPlayer::testBuyCardNoBuys);
+		this.runTest("Acheter une carte trop chère",
+				TestPlayer::testBuyCardTooExpensive);
+		this.runTest("Acheter une carte sans buy",
+				TestPlayer::testBuyCardNoBuys);
 	}
 
 	public static void main(String[] args) {

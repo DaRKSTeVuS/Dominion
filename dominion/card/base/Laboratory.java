@@ -6,8 +6,7 @@ import dominion.card.*;
 /**
  * Carte Laboratoire (Laboratory)
  * 
- * +2 Cartes.
- * +1 Action.
+ * +2 Cartes. +1 Action.
  */
 public class Laboratory extends ActionCard {
 

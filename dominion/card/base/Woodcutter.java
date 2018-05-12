@@ -6,8 +6,7 @@ import dominion.card.*;
 /**
  * Carte Bûcheron (Woodcutter)
  * 
- * +1 Achat.
- * +2 Pièces.
+ * +1 Achat. +2 Pièces.
  */
 public class Woodcutter extends ActionCard {
 

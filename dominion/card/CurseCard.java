@@ -10,7 +10,7 @@ public abstract class CurseCard extends Card {
 		// Utilisation du constructeur de Card
 		super(name, cost);
 	}
-	
+
 	@Override
 	public List<CardType> getTypes() {
 		// On récupère la liste des types(vide) de Card dans une nouvelle liste

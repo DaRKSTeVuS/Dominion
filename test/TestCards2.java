@@ -110,12 +110,14 @@ public class TestCards2 extends Test {
 		p1.clear();
 		p1.addToHand(Militia.class, 1);
 		p2.clear();
-		p2.addToHand(Silver.class, 2); // 2 cartes en main, non affecté par Militia
+		p2.addToHand(Silver.class, 2); // 2 cartes en main, non affecté par
+										// Militia
 		p0.clear();
 		p0.addToHand(Estate.class, 2);
 		p0.addToHand(Copper.class, 4); // 6 cartes en main, doit en défausser 3
 		g.setInput("Estate", "Estate", "Estate", "Copper");
-		// le 3e Estate n'est pas valide, le Copper devrait être choisi automatiquement
+		// le 3e Estate n'est pas valide, le Copper devrait être choisi
+		// automatiquement
 		p1.playCard("Militia");
 		t.check(p1.getMoney() == 2);
 		t.check(hasCards(p2.hand, "Silver", "Silver"));
@@ -193,7 +195,6 @@ public class TestCards2 extends Test {
 		t.check(p0.discard.size() == 0);
 	}
 
-
 	private static void testWitch(Test t) {
 		GameProxy g = new GameProxy(IOGame.minimal());
 		PlayerProxy p0 = new PlayerProxy(g.getPlayer(0));
@@ -221,8 +222,10 @@ public class TestCards2 extends Test {
 		this.runTest("Bureaucrat", TestCards2::testBureaucrat);
 		this.runTest("Feast", TestCards2::testFeast);
 		this.runTest("Militia", TestCards2::testMilitia);
-		this.runTest("Moneylender (avec Copper)", TestCards2::testMoneylenderWithCopper);
-		this.runTest("Moneylender (sans Copper)", TestCards2::testMoneylenderNoCopper);
+		this.runTest("Moneylender (avec Copper)",
+				TestCards2::testMoneylenderWithCopper);
+		this.runTest("Moneylender (sans Copper)",
+				TestCards2::testMoneylenderNoCopper);
 		this.runTest("Remodel", TestCards2::testRemodel);
 		this.runTest("Council Room", TestCards2::testCouncilRoom);
 		this.runTest("Mine", TestCards2::testMine);

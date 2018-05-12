@@ -10,7 +10,7 @@ public abstract class VictoryCard extends Card {
 		// Utilisation du constructeur de Card
 		super(name, cost);
 	}
-	
+
 	@Override
 	public List<CardType> getTypes() {
 		// On récupère la liste des types(vide) de Card dans une nouvelle liste
@@ -20,5 +20,5 @@ public abstract class VictoryCard extends Card {
 		// On retourne cette liste
 		return types;
 	}
-	
+
 }

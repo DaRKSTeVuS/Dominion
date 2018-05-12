@@ -8,11 +8,9 @@ import dominion.card.*;
 /**
  * Carte Espion (Spy)
  * 
- * +1 Carte.
- * +1 Action.
- * Tous les joueurs (vous aussi) dévoilent la première carte 
- * de leur deck. Vous décidez ensuite si chaque carte dévoilée 
- * est défaussée ou replacée sur son deck.
+ * +1 Carte. +1 Action. Tous les joueurs (vous aussi) dévoilent la première
+ * carte de leur deck. Vous décidez ensuite si chaque carte dévoilée est
+ * défaussée ou replacée sur son deck.
  */
 public class Spy extends AttackCard {
 
@@ -34,7 +32,9 @@ public class Spy extends AttackCard {
 		// Si le joueur à bien piocher une carte
 		if (pioche != null) {
 			// Il choisi s'il la defausse ou non
-			String input = p.choose("Voulez vous defaussé la carte " + pioche.getName() + "de votre main ? (y/n)", choicesYN, true);
+			String input = p.choose(
+					"Voulez vous defaussé la carte " + pioche.getName()
+							+ "de votre main ? (y/n)", choicesYN, true);
 			// Si oui
 			if (input.equals("y")) {
 				// On la met dans la defausse
@@ -47,14 +47,17 @@ public class Spy extends AttackCard {
 		// On parcours ses adversaire
 		for (Player op : p.otherPlayers()) {
 			// Si le joueur n'as pas de carte Action Réaction Moat
-			if(!this.otherPlayerGotReactionMoat(op)) {
+			if (!this.otherPlayerGotReactionMoat(op)) {
 				// On dévoile la premiere carte du deck de {@code op}
 				pioche = op.drawCard();
-				// Le joueur {@code p} choisi s'il cette carte est defaussé ou non
+				// Le joueur {@code p} choisi s'il cette carte est defaussé ou
+				// non
 				// Si le joueur à bien piocher une carte
 				if (pioche != null) {
 					// Il choisi s'il la defausse ou non
-					String input = p.choose("Voulez vous defaussé la carte " + pioche.getName() + "de la main de" + op.getName() + " ? (y/n)", choicesYN, true);
+					String input = p.choose("Voulez vous defaussé la carte "
+							+ pioche.getName() + "de la main de" + op.getName()
+							+ " ? (y/n)", choicesYN, true);
 					// Si oui
 					if (input.equals("y")) {
 						// On la met dans la defausse

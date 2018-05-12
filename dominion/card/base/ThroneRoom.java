@@ -6,8 +6,7 @@ import dominion.card.*;
 /**
  * Carte Salle du trône (Throne Room)
  * 
- * Choisissez 1 carte Action de votre main.
- * Jouez-la deux fois.
+ * Choisissez 1 carte Action de votre main. Jouez-la deux fois.
  */
 public class ThroneRoom extends ActionCard {
 
@@ -21,7 +20,8 @@ public class ThroneRoom extends ActionCard {
 		// On cré la liste des cartes Actions dans la main du joueur
 		CardList action = p.getActionCards();
 		// On lui demande d'en choisir une
-		String inputc = p.chooseCard("Choisissez une carte à jouer deux fois : ", action, true);
+		String inputc = p.chooseCard(
+				"Choisissez une carte à jouer deux fois : ", action, true);
 		// On fait appel au play de la carte
 		action.getCard(inputc).play(p);
 		// On joue la carte normalement

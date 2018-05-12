@@ -8,10 +8,9 @@ import dominion.card.*;
 /**
  * Carte Bibliothèque (Library)
  * 
- * Piochez jusqu'à ce que vous ayez 7 cartes en main. 
- * Chaque carte Action piochée peut être mise de côté. 
- * Défaussez les cartes mises de côté lorsque vous 
- * avez terminé de piocher.
+ * Piochez jusqu'à ce que vous ayez 7 cartes en main. Chaque carte Action
+ * piochée peut être mise de côté. Défaussez les cartes mises de côté lorsque
+ * vous avez terminé de piocher.
  */
 public class Library extends ActionCard {
 
@@ -44,9 +43,11 @@ public class Library extends ActionCard {
 			// Si c'est une carte action
 			if (tmpC.getTypes().contains(CardType.Action)) {
 				// On affiche la carte pioché
-				System.out.println("Vous avez piocher la carte : " + tmpC.toString());
+				System.out.println("Vous avez piocher la carte : "
+						+ tmpC.toString());
 				// On demande au joueur s'il veux la conserver
-				input = p.choose("Voulez vous conserver cette carte Action : " + tmpC.toString() + " ?", choix, false);
+				input = p.choose("Voulez vous conserver cette carte Action : "
+						+ tmpC.toString() + " ?", choix, false);
 				// Si non
 				if (input.equals("n")) {
 					// On defausse la carte

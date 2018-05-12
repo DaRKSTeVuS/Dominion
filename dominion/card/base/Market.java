@@ -6,10 +6,7 @@ import dominion.card.*;
 /**
  * Carte Marché (Market)
  * 
- * +1 Carte.
- * +1 Action.
- * +1 Achat.
- * +1 Pièce.
+ * +1 Carte. +1 Action. +1 Achat. +1 Pièce.
  */
 public class Market extends ActionCard {
 
@@ -27,6 +24,6 @@ public class Market extends ActionCard {
 		// +1 Pièce
 		p.incrementMoney(1);
 		// +1 Carte = pioche 1 carte
-		p.drawToHand();	
+		p.drawToHand();
 	}
 }

@@ -19,11 +19,13 @@ public class Chapel extends ActionCard {
 	public void play(Player p) {
 		// Compteur des cartes défaussées
 		int cpt = 0;
-		// Tant qu'il nous reste des cartes a défausser (on en a pas encore défaussé 4) et
+		// Tant qu'il nous reste des cartes a défausser (on en a pas encore
+		// défaussé 4) et
 		// qu'il nous reste des cartes en main
 		while (!p.cardsInHand().isEmpty() && cpt < 4) {
 			// On demande au joueur quelles cartes en main il veut defausser
-			String inputc = p.chooseCard("Choisissez une carte à écarter.", p.cardsInHand(), true);
+			String inputc = p.chooseCard("Choisissez une carte à écarter.",
+					p.cardsInHand(), true);
 			// Si je joueur ne passe pas
 			if (!inputc.equals("")) {
 				// On écarte la carte
