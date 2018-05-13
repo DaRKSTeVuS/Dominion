@@ -27,8 +27,9 @@ public class Adventurer extends ActionCard {
 		int cptT = 0;
 		// On initialise un compteur de carte pioché
 		int cptP = 0;
-		// Tant que le compteur est <= 2
-		while (cptT < 2) {
+		// Tant que le compteur est <= 2 ou que le nombre de carte piochée
+		// Est inférieure a {@code nbCardDpD}
+		while (cptT < 2 && cptP < nbCardDpD) {
 			// On pioche
 			tmpC = p.drawCard();
 			// Si la carte est nulle alors il n'y a rien à piocher
@@ -50,17 +51,6 @@ public class Adventurer extends ActionCard {
 			} else {
 				// Sinon, on la défausse
 				p.discardCard(tmpC);
-			}
-			// Si on pioche autant de carte que ce qu'il y a dans {@code
-			// nbCardDpD)
-			// C'est a dire dans le total main + defausse
-			// Ca veut dire qu'il n'y a pas assez de carte Treasure disponible
-			if (cptP == nbCardDpD) {
-				// On indique qu'il n'y a pas assez de carte trésor à piocher
-				System.err
-						.println("Il n'y a pas assez de carte Treasure dans la pioche");
-				// Et on sort de la boucle
-				break;
 			}
 		}
 	}
