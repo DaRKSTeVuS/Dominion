@@ -38,7 +38,7 @@ public class Spy extends AttackCard {
 			// Si oui
 			if (input.equals("y")) {
 				// On la met dans la defausse
-				p.defausse(pioche);
+				p.discardCard(pioche);
 			} else {
 				// On la remet en haut de la pioche
 				p.putOnTopDraw(pioche);
@@ -61,7 +61,7 @@ public class Spy extends AttackCard {
 					// Si oui
 					if (input.equals("y")) {
 						// On la met dans la defausse
-						op.defausse(pioche);
+						op.discardCard(pioche);
 					} else {
 						// On la remet en haut de la pioche
 						op.putOnTopDraw(pioche);

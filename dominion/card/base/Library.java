@@ -51,7 +51,7 @@ public class Library extends ActionCard {
 				// Si non
 				if (input.equals("n")) {
 					// On defausse la carte
-					p.defausse(tmpC);
+					p.discardCard(tmpC);
 				}
 			}
 		}

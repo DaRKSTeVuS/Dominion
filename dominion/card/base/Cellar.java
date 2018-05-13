@@ -32,7 +32,7 @@ public class Cellar extends ActionCard {
 			// S'il ne passe pas la question
 			if (!inputc.equals("")) {
 				// On defausse la carte en question
-				p.defausse(inputc);
+				p.discardCard(inputc);
 				// On incrémente le compteur de carte defaussé
 				cptDef++;
 			} else {

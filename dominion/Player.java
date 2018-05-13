@@ -681,7 +681,7 @@ public class Player {
 		// Tant qu'il reste des cartes dans @{code this.hand}
 		while (!this.hand.isEmpty()) {
 			// On les defausse
-			this.defausse(this.hand.get(0));
+			this.discardCard(this.hand.get(0));
 		}
 		// Tant qu'il reste des cartes dans @{code this.inPlay}
 		while (!this.inPlay.isEmpty()) {
@@ -802,7 +802,7 @@ public class Player {
 	 * @param c
 	 *            carte à defausser
 	 */
-	public void defausse(Card c) {
+	public void discardCard(Card c) {
 		// Ajout dans la défausse
 		this.discard.add(c);
 		// Retrait de la main du joueur
@@ -817,11 +817,11 @@ public class Player {
 	 * @return true si la carte est bien defaussé, false si elle n'est pas dans
 	 *         la main
 	 */
-	public boolean defausse(String cardName) {
+	public boolean discardCard(String cardName) {
 		// On vérifie que la carte est dans la main du joueur
 		if (this.hand.getCard(cardName) != null) {
 			// Si oui, on utilise la méthode {@code defausse(Card c)}
-			this.defausse(this.hand.getCard(cardName));
+			this.discardCard(this.hand.getCard(cardName));
 			// et on renvoie vrai
 			return true;
 		}
@@ -836,7 +836,7 @@ public class Player {
 	 * @param c
 	 *            carte à mettre au rebut
 	 */
-	private void ecarterHand(Card c) {
+	private void trashFromHand(Card c) {
 		// Ajout a {@code trashedCards}
 		this.game.trash(c);
 		// Retrait de {@code this.hand} du joueur
@@ -850,7 +850,7 @@ public class Player {
 	 * @param c
 	 *            carte à mettre au rebut
 	 */
-	private void ecarterInplay(Card c) {
+	private void trashFromInplay(Card c) {
 		// Ajout a {@code trashedCards}
 		this.game.trash(c);
 		// Retrait du {@code this.inPlay} du joueur
@@ -868,13 +868,13 @@ public class Player {
 	 * @return la carte écarté si la carte à été mise au rebut, null si elle
 	 *         n'est pas dans la main
 	 */
-	public Card ecarter(String cardName, String param) {
+	public Card trash(String cardName, String param) {
 		// On vérifie que la carte est dans la main du joueur
 		if (this.hand.getCard(cardName) != null && param.equals("hand")) {
 			// On stocke la carte à écarter dans une variable
 			Card tmpC = this.hand.getCard(cardName);
 			// Si oui, on utilise la méthode {@code ecarter(Card c)}
-			this.ecarterHand(tmpC);
+			this.trashFromHand(tmpC);
 			// et on renvoie la carte
 			return tmpC;
 		} else if (this.inPlay.getCard(cardName) != null
@@ -882,7 +882,7 @@ public class Player {
 			// On stocke la carte à écarter dans une variable
 			Card tmpC = this.inPlay.getCard(cardName);
 			// Si oui, on utilise la méthode {@code ecarter(Card c)}
-			this.ecarterInplay(tmpC);
+			this.trashFromInplay(tmpC);
 			// et on renvoie la carte
 			return tmpC;
 		}

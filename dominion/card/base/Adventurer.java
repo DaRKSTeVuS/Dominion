@@ -49,7 +49,7 @@ public class Adventurer extends ActionCard {
 				cptT++;
 			} else {
 				// Sinon, on la défausse
-				p.defausse(tmpC);
+				p.discardCard(tmpC);
 			}
 			// Si on pioche autant de carte que ce qu'il y a dans {@code
 			// nbCardDpD)

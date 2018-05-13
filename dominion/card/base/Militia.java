@@ -31,7 +31,7 @@ public class Militia extends AttackCard {
 							"Choisissez une carte à défausser.",
 							op.cardsInHand(), false);
 					// On defausse son choix
-					op.defausse(inputc);
+					op.discardCard(inputc);
 				}
 			}
 		}
