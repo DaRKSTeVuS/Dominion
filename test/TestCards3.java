@@ -112,12 +112,12 @@ public class TestCards3 extends Test {
 	}
 
 	public void run() {
-		//this.runTest("Moat (reaction)", TestCards3::testMoatReaction);
-		//this.runTest("Spy", TestCards3::testSpy);
+		// this.runTest("Moat (reaction)", TestCards3::testMoatReaction);
+		// this.runTest("Spy", TestCards3::testSpy);
 		this.runTest("Thief", TestCards3::testThief);
-		//this.runTest("Throne Room", TestCards3::testThroneRoom);
-		//this.runTest("Library", TestCards3::testLibrary);
-		//this.runTest("Adventurer", TestCards3::testAdventurer);
+		// this.runTest("Throne Room", TestCards3::testThroneRoom);
+		// this.runTest("Library", TestCards3::testLibrary);
+		// this.runTest("Adventurer", TestCards3::testAdventurer);
 	}
 
 	public static void main(String[] args) {

@@ -46,21 +46,24 @@ public class Thief extends AttackCard {
 						op.gain(couple.get(i));
 					}
 				}
-				// Si couple est vide	
-				if(couple.isEmpty()) {
+				// Si couple est vide
+				if (couple.isEmpty()) {
 					// On affiche un message
-					System.out.println("Il n'y a pas de TreasureCard à voler !");
-				}else {
+					System.out
+							.println("Il n'y a pas de TreasureCard à voler !");
+				} else {
 					// Si couple ne contient qu'un élement
-					if(couple.size() == 1) {
-						System.out.println("un seul treasure, on l'ajoute a totrash");
+					if (couple.size() == 1) {
+						System.out
+								.println("un seul treasure, on l'ajoute a totrash");
 						// On l'ajoute a toTrash
 						toTrash.add(couple.get(0));
 						// Sinon, si couple en contien 2
-					}else if(couple.size() == 2) {
+					} else if (couple.size() == 2) {
 						System.out.println("2 treasures, on demande");
 						// On en choisit 1
-						String inputt = p.chooseCard("Choisissez une carte", couple, false);
+						String inputt = p.chooseCard("Choisissez une carte",
+								couple, false);
 						// On l'ajoute à la liste
 						toTrash.add(couple.getCard(inputt));
 					}
@@ -82,7 +85,8 @@ public class Thief extends AttackCard {
 						false);
 				// Si on décide de défausser une carte
 				if (input.equals("y")) {
-					String inputc = p.chooseCard("Choisissez une carte à recevoir", toTrash, true);
+					String inputc = p.chooseCard(
+							"Choisissez une carte à recevoir", toTrash, true);
 					// Si le joueur n'a pas choisit une carte de la liste
 					if (inputc.equals("")) {
 						// On quite la boucle
