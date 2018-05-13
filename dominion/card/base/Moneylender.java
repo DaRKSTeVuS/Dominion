@@ -22,7 +22,7 @@ public class Moneylender extends ActionCard {
 			// Si on trouvre une carte copper
 			if (c.getName().equals("Copper")) {
 				// On l'écarte
-				p.trash(c.getName(), "hand");
+				p.trashCard(c.getName(), "hand");
 				// On ajoute 3 d'argent
 				p.incrementMoney(3);
 				// On sort de la boucle

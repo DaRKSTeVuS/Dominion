@@ -22,7 +22,7 @@ public class Remodel extends ActionCard {
 		String inputc = p.chooseCard("Choisissez une carte à écarter",
 				p.cardsInHand(), false);
 		// On écarte cette carte
-		Card card = p.trash(inputc, "hand");
+		Card card = p.trashCard(inputc, "hand");
 		// On récupère sa valeur
 		int val = card.getCost();
 		// Le joueur choisit une carte parmis les suplyStack coutant jusqu'à 2

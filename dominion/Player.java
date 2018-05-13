@@ -868,7 +868,7 @@ public class Player {
 	 * @return la carte écarté si la carte à été mise au rebut, null si elle
 	 *         n'est pas dans la main
 	 */
-	public Card trash(String cardName, String param) {
+	public Card trashCard(String cardName, String param) {
 		// On vérifie que la carte est dans la main du joueur
 		if (this.hand.getCard(cardName) != null && param.equals("hand")) {
 			// On stocke la carte à écarter dans une variable

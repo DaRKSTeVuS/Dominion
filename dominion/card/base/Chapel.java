@@ -29,7 +29,7 @@ public class Chapel extends ActionCard {
 			// Si je joueur ne passe pas
 			if (!inputc.equals("")) {
 				// On écarte la carte
-				p.trash(inputc, "hand");
+				p.trashCard(inputc, "hand");
 				// On incrémente le compteur de cartes
 				cpt++;
 			} else {
