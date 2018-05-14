@@ -60,10 +60,15 @@ public class TestCards3 extends Test {
 		g.setInput("Gold", "Gold", "");
 		p0.playCard("Thief");
 		t.check(hasCards(p0.discard, "Gold"));
+		System.err.println(p0.discard.toString());
 		t.check(hasCards(p1.discard, "Estate"));
+		System.err.println(p1.discard.toString());
 		t.check(p1.draw.size() == 0);
+		System.err.println(p1.draw.size());
 		t.check(hasCards(p2.discard, "Silver"));
+		System.err.println(p2.discard.toString());
 		t.check(p2.draw.size() == 0);
+		System.err.println(p1.draw.size());
 	}
 
 	private static void testThroneRoom(Test t) {
@@ -112,12 +117,12 @@ public class TestCards3 extends Test {
 	}
 
 	public void run() {
-		// this.runTest("Moat (reaction)", TestCards3::testMoatReaction);
-		// this.runTest("Spy", TestCards3::testSpy);
+		this.runTest("Moat (reaction)", TestCards3::testMoatReaction);
+		this.runTest("Spy", TestCards3::testSpy);
 		this.runTest("Thief", TestCards3::testThief);
-		// this.runTest("Throne Room", TestCards3::testThroneRoom);
-		// this.runTest("Library", TestCards3::testLibrary);
-		// this.runTest("Adventurer", TestCards3::testAdventurer);
+		this.runTest("Throne Room", TestCards3::testThroneRoom);
+		this.runTest("Library", TestCards3::testLibrary);
+		this.runTest("Adventurer", TestCards3::testAdventurer);
 	}
 
 	public static void main(String[] args) {

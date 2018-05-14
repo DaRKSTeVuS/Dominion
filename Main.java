@@ -55,7 +55,7 @@ class Main {
 		// Ajout de 10 cartes Spy
 		// kingdomStacks.add(new CardList(Spy.class, 10));
 		// Ajout de 10 cartes Thief
-		// kingdomStacks.add(new CardList(Thief.class, 10));
+		kingdomStacks.add(new CardList(Thief.class, 10));
 		// Ajout de 10 cartes ThroneRoom
 		// kingdomStacks.add(new CardList(ThroneRoom.class, 10));
 		// Ajout de 10 cartes Village
