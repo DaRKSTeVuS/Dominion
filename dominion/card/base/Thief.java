@@ -1,7 +1,6 @@
 package dominion.card.base;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 import dominion.*;
 import dominion.card.*;
@@ -26,9 +25,7 @@ public class Thief extends AttackCard {
 		// On initialise une liste de cartes à écarter
 		CardList toTrash = new CardList();
 		// On parcourt la liste des adversaires
-
-		for (Player op : p.otherPlayers()) {
-			
+		for (Player op : p.otherPlayers()) {		
 			// Si le joueur n'as pas de carte Moat
 			if (!this.otherPlayerGotReactionMoat(op)) {
 				// On dévoile les 2 premières cartes de sa pioche
@@ -64,22 +61,15 @@ public class Thief extends AttackCard {
 					.println("Il n'y a pas de TreasureCard à voler !");
 				} else {
 					// Si couple ne contient qu'un élement
-					if (couple.size() == 1) {
-						System.out
-						.println("un seul treasure, on l'ajoute a totrash");
-						// On l'ajoute a toTrash
-						toTrash.add(couple.get(0));
-						// Sinon, si couple en contien 2
-					} else if (couple.size() == 2) {
+					
 						System.out.println("2 treasures, on demande");
 						// On en choisit 1
-						System.err.println(couple.toString());
 						String inputt = p.chooseCard("Choisissez une carte",
 								couple, false);
 						System.err.println(inputt);
 						// On l'ajoute à la liste
 						toTrash.add(couple.getCard(inputt));
-					}
+					
 				}
 			}
 			// Parmi la liste des cartes à écarter, on choisit celle qu'on veut
@@ -93,6 +83,7 @@ public class Thief extends AttackCard {
 				String inputc = p.chooseCard(
 						"Choisissez une carte à recevoir", toTrash, true);
 				// Si le joueur n'a pas choisit une carte de la liste
+				System.err.println(inputc);
 				if (inputc.equals("")) {
 					// On quite la boucle
 					choice = false;
