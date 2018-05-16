@@ -60,44 +60,46 @@ public class Thief extends AttackCard {
 					System.out
 					.println("Il n'y a pas de TreasureCard à voler !");
 				} else {
-					// Si couple ne contient qu'un élement
-					
-						System.out.println("2 treasures, on demande");
-						// On en choisit 1
-						String inputt = p.chooseCard("Choisissez une carte",
-								couple, false);
-						System.err.println(inputt);
-						// On l'ajoute à la liste
-						toTrash.add(couple.getCard(inputt));
-					
+					// Si couple ne contient qu'un élement, il sera ajouté automatiquement
+					// S'il en contien 2, on en choisit 1
+					String inputt = p.chooseCard("Choisissez une carte",
+							couple, false);
+					System.err.println(inputt);
+					// On l'ajoute à la liste
+					toTrash.add(couple.getCard(inputt));
+					// On l'nlève de couple
+					couple.remove(inputt);
+					// Et on ajoute l'autre à la défausse de l'adversaire
+					if(! couple.isEmpty()) op.gain(couple.get(0));
 				}
-			}
-			// Parmi la liste des cartes à écarter, on choisit celle qu'on veut
-			// recevoir
-			// On cré un booléen indiquant si le joueur souhaite continuer à
-			// recevoir des cartes
-			boolean choice = true;
-			// Tant que la liste n'est pas vide et que l'on souhaite continuer à
-			// recevoir des cartes
-			while (!toTrash.isEmpty() && choice == true) {
-				String inputc = p.chooseCard(
-						"Choisissez une carte à recevoir", toTrash, true);
-				// Si le joueur n'a pas choisit une carte de la liste
-				System.err.println(inputc);
-				if (inputc.equals("")) {
-					// On quite la boucle
-					choice = false;
-				} else {
-					// Sinon, la carte est reçue
-					p.gain(toTrash.getCard(inputc));
-					// Et retirée de la liste toTrash
-					toTrash.remove(inputc);
-				}
-			}
-			// On écarte le reste
-			while (!toTrash.isEmpty()) {
-				toTrash.remove(0);
 			}
 		}
+		// Parmi la liste des cartes à écarter, on choisit celle qu'on veut
+		// recevoir
+		// On cré un booléen indiquant si le joueur souhaite continuer à
+		// recevoir des cartes
+		boolean choice = true;
+		// Tant que la liste n'est pas vide et que l'on souhaite continuer à
+		// recevoir des cartes
+		while (!toTrash.isEmpty() && choice == true) {
+			String inputc = p.chooseCard(
+					"Choisissez une carte à recevoir", toTrash, true);
+			// Si le joueur n'a pas choisit une carte de la liste
+			System.err.println(inputc);
+			if (inputc.equals("")) {
+				// On quite la boucle
+				choice = false;
+			} else {
+				// Sinon, la carte est reçue
+				p.gain(toTrash.getCard(inputc));
+				// Et retirée de la liste toTrash
+				toTrash.remove(inputc);
+			}
+		}
+		// On écarte le reste
+		while (!toTrash.isEmpty()) {
+			toTrash.remove(0);
+		}
+
 	}
 }
