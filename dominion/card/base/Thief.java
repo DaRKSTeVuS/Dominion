@@ -1,7 +1,5 @@
 package dominion.card.base;
 
-import java.util.*;
-
 import dominion.*;
 import dominion.card.*;
 
@@ -25,7 +23,7 @@ public class Thief extends AttackCard {
 		// On initialise une liste de cartes à écarter
 		CardList toTrash = new CardList();
 		// On parcourt la liste des adversaires
-		for (Player op : p.otherPlayers()) {		
+		for (Player op : p.otherPlayers()) {
 			// Si le joueur n'as pas de carte Moat
 			if (!this.otherPlayerGotReactionMoat(op)) {
 				// On dévoile les 2 premières cartes de sa pioche
@@ -42,7 +40,8 @@ public class Thief extends AttackCard {
 						couple.add(tmpC);
 					} else {
 						// Sinon on indique que rien n'est pioché
-						System.err.println("Il n'y à plus de carte à piocher !");
+						System.err
+								.println("Il n'y à plus de carte à piocher !");
 					}
 				}
 				// On l'affiche
@@ -58,9 +57,10 @@ public class Thief extends AttackCard {
 				if (couple.isEmpty()) {
 					// On affiche un message
 					System.out
-					.println("Il n'y a pas de TreasureCard à voler !");
+							.println("Il n'y a pas de TreasureCard à voler !");
 				} else {
-					// Si couple ne contient qu'un élement, il sera ajouté automatiquement
+					// Si couple ne contient qu'un élement, il sera ajouté
+					// automatiquement
 					// S'il en contien 2, on en choisit 1
 					String inputt = p.chooseCard("Choisissez une carte",
 							couple, false);
@@ -70,7 +70,8 @@ public class Thief extends AttackCard {
 					// On l'nlève de couple
 					couple.remove(inputt);
 					// Et on ajoute l'autre à la défausse de l'adversaire
-					if(! couple.isEmpty()) op.gain(couple.get(0));
+					if (!couple.isEmpty())
+						op.gain(couple.get(0));
 				}
 			}
 		}
@@ -82,8 +83,8 @@ public class Thief extends AttackCard {
 		// Tant que la liste n'est pas vide et que l'on souhaite continuer à
 		// recevoir des cartes
 		while (!toTrash.isEmpty() && choice == true) {
-			String inputc = p.chooseCard(
-					"Choisissez une carte à recevoir", toTrash, true);
+			String inputc = p.chooseCard("Choisissez une carte à recevoir",
+					toTrash, true);
 			// Si le joueur n'a pas choisit une carte de la liste
 			System.err.println(inputc);
 			if (inputc.equals("")) {

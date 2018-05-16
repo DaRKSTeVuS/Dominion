@@ -341,6 +341,7 @@ public class Game {
 		if (nbPileVide >= 3) {
 			// On signale la fin du jeu
 			end = true;
+			System.err.println("Trois piles vide !");
 		}
 		return end;
 	}

@@ -514,8 +514,7 @@ public class Player {
 					this.incrementBuys(-1);
 					// Le joueur gagne la carte {@code gain(String cardName)} et
 					// on la retourne
-					return this.gain(this.game.removeFromSupply(cardName)
-							.toString());
+					return this.gain(cardName);
 				}
 			}
 		}
@@ -769,7 +768,7 @@ public class Player {
 		}
 		// (4) Achat
 		// tant qu'il est possible de faire des achats
-		while (this.getBuys() > 0 && this.getMoney() > 0) {
+		while (this.getBuys() > 0) {
 			// On lui propose les cartes disponibles à l'achat
 			CardList cardDispo = this.game.availableSupplyCards();
 			System.out.println(cardDispo.toString());
