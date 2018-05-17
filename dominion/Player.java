@@ -283,11 +283,8 @@ public class Player {
 			this.discard.shuffle();
 			// Puis on transfère tout dans la pioche
 			this.draw.addAll(this.discard);
-			// Tant que la defausse n'est pas vide
-			while (!this.discard.isEmpty()) {
-				// On retire la première carte
-				this.discard.remove(0);
-			}
+			// On vide le {@code discard}
+			this.discard.clear();
 		}
 		// On retire la premiere cart de la pioche
 		Card carte = this.draw.remove(0);
@@ -642,16 +639,14 @@ public class Player {
 		this.money = 0;
 		// Compteur d'achats remis à 0
 		this.buys = 0;
-		// Tant qu'il reste des cartes dans @{code this.hand}
-		while (!this.hand.isEmpty()) {
-			// On les defausse et on vide la main
-			this.discardCard(this.hand.get(0));
-		}
-		// Tant qu'il reste des cartes dans @{code this.inPlay}
-		while (!this.inPlay.isEmpty()) {
-			// Ajout dans la défausse
-			this.discard.add(this.inPlay.remove(0));
-		}
+		// On met toutes les cartes de la {@code this.hand} dans {@code this.discard)
+		this.discard.addAll(this.hand);
+		// On vide la {@code this.hand}
+		this.hand.clear();
+		// On met toutes les cartes de la @{code this.inPlay} dans {@code this.discard)
+		this.discard.addAll(this.inPlay);
+		// On vide {@code this.inPlay}
+		this.inPlay.clear();
 		// Le joueur pioche 5 cartes
 		for (int i = 0; i < 5; i++) {
 			// On pioche
@@ -856,12 +851,10 @@ public class Player {
 	 * On met tout le deck dans la défausse
 	 */
 	public void discardDraw() {
-		// On parcours la pioche
-		while (!this.draw.isEmpty()) {
-			// On ajoute la carte a {@code this.discard}, tout en la retirant de
-			// {@code this.draw}
-			this.discard.add(this.draw.remove(0));
-		}
+		// On ajoute {@code this.draw} à {@code this.discard}
+		this.discard.addAll(this.draw);
+		// On vide {@code this.draw}
+		this.draw.clear();
 	}
 
 	/**
