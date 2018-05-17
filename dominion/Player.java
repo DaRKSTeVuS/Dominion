@@ -219,15 +219,8 @@ public class Player {
 	 * que ceux de {@code this.hand}.
 	 */
 	public CardList cardsInHand() {
-		// On cré une nouvelle liste résultat
-		CardList hand = new CardList();
-		// On parcourt la main
-		for (Card c : this.hand) {
-			// et on la copie dans le résultat
-			hand.add(c);
-		}
-		// On retourne le résultat
-		return hand;
+		// On retourne une nouvelle CardList crée à partir de {@code this.draw}
+		return new CardList(this.hand);
 	}
 
 	/**
@@ -239,21 +232,13 @@ public class Player {
 		// On cré une nouvelle liste de carte qui sera retournée à la fin
 		CardList all = new CardList();
 		// On y ajoute les cartes de la main
-		for (Card c : this.cardsInHand()) {
-			all.add(c);
-		}
+		all.addAll(this.hand);
 		// On y ajoute les cartes de la défausse
-		for (Card c : this.discard) {
-			all.add(c);
-		}
+		all.addAll(this.discard);
 		// On y ajoute les cartes de la pioche
-		for (Card c : this.draw) {
-			all.add(c);
-		}
+		all.addAll(this.draw);
 		// On y ajoute les cartes en jeu
-		for (Card c : this.inPlay) {
-			all.add(c);
-		}
+		all.addAll(this.inPlay);
 		// On retourne la liste
 		return all;
 	}
@@ -315,9 +300,7 @@ public class Player {
 			// Si c'est le cas, on mélange la défausse
 			this.discard.shuffle();
 			// Puis on transfère tout dans la pioche
-			for (Card c : this.discard) {
-				this.draw.add(c);
-			}
+			this.draw.addAll(this.discard);
 			// Tant que la defausse n'est pas vide
 			while (!this.discard.isEmpty()) {
 				// On retire la première carte
