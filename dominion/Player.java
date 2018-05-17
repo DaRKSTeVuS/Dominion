@@ -143,24 +143,6 @@ public class Player {
 		return this.game;
 	}
 
-	/**
-	 * Getter
-	 * 
-	 * @return Le nombre de carte dans la defausse
-	 */
-	public int getNbCardDiscard() {
-		return this.discard.size();
-	}
-
-	/**
-	 * Getter
-	 * 
-	 * @return Le nombre de carte dans la pioche
-	 */
-	public int getNbCardDraw() {
-		return this.draw.size();
-	}
-
 	// Setter
 	/**
 	 * Setter Incrémente le nombre d'actions du joueur

@@ -21,8 +21,8 @@ public class Adventurer extends ActionCard {
 	public void play(Player p) {
 		// On init une carte
 		Card tmpC;
-		// On compte le nombre de carte qu'il y a dans la main et la defausse
-		int nbCardDpD = p.getNbCardDraw() + p.getNbCardDiscard();
+		// On compte le nombre total de carte dont le joueur dispose
+		int nbCardDpD = p.totalCards().size();
 		// On init un compteur de trésor
 		int cptT = 0;
 		// On initialise un compteur de carte pioché
