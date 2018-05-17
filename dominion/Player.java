@@ -644,15 +644,13 @@ public class Player {
 		this.buys = 0;
 		// Tant qu'il reste des cartes dans @{code this.hand}
 		while (!this.hand.isEmpty()) {
-			// On les defausse
+			// On les defausse et on vide la main
 			this.discardCard(this.hand.get(0));
 		}
 		// Tant qu'il reste des cartes dans @{code this.inPlay}
 		while (!this.inPlay.isEmpty()) {
 			// Ajout dans la défausse
-			this.discard.add(this.inPlay.get(0));
-			// Retrait des cartes en jeu
-			this.inPlay.remove(0);
+			this.discard.add(this.inPlay.remove(0));
 		}
 		// Le joueur pioche 5 cartes
 		for (int i = 0; i < 5; i++) {
