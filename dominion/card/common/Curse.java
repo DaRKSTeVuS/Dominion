@@ -22,5 +22,4 @@ public class Curse extends CurseCard {
 		// les cartes malédictions ne se jouent pas. Par conséquent,
 		// cette méthode ne fait rien
 	}
-
 }

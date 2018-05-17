@@ -1,6 +1,7 @@
 package dominion.card;
 
 import java.util.*;
+import dominion.*;
 
 /**
  * Les cartes Trésor
@@ -10,6 +11,8 @@ public abstract class TreasureCard extends Card {
 		// Utilisation du constructeur de Card
 		super(name, cost);
 	}
+	
+	public abstract int treasureValue();
 
 	@Override
 	public List<CardType> getTypes() {
@@ -20,4 +23,9 @@ public abstract class TreasureCard extends Card {
 		// On retourne cette liste
 		return types;
 	}
+	
+	@Override
+	public void play(Player p) {
+        p.incrementMoney(this.treasureValue());
+    }
 }

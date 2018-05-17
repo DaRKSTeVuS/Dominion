@@ -1,6 +1,5 @@
 package dominion.card.common;
 
-import dominion.*;
 import dominion.card.*;
 
 /**
@@ -15,11 +14,5 @@ public class Gold extends TreasureCard {
 
 	public int treasureValue() {
 		return 3;
-	}
-
-	@Override
-	public void play(Player p) {
-		p.incrementMoney(3); // on ajoute la valeur d'une pièce d'or à la monney
-								// du Player p
 	}
 }
