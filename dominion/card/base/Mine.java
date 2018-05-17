@@ -46,7 +46,7 @@ public class Mine extends ActionCard {
 				}
 			}
 		}
-		// O, demande au joueur quelle carte il veux récuperer
+		// On demande au joueur quelle carte il veux récuperer
 		String input = p.chooseCard("Quelle carte voulez vous récuperer ?",
 				tmpTre, false);
 		// On enlève cette carte de la réserve

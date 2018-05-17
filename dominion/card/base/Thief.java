@@ -86,7 +86,6 @@ public class Thief extends AttackCard {
 			String inputc = p.chooseCard("Choisissez une carte à recevoir",
 					toTrash, true);
 			// Si le joueur n'a pas choisit une carte de la liste
-			System.err.println(inputc);
 			if (inputc.equals("")) {
 				// On quite la boucle
 				choice = false;

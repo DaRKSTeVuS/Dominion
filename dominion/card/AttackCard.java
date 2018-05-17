@@ -43,7 +43,7 @@ public abstract class AttackCard extends ActionCard {
 				return ((ReactionCard) c).reaction(p);
 			}
 		}
-		// On retourne false s'il n'en pocede pas
+		// On retourne false s'il n'en possede pas
 		return false;
 	}
 }

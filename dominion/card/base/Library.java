@@ -25,7 +25,8 @@ public class Library extends ActionCard {
 		int nbCardDpD = p.totalCards().size();
 		// On initialise un compteur de carte pioché
 		int cptP = 0;
-		// On initialise un boolean pour savoir si le joueur souhaite refaire un tour de pioche
+		// On initialise un boolean pour savoir si le joueur souhaite refaire un
+		// tour de pioche
 		boolean drawAgain = true;
 		// On initialisate une variablie pour stocké la carte pioché
 		Card tmpC;
@@ -62,10 +63,14 @@ public class Library extends ActionCard {
 					p.discardCard(tmpC);
 				}
 			}
-			// Si on a pioché le nombre de carte disponible dans la pioche et la defausse
+			// Si on a pioché le nombre de carte disponible dans la pioche et la
+			// defausse
 			if (cptP > nbCardDpD) {
-				// On informe le joueur et on lui demande s'il souhaite continuer
-				input = p.choose("Vous avez déjà pioché toutes les cartes disponible, voulez vous recommencer ?", choix, false);
+				// On informe le joueur et on lui demande s'il souhaite
+				// continuer
+				input = p
+						.choose("Vous avez déjà pioché toutes les cartes disponible, voulez vous recommencer ?",
+								choix, false);
 				// S'il veux s'arrêter
 				if (!input.equals("n")) {
 					// On remet les cartes compté à 0
