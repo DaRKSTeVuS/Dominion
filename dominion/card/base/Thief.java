@@ -98,7 +98,7 @@ public class Thief extends AttackCard {
 		}
 		// On écarte le reste
 		while (!toTrash.isEmpty()) {
-			toTrash.remove(0);
+			 p.getGame().trash(toTrash.remove(0));
 		}
 
 	}
