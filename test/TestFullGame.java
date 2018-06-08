@@ -8,7 +8,7 @@ import java.util.List;
 public class TestFullGame extends Test {
 
 	private static void testBigMoney(Test t) {
-		String[] player_names = new String[] { "Toto", "Titi", "Tutu" };
+		String[] player_names = new String[]{"Toto", "Titi", "Tutu"};
 		List<CardList> kingdomStacks = new ArrayList<>();
 		BotGame g = new BotGame(player_names, kingdomStacks);
 		GameProxy g_p = new GameProxy(g);
@@ -25,9 +25,9 @@ public class TestFullGame extends Test {
 		t.check(score0 + score1 + score2 == 9 + 6 * 12);
 	}
 
+
 	public void run() {
-		this.runTest("Partie complète (Big Money, 3 joueurs)",
-				TestFullGame::testBigMoney);
+		this.runTest("Partie complete (Big Money, 3 joueurs)", TestFullGame::testBigMoney);
 	}
 
 	public static void main(String[] args) {

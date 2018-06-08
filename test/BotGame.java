@@ -10,11 +10,8 @@ class BotGame extends Game {
 
 	/**
 	 * Sous-class de Game permettant d'exécuter automatiquement une stratégie
-	 * 
-	 * @param playerNames
-	 *            noms des joueurs
-	 * @param kingdomStacks
-	 *            piles de réserve
+	 * @param playerNames noms des joueurs
+	 * @param kingdomStacks piles de réserve
 	 */
 	public BotGame(String[] playerNames, List<CardList> kingdomStacks) {
 		super(playerNames, kingdomStacks);
@@ -27,9 +24,11 @@ class BotGame extends Game {
 	/**
 	 * Stratégie des bots (ici Big Money)
 	 *
-	 * À chaque tour, le bot joue tous ses trésors et achète la carte la plus
-	 * chère qu'il peut acheter parmi - Province - Gold - Silver S'il a moins de
-	 * 3 pièces (ne peut pas acheter de Silver) il passe son tour.
+	 * À chaque tour, le bot joue tous ses trésors et achète la carte la plus chère qu'il peut acheter parmi
+	 *   - Province
+	 *   - Gold
+	 *   - Silver
+	 * S'il a moins de 3 pièces (ne peut pas acheter de Silver) il passe son tour.
 	 *
 	 * @return l'instruction à envoyer pour appliquer la stratégie
 	 */
@@ -48,8 +47,8 @@ class BotGame extends Game {
 	}
 
 	/**
-	 * Méthode permettant de lire les instructions des joueurs. Redéfinie pour
-	 * lire automatiquement le résultat de la stratégie à appliquer
+	 * Méthode permettant de lire les instructions des joueurs. Redéfinie pour lire automatiquement le résultat de la
+	 * stratégie à appliquer
 	 */
 	public String readLine() {
 		return this.strategy();
