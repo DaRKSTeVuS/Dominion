@@ -1,5 +1,8 @@
 # Dominion
 
-Projet du deuxième semestre à l'IUT Montpellier Sète, section Informatique en programmation orientée objet.
+JAVA Game in text mode, based on the card game Dominion.
+This is a project for the second semester of Technology University Degree in Computing Science.
 
-Auteurs : Juliette GREGROIRE, Stéphane COMBES
+Authors :
+- Stéphane COMBÉS (myself)
+- Juliette GRÉGROIRE
